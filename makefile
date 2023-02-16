@@ -1,8 +1,22 @@
-BUILD_FOLDER := output
+BIN_FOLDER := ./zx-core/soft/bin/osx
+SRC_FOLDER := ./src
+BUILD_FOLDER := ./output
+
+PROJECT_NAME := game
 
 clean:
 	rm -rf $(BUILD_FOLDER)
 	mkdir -p $(BUILD_FOLDER)
+
+build: clean
+	$(BIN_FOLDER)/sjasmplus --dos866 --nofakes --dirbol --outprefix=$(BUILD_FOLDER)/ \
+				-DSNA_FILENAME=\"$(PROJECT_NAME).sna\" \
+				-DBIN_FILENAME=\"$(PROJECT_NAME).bin\" \
+        --lst=$(BUILD_FOLDER)/program.list \
+        --fullpath $(SRC_FOLDER)/$(PROJECT_NAME).asm
+
+run: build
+	open -a 'UnrealSpeccyPortable' $(BUILD_FOLDER)/$(PROJECT_NAME).sna
 
 make_scr:
 	python3 ./engine/bin/cross-platform/png2scr.py -i ./data/tiles/tiles_mod.png -o ./$(BUILD_FOLDER)/tiles.scr
