@@ -1,0 +1,3 @@
+[submodule "zx-core"]
+	path = zx-core
+	url = https://github.com/zxwanderer/zx-core.git
