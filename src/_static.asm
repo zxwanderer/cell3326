@@ -2,7 +2,8 @@
   include "beeper/tritone/play.asm"
 
 	include "screen/addr_to_attr.asm"
-	
+	include "screen/clear.asm"
+
 	include "tiles16/show.asm"
 	include "tiles16/index_to_ptr.asm"
 	include "tiles16/show_screen.asm"
