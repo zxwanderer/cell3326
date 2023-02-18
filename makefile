@@ -24,6 +24,9 @@ build: clean make_tileset make_map
     --fullpath $(SRC_FOLDER)/main.asm
 
 run: build
+	$(BIN_FOLDER)/xpeccy.app/Contents/MacOS/xpeccy --debug $(BUILD_FOLDER)/$(PROJECT_NAME).sna
+
+run2: build
 	open -a 'UnrealSpeccyPortable' $(BUILD_FOLDER)/$(PROJECT_NAME).sna
 
 make_scr:
