@@ -25,3 +25,5 @@ display "interrupt: ", INT_VECTOR, "-", INT_VECTOR+256-1
 display '-----------------------------------------'
 
 	savesna SNA_FILENAME, PROGRAM_ORG
+  LABELSLIST labels.txt
+  

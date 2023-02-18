@@ -28,6 +28,3 @@ data:
 
 TILE_SET:
   incbin "tiles.bin"
-
-VIEW_BUFFER:
-	include "tiles16/view_buffer.asm"
