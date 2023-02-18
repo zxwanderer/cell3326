@@ -5,6 +5,7 @@
 	
 	include "tiles16/show.asm"
 	include "tiles16/index_to_ptr.asm"
+	include "tiles16/show_screen.asm"
 
 	include "keyboard/wait_key.asm"
 	include "keyboard/wait_unkey.asm"
@@ -23,3 +24,6 @@ data:
 data:    
     include "music/AER/gameend.asm"
   ENDMODULE
+
+VIEW_BUFFER:
+	include "tiles16/view_buffer.asm"
