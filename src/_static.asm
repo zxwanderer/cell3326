@@ -1,4 +1,13 @@
+
   include "beeper/tritone/play.asm"
+
+	include "screen/addr_to_attr.asm"
+	
+	include "tiles16/show.asm"
+	include "tiles16/index_to_ptr.asm"
+
+	include "keyboard/wait_key.asm"
+	include "keyboard/wait_unkey.asm"
 
   MODULE music_startgame
 data:  
