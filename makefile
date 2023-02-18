@@ -13,10 +13,11 @@ clean:
 	rm -rf $(BUILD_FOLDER)
 	mkdir -p $(BUILD_FOLDER)
 
-build: clean
+build: clean make_tileset
 	$(BIN_FOLDER)/sjasmplus --dos866 --nofakes --dirbol --outprefix=$(BUILD_FOLDER)/ \
 		-i$(LIBS_FOLDER) \
 		-i$(ASSETS_FOLDER) \
+		-i$(BUILD_FOLDER) \
 		-DSNA_FILENAME=\"$(PROJECT_NAME).sna\" \
 		-DBIN_FILENAME=\"$(PROJECT_NAME).bin\" \
     --lst=$(BUILD_FOLDER)/program.list \
