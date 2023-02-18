@@ -5,20 +5,23 @@ ORG PROGRAM_ORG
 
 code:
   include "_code.asm"
+code_end equ $-1
 
 static:
   include "_static.asm"
+static_end equ $-1
 
 dynamic:
   include "_dynamic.asm"
+dynamic_end equ $-1
 
 _all_end:
 
 display 'PROGRAM_ORG: ', PROGRAM_ORG
 display '--main.asm---------------------------------------'
-display 'Engine:   ', code, '-', static-1, ', size: ', /D, static-code
-display 'Static:   ', static, '-', dynamic-1,', size: ', /D, dynamic-static
-display 'Dynamic:  ', dynamic, '-', _all_end-1, ', size: ', /D, _all_end-dynamic
+display 'Engine:   ', code, '-', code_end, ', size: ', /D, code_end - code
+display 'Static:   ', static, '-', static_end,', size: ', /D, static_end - static
+display 'Dynamic:  ', dynamic, '-', dynamic_end, ', size: ', /D, dynamic_end - dynamic
 display '-----------------------------------------'
 display "interrupt: ", INT_VECTOR, "-", INT_VECTOR+256-1
 display '-----------------------------------------'
