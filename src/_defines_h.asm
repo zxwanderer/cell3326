@@ -1,0 +1,3 @@
+PROGRAM_ORG: equ #6000
+
+INT_VECTOR: equ #7D7D
