@@ -25,4 +25,3 @@ LOOP2
 		savesna SNA_FILENAME, START			; SNA_FILENAME defined in Makefile
 		savebin BIN_FILENAME, START, $-START 	; BIN_FILENAME defined in Makefile
 	; endif
-                
