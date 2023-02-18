@@ -6,6 +6,7 @@
 	include "tiles16/show.asm"
 	include "tiles16/index_to_ptr.asm"
 	include "tiles16/show_screen.asm"
+  include "tiles16/copy_to_buffer.asm"
 
 	include "keyboard/wait_key.asm"
 	include "keyboard/wait_unkey.asm"
