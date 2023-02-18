@@ -17,7 +17,7 @@ dynamic_end equ $-1
 
 display 'PROGRAM_ORG: ', PROGRAM_ORG
 display '--main.asm---------------------------------------'
-display 'Code:   ', code, '-', code_end, ', size: ', /D, code_end - code
+display 'Code:     ', code, '-', code_end, ', size: ', /D, code_end - code
 display 'Static:   ', static, '-', static_end,', size: ', /D, static_end - static
 display 'Dynamic:  ', dynamic, '-', dynamic_end, ', size: ', /D, dynamic_end - dynamic
 display '-----------------------------------------'

@@ -1,6 +1,6 @@
 start:
-  ; LD HL, music_startgame.data
-  ; CALL Tritone.play
+  LD HL, music_startgame.data
+  CALL Tritone.play
 
   DI
   LD HL,MAP_SET
