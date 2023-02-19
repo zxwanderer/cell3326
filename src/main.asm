@@ -16,6 +16,7 @@ dynamic:
 dynamic_end equ $-1
 
 // ------------- interrupt tabs
+  ORG INT_TABLE
     align 256
 interruptTab:
     ds 257,0
@@ -31,10 +32,8 @@ display 'Code:     ', code, '-', code_end, ', size: ', /D, code_end - code
 display 'Static:   ', static, '-', static_end,', size: ', /D, static_end - static
 display 'Dynamic:  ', dynamic, '-', dynamic_end, ', size: ', /D, dynamic_end - dynamic
 display '-----------------------------------------'
-display "INT_VECTOR: ", INT_VECTOR, "-", INT_VECTOR+256-1
-display '-----------------------------------------'
-display 'free:                ', /D, 0xFFFF - INT_VECTOR - 255 
-display '---------------------------------------------------'
+display "interruptTab: ", interruptTab, "-", interruptTab+256-1
+display "INT_VECTOR: ", INT_VECTOR, "-", INT_VECTOR
 
 	savesna SNA_FILENAME, PROGRAM_ORG
   LABELSLIST labels.txt
