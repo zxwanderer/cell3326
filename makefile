@@ -1,6 +1,6 @@
 BIN_FOLDER := ./zx-core/bin/osx
 SCRIPT_FOLDER := ./zx-core/scripts
-LIBS_FOLDER := ../zx-core/libs
+LIBS_FOLDER := ./zx-core/libs
 
 SRC_FOLDER := ./src
 BUILD_FOLDER := ./output
