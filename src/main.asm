@@ -15,14 +15,26 @@ dynamic:
   include "_dynamic.asm"
 dynamic_end equ $-1
 
+// ------------- interrupt tabs
+    align 256
+interruptTab:
+    ds 257,0
+
+// ------------- im2 routines
+	ASSERT $ < INT_VECTOR
+	ORG INT_VECTOR
+include "_im2_routines.asm"
+
 display 'PROGRAM_ORG: ', PROGRAM_ORG
 display '--main.asm---------------------------------------'
 display 'Code:     ', code, '-', code_end, ', size: ', /D, code_end - code
 display 'Static:   ', static, '-', static_end,', size: ', /D, static_end - static
 display 'Dynamic:  ', dynamic, '-', dynamic_end, ', size: ', /D, dynamic_end - dynamic
 display '-----------------------------------------'
-display "interrupt: ", INT_VECTOR, "-", INT_VECTOR+256-1
+display "INT_VECTOR: ", INT_VECTOR, "-", INT_VECTOR+256-1
 display '-----------------------------------------'
+display 'free:                ', /D, 0xFFFF - INT_VECTOR - 255 
+display '---------------------------------------------------'
 
 	savesna SNA_FILENAME, PROGRAM_ORG
   LABELSLIST labels.txt
