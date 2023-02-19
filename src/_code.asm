@@ -4,15 +4,19 @@
 start:
   DI
   SetIM2 interruptTab, INT_VECTOR
+  ; LD SP, #FFFF
   ; LD HL, music_startgame.data
   ; CALL Tritone.play
   EI
 
   CALL SCREEN_CLEAR
+
+loop:
+  HALT
   LD HL, MAP_SET
   CALL COPY_TO_BUFFER
 	CALL TILE16_SHOW_SCREEN
- EI
+  LD A, 2
+  OUT (#FE), A
 
-loop:
   jp loop
