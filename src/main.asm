@@ -18,6 +18,7 @@ dynamic_end equ $-1
 // ------------- interrupt tabs
   ORG INT_TABLE
     align 256
+    ASSERT $ = INT_TABLE
 interruptTab:
     ds 257,0
 
