@@ -3,15 +3,22 @@
 
 start:
   DI
-  SetIM2 INT_TABLE, INT_VECTOR
-  LD SP, STACK_TOP
-  ; LD HL, music_startgame.data
-  ; CALL Tritone.play
-  EI
 
   XOR A
   OUT (#FE),A
   CALL SCREEN_CLEAR
+
+  SetIM2 INT_TABLE, INT_VECTOR
+  LD SP, STACK_TOP
+
+	LD DE, #4000
+	LD HL, MSG_HELLO
+	CALL Text68.print_at
+
+  LD HL, music_startgame.data
+  CALL Tritone.play
+
+  EI
 
 loop:
   LD HL, MAP_SET
