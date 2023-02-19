@@ -3,8 +3,8 @@
 
 start:
   DI
-  SetIM2 interruptTab, INT_VECTOR
-  ; LD SP, #FFFF
+  SetIM2 INT_TABLE, INT_VECTOR
+  LD SP, STACK_TOP
   ; LD HL, music_startgame.data
   ; CALL Tritone.play
   EI
