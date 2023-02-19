@@ -9,12 +9,12 @@ start:
   ; CALL Tritone.play
   EI
 
+  XOR A
+  OUT (#FE),A
   CALL SCREEN_CLEAR
 
 loop:
   LD HL, MAP_SET
   CALL COPY_TO_BUFFER
 	CALL TILE16_SHOW_SCREEN
-  LD A, 2
-  OUT (#FE), A
-  jp loop
+  JP loop
