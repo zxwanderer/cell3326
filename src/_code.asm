@@ -6,13 +6,16 @@ start:
 
   XOR A
   OUT (#FE),A
-  CALL SCREEN_CLEAR
+  LD A, %00000100
+  CALL SCREEN_SET_COLORS
+
+  ; CALL SCREEN_CLEAR
 
   SetIM2 INT_TABLE, INT_VECTOR
   LD SP, STACK_TOP
 
 	LD DE, #4000
-	LD HL, MSG_HELLO
+	LD HL, HELLO_TXT
 	CALL Text68.print_at
 
   LD HL, music_startgame.data
