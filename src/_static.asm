@@ -11,6 +11,11 @@
 	include "tiles16/show_screen.asm"
   include "tiles16/copy_to_buffer.asm"
 
+  include "view/view_h.asm"
+  include "view/center.asm"
+  
+  include "cells/calc_pos.asm"
+
 	include "text/text68.asm"
 
 	include "keyboard/wait_key.asm"
