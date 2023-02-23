@@ -4,6 +4,7 @@
   include "logic/point_h.asm"
 	include "keyboard/define_key_h.asm"
   include "keyboard/scancode_h.asm"
+  include "cells/defines_h.asm"
 
 start:
   DI
