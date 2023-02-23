@@ -14,6 +14,7 @@
   include "view/view_h.asm"
   include "view/center.asm"
   
+  include "cells/move_calc_xy.asm"
   include "cells/calc_pos.asm"
 
 	include "text/text68.asm"
