@@ -23,9 +23,10 @@ build: clean make_tileset make_map
     --lst=$(BUILD_FOLDER)/program.list \
     --fullpath $(SRC_FOLDER)/main.asm
 
+		# --debug 
 run: build
 	$(BIN_FOLDER)/xpeccy.app/Contents/MacOS/xpeccy \
-		--debug $(BUILD_FOLDER)/$(PROJECT_NAME).sna \
+		$(BUILD_FOLDER)/$(PROJECT_NAME).sna \
 		--labels $(BUILD_FOLDER)/labels.txt
 
 run2: build
