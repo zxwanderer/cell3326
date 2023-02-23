@@ -1,42 +1,62 @@
-; MODULE Hero
+  MODULE Hero
 
-; ; --------------------------------------------------------------------------------------
-; ; Инициализация персонажей на карте, переход на первого персонажа
-; ; --------------------------------------------------------------------------------------
-; initHeroes:
-; .init_loop:
-;   LD B, HeroesNum
-;   LD HL, HEROES_SET
-;   LD DE, Hero
-;   PUSH BC
-;   PUSH DE
-;   PUSH HL
+; --------------------------------------------------------------------------------------
+; Инициализация персонажей на карте, переход на первого персонажа
+; --------------------------------------------------------------------------------------
+initHeroes:
+.init_loop:
+  LD B, HeroesNum
+  LD HL, HEROES_SET
+  LD DE, Hero
+  PUSH BC
+  PUSH DE
+  PUSH HL
 
-;   PUSH HL
-;   POP IX
+  PUSH HL
+  POP IX
 
-;   LD D, (IX+Hero.pos.x)
-;   LD E, (IX+Hero.pos.y)
-;   CALL Cells.calc_pos
-;   LD A,(HL)
-;   LD (IX+Hero.ground),A; ячейку карты ставим на пол персонажа
-;   CALL update_sprite
+  LD D, (IX+Hero.pos.x)
+  LD E, (IX+Hero.pos.y)
+  CALL CELLS_CALC_POS
+  LD A,(HL)
+  LD (IX+Hero.ground),A; ячейку карты ставим на пол персонажа
+  CALL update_sprite_by_direction
 
-;   POP HL
-;   POP DE
-;   POP BC
-;   ADD HL, DE
-;   DJNZ .init_loop
+  POP HL
+  POP DE
+  POP BC
+  ADD HL, DE
+  DJNZ .init_loop
 
-; ; --------------------------------------------------------------------------------------
-; ; Переход на первого персонажа
-; ; --------------------------------------------------------------------------------------
-; ; firstChar:
-;   ; LD HL, HEROES_SET
-;   ; ld (LOGIC_activeHero_ptr), HL
-;   ; XOR A
-;   ; LD (LOGIC_curHeroNum), A
-;   ; RET
+; --------------------------------------------------------------------------------------
+; Переход на первого персонажа
+; --------------------------------------------------------------------------------------
+firstChar:
+  LD HL, HEROES_SET
+  ld (LOGIC_activeHero_ptr), HL
+  XOR A
+  LD (LOGIC_curHeroNum), A
+  RET
+
+; --------------------------------------------------------------------------------------
+; меняем спрайт героя в зависимости от направления персонажа
+; Вход:
+;  IX - указатель на героя
+; --------------------------------------------------------------------------------------
+update_sprite_by_direction:
+  LD B,(IX+Hero.base_spr)
+  LD A,(IX+Hero.dir)
+  ADD A, B
+  DEC A; delta spr = dir - 1
+  LD (IX+Hero.sprite), A
+  LD (Hero.cur_spr), A
+  LD D, (IX+Hero.pos.x)
+  LD E, (IX+Hero.pos.y)
+CELLS_SET:
+  CALL CELLS_CALC_POS
+cur_spr equ $+1
+  LD (HL), #ff
+  RET
 
 ; ; --------------------------------------------------------------------------------------
 ; ; Циклический переход на следующего персонажа,
@@ -148,4 +168,4 @@
 ;   ; LD (IX+Hero.ground), A ; сохранили землю
 ;   ; JP update_sprite
 
-;   ENDMODULE
+  ENDMODULE
