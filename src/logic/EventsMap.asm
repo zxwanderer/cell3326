@@ -28,10 +28,12 @@ look_dir:
   CALL MOVE_CALC_XY
   RET NC;  возвратили false - неправильное направление или действие    
   CALL CELLS_CALC_POS
+  ; LD DE, MAP_SET-MAP_MASK
+  ; ADD HL, DE
 .update_mask_hl:
     LD A, (HL)
     OR %10000000
-    LD (HL), A
+    LD (HL), #ff
     RET
   RET
 
