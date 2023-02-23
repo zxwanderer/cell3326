@@ -116,13 +116,12 @@ do:
 ;   ; RET NZ
 ;   ; JP firstChar
 
-; lookAtChar:
-;   LD IX, (LOGIC_activeHero_ptr)
-;   LD D,  (IX+Hero.pos.x)
-;   LD E,  (IX+Hero.pos.y)
-;   CALL View.lookAt
-;   MemSetBank graphBank
-;   JP View.draw
+lookAtChar:
+  LD IX, (LOGIC_activeHero_ptr)
+  LD D,  (IX+Hero.pos.x)
+  LD E,  (IX+Hero.pos.y)
+  CALL VIEW_CENTER
+  RET
 
 ; ; --------------------------------------------------------------------------------------
 ; ; Переход на следующего персонажа

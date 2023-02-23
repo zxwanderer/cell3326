@@ -25,8 +25,8 @@ start:
 
   CALL Hero.initHeroes
 
-  LD HL, music_startgame.data
-  CALL Tritone.play
+  ; LD HL, music_startgame.data
+  ; CALL Tritone.play
 
   EI
 
@@ -39,12 +39,14 @@ loop:
   JP Z, no_press_keys
   PUSH DE
   POP HL
-GOTO_HL:  
+GOTO_HL:
   JP (HL)
 
 no_press_keys:
-  LD DE, #0505
-  CALL VIEW_CENTER
+  CALL Hero.firstChar
+  CALL Hero.lookAtChar
+  ; LD DE, #0505
+  ; CALL VIEW_CENTER
 
   CALL CELLS_CALC_POS
 
@@ -65,31 +67,31 @@ keyMappingTable:
 
 PRESS_BUTTON_UP:
   LD B, dir_up
-  CALL Hero.move
+  ; CALL Hero.move
   CALL Hero.lookAround
-  RET
+  JP no_press_keys
 
 PRESS_BUTTON_DOWN:
   LD B, dir_down
-  CALL Hero.move
+  ; CALL Hero.move
   CALL Hero.lookAround  
-  RET
+  JP no_press_keys
 
 PRESS_BUTTON_LEFT:
   LD B, dir_left
   CALL Hero.move
   CALL Hero.lookAround  
-  RET
+  JP no_press_keys
 
 PRESS_BUTTON_RIGHT:
   LD B, dir_right
-  CALL Hero.move
+  ; CALL Hero.move
   CALL Hero.lookAround  
-  RET
+  JP no_press_keys
 
 PRESS_BUTTON_FIRE:
   CALL Hero.do
-  RET
+  JP no_press_keys
   
 PRESS_RESTART:
   LD A, 6
