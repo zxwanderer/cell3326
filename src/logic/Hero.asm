@@ -60,16 +60,19 @@ update_sprite_by_direction:
   LD B,(IX+Hero.base_spr)
   LD A,(IX+Hero.dir)
   ADD A, B
-  DEC A; delta spr = dir - 1
   LD (IX+Hero.sprite), A
   LD (Hero.cur_spr), A
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
-CELLS_SET:
+set_cell_here: 
   CALL CELLS_CALC_POS
 cur_spr equ $+1
   LD (HL), #ff
   RET
+
+CELLS_SET:
+  ld (cur_spr), A
+  JP set_cell_here
 
 stand:
   LD A, do_stand
@@ -116,6 +119,9 @@ do:
 ;   ; RET NZ
 ;   ; JP firstChar
 
+; --------------------------------------------------------------------------------------
+; Выход: DE - координаты левого верхнего угла обзорного окна в центре которого находится герой,  D - x, E - y 
+; --------------------------------------------------------------------------------------
 lookAtChar:
   LD IX, (LOGIC_activeHero_ptr)
   LD D,  (IX+Hero.pos.x)

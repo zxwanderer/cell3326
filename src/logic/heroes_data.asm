@@ -1,6 +1,6 @@
 HeroesNum equ 1
 
-Hero09.spr: equ 161
+Hero09.spr: equ 160
 
 tHeroName: defb 'Hero1',0
 
