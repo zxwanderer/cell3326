@@ -1,5 +1,7 @@
   include "im2/im2_h.asm"
   include "stack/push_pop_h.asm"
+  include "logic/defines_h.asm"
+  include "logic/point_h.asm"
 
 start:
   DI
