@@ -22,6 +22,8 @@ start:
 	LD HL, HELLO_TXT
 	CALL Text68.print_at
 
+  CALL Hero.initHeroes
+
   LD HL, music_startgame.data
   CALL Tritone.play
 
@@ -36,11 +38,11 @@ loop:
   JP Z, no_press_keys
   PUSH DE
   POP HL
-goto_hl:  
+GOTO_HL:  
   JP (HL)
 
 no_press_keys:
-  LD DE, #1515
+  LD DE, #0505
   CALL VIEW_CENTER
 
   CALL CELLS_CALC_POS
@@ -50,6 +52,7 @@ no_press_keys:
   JP loop
 
 keyMappingTable:
+  DefineKey KEY_G,     PRESS_RESTART
   DefineKey KEY_Q,     PRESS_BUTTON_UP
   DefineKey KEY_A,     PRESS_BUTTON_DOWN
   DefineKey KEY_O,     PRESS_BUTTON_LEFT
@@ -77,5 +80,9 @@ PRESS_BUTTON_RIGHT:
   JP no_press_keys
 PRESS_BUTTON_FIRE:
   LD A, 5
+  OUT (#FE),A
+  JP no_press_keys
+PRESS_RESTART:
+  LD A, 6
   OUT (#FE),A
   JP no_press_keys

@@ -19,10 +19,10 @@
 	include "text/text68.asm"
 
   include "keyboard/scan_keys.asm"
-  ; include "keyboard/wait_keyasm"
-	; include "keyboard/wait_unkey.asm"
 
   include "lang/lang_ru.asm"
+
+  include "logic/Hero.asm"
   
   MODULE music_startgame
 data:  
