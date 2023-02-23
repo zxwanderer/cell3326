@@ -94,12 +94,12 @@ cur_spr equ $+1
 ;   RET
 
 
-; ; lookAround: 
-;   ; LD IX, (LOGIC_activeHero_ptr)
-;   ; LD D, (IX+Hero.pos.x)
-;   ; LD E, (IX+Hero.pos.y)
-;   ; CALL EventsMap.lookAround
-;   ; RET
+lookAround: 
+  LD IX, (LOGIC_activeHero_ptr)
+  LD D, (IX+Hero.pos.x)
+  LD E, (IX+Hero.pos.y)
+  CALL EventsMap.lookAround
+  RET
 
 ; ; --------------------------------------------------------------------------------------
 ; ; Движение или поворот текущего персонажа
