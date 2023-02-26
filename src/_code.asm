@@ -23,10 +23,11 @@ start:
 	LD HL, HELLO_TXT
 	CALL Text68.print_at
 
-  CALL Hero.initHeroes
-
-  ; LD HL, music_startgame.data
+  LD HL, music_startgame.data
   ; CALL Tritone.play
+
+  CALL Hero.initHeroes
+  CALL Hero.lookAround
 
   EI
 
