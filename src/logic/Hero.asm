@@ -61,18 +61,9 @@ update_sprite_by_direction:
   LD A,(IX+Hero.dir)
   ADD A, B
   LD (IX+Hero.sprite), A
-  LD (Hero.cur_spr), A
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
-set_cell_here: 
-  CALL CELLS_CALC_POS
-cur_spr equ $+1
-  LD (HL), #ff
-  RET
-
-CELLS_SET:
-  ld (cur_spr), A
-  JP set_cell_here
+  JP CELLS_SET
 
 stand:
   LD A, do_stand

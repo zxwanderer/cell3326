@@ -16,6 +16,7 @@
   
   include "cells/move_calc_xy.asm"
   include "cells/calc_pos.asm"
+  include "cells/set.asm"
 
 	include "text/text68.asm"
 
