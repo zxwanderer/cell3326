@@ -66,25 +66,25 @@ keyMappingTable:
 PRESS_BUTTON_UP:
   LD B, dir_up
   CALL Hero.move
-  ; CALL Hero.lookAround
+  CALL Hero.lookAround
   JP no_press_keys
 
 PRESS_BUTTON_DOWN:
   LD B, dir_down
   CALL Hero.move
-  ; CALL Hero.lookAround
+  CALL Hero.lookAround
   JP no_press_keys
 
 PRESS_BUTTON_LEFT:
   LD B, dir_left
   CALL Hero.move
-  ; CALL Hero.lookAround 
+  CALL Hero.lookAround 
   JP no_press_keys
 
 PRESS_BUTTON_RIGHT:
   LD B, dir_right
   CALL Hero.move
-  ; CALL Hero.lookAround
+  CALL Hero.lookAround
   JP no_press_keys
 
 PRESS_BUTTON_FIRE:
