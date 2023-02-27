@@ -1,5 +1,12 @@
   MODULE Hero
 
+; LOGIC_LAST_ACTION - последнее действие героя
+; LOGIC_activeHero_ptr - указатель на описание героя
+; LOGIC_curHeroNum - текущий номер героя
+; LOGIC_MapCell_xy - текущие координаты события
+; LOGIC_MapCell_ptr - указатель на ячейку события
+
+
 ; --------------------------------------------------------------------------------------
 ; Инициализация персонажей на карте, переход на первого персонажа
 ; --------------------------------------------------------------------------------------
@@ -74,7 +81,7 @@ stand:
 ;   A - действие
 ; --------------------------------------------------------------------------------------
 do:
-  LD (.action), A
+  LD (LOGIC_LAST_ACTION), A
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
   LD A, (IX+Hero.dir)
@@ -83,7 +90,7 @@ do:
   LD (LOGIC_MapCell_xy), DE
   CALL CELLS_CALC_POS
   LD (LOGIC_MapCell_ptr), HL
-.action equ $+1
+LOGIC_LAST_ACTION equ $+1
   LD A, #00
 
 .do_stand
@@ -92,11 +99,13 @@ do:
   LD A, (IX+Hero.ground)
   CALL CELLS_SET ; вернули на место землю
 
-  LD DE, (LOGIC_MapCell_xy)
+LOGIC_MapCell_xy equ $+1
+  LD DE, #0000
   LD (IX+Hero.pos.x), D
   LD (IX+Hero.pos.y), E ; установили новые координаты 
 
-  LD HL, (LOGIC_MapCell_ptr)
+LOGIC_MapCell_ptr equ $+1
+  LD HL, #0000
   LD A, (HL)
   LD (IX+Hero.ground), A ; сохранили землю
   JP update_sprite_by_direction
@@ -139,7 +148,8 @@ lookAtChar:
 ;   RET
 
 lookAround: 
-  LD IX, (LOGIC_activeHero_ptr)
+LOGIC_activeHero_ptr equ $+1
+  LD IX, #0000
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
   CALL EventsMap.lookAround
