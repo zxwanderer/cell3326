@@ -6,6 +6,7 @@
 	include "keyboard/define_key_h.asm"
   include "keyboard/scancode_h.asm"
   include "cells/defines_h.asm"
+  include "logic/Cells/CellType_h.asm"
 
 start:
   DI
