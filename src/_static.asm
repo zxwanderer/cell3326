@@ -27,6 +27,8 @@
   include "logic/Events/EventsMap.asm"
   include "logic/Heroes/Hero.asm"
   
+  include "math/mul_ADE.asm"
+  
   include "cell_types_data.asm"
 
   MODULE music_startgame
