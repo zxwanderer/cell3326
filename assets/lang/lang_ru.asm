@@ -27,3 +27,6 @@ HELLO_TXT:
   db "—‡ÈÚ: zxwanderer.github.io/cell3326", 13
   db "------------------------------------------"
   db _endByte
+
+
+Empty_cell_name: db "œ”—“Œ",0

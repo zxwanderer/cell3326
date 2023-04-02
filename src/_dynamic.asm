@@ -11,7 +11,7 @@ VIEW_BUFFER:
 
   include "logic/Heroes/Hero_h.asm"
   include "heroes_data.asm"
-  include "logic_vars.asm"
+  include "logic_vars_data.asm"
   
 display 'VIEW_BUFFER: ', VIEW_BUFFER
 display 'MAP_SET: ', MAP_SET
