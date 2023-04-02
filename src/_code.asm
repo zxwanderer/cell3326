@@ -1,6 +1,6 @@
   include "im2/im2_h.asm"
   include "stack/push_pop_h.asm"
-  include "logic/defines_h.asm"
+  include "logic/logic_defines_h.asm"
   include "logic/point_h.asm"
 	include "keyboard/define_key_h.asm"
   include "keyboard/scancode_h.asm"

@@ -9,7 +9,7 @@ MAP_MASK:
 VIEW_BUFFER:
 	include "tiles16/view_buffer.asm"
 
-  include "logic/hero_h.asm"
+  include "logic/Heroes/Hero_h.asm"
   include "logic/heroes_data.asm"
   include "logic/logic_vars.asm"
   

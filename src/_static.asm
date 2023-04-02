@@ -24,8 +24,8 @@
 
   include "lang/lang_ru.asm"
 
-  include "logic/EventsMap.asm"
-  include "logic/Hero.asm"
+  include "logic/Events/EventsMap.asm"
+  include "logic/Heroes/Hero.asm"
   
   MODULE music_startgame
 data:  
