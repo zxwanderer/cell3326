@@ -25,9 +25,8 @@ lookAround:
 ;   DE - координаты X и Y
 ;   A - направление взгляда
 look_dir:
-  CALL MOVE_CALC_XY
-  RET NC;  возвратили false - неправильное направление или действие    
-  CALL CELLS_CALC_POS
+  CALL find_current_cell
+  RET NC;  возвратили false - неправильное направление
   LD DE, MAP_MASK-MAP_SET
   ADD HL, DE
 .update_mask_hl:
@@ -35,5 +34,17 @@ look_dir:
   OR %10000000
   LD (HL), A
   RET
+
+; Смотрим по направлению
+; На входе:
+;   DE - координаты X и Y
+;   A - направление взгляда
+; На выходе:
+; в HL - указатель на ячейку карты, 
+find_current_cell:
+  CALL MOVE_CALC_XY
+  RET NC;  возвратили false - неправильное направление
+  CALL CELLS_CALC_POS
+  retTrue
 
   ENDMODULE
