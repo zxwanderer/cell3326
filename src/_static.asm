@@ -5,6 +5,7 @@
 	include "screen/clear.asm"
 	include "screen/calc_down_pos.asm"
 	include "screen/set_colors.asm"
+  include "screen/pos_to_scr.asm"
 
 	include "tiles16/show.asm"
 	include "tiles16/index_to_ptr.asm"
@@ -28,6 +29,7 @@
   include "logic/Heroes/Hero.asm"
   
   include "math/mul_ADE.asm"
+  include "FX.asm"
   
   include "cell_types_data.asm"
 

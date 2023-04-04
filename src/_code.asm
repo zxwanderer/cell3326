@@ -20,12 +20,17 @@ start:
   SetIM2 INT_TABLE, INT_VECTOR
   LD SP, STACK_TOP
 
-	LD DE, #4000
-	LD HL, HELLO_TXT
-	CALL Text68.print_at
+	; LD DE, #4000
+	; LD HL, HELLO_TXT
+	; CALL Text68.print_at
 
-  LD HL, music_startgame.data
-  CALL Tritone.play
+  ; LD DE, #0016
+  ; CALL SCREEN_POS_TO_SCR
+	; LD HL, Empty_cell_name
+	; CALL Text68.print_at
+
+  ; LD HL, music_startgame.data
+  ; CALL Tritone.play
 
   CALL Hero.initHeroes
   CALL Hero.lookAround
@@ -52,6 +57,8 @@ no_press_keys:
 
   CALL COPY_TO_BUFFER
 	CALL TILE16_SHOW_SCREEN
+
+  CALL FX.look_at_hero_cell
   JP loop
 
 keyMappingTable:
