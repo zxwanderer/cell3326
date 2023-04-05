@@ -28,5 +28,4 @@ HELLO_TXT:
   db "------------------------------------------"
   db _endByte
 
-Empty_cell_name_ptr:
 Empty_cell_name: db "осярн",0
