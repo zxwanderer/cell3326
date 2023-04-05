@@ -28,6 +28,7 @@
   include "logic/Events/EventsMap.asm"
   include "logic/Heroes/Hero.asm"
   include "logic/Cells/Cells.asm"
+  include "logic/Scripts/Scripts.asm"
   
   include "math/mul_ADE.asm"
   include "FX.asm"

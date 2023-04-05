@@ -11,4 +11,10 @@ cell_by_type_ptr:
   ADD HL, DE
   RET
 
+call_cell_script:
+  XOR A
+  INC A
+  LD (Scripts.var_ret), A
+  RET
+
   ENDMODULE

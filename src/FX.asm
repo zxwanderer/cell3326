@@ -5,8 +5,10 @@ look_at_hero_cell:
   LD IX, (Hero.LOGIC_activeHero_ptr)
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
+  LD (Hero.LOGIC_MapCell_xy),DE
   LD A, (IX+Hero.dir)
   CALL EventsMap.cell_by_dir_ptr
+  LD (Hero.LOGIC_MapCell_ptr), HL
   RET NC;  возвратили false - неправильное направление
   LD A, (HL)
 

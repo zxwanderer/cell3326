@@ -87,11 +87,29 @@ do:
   LD A, (IX+Hero.dir)
   CALL MOVE_CALC_XY ; в DE позиция действия
   RET NC
+
   LD (LOGIC_MapCell_xy), DE
   CALL CELLS_CALC_POS
   LD (LOGIC_MapCell_ptr), HL
+
+  CALL Cells.call_cell_script
+  LD A, (Scripts.var_ret)
+  OR A
+  RET Z; после скрипта переменная установлена в 0 - значит все обработано, по дефолту обрабатывать не нужно
+
 LOGIC_LAST_ACTION equ $+1
   LD A, #00
+
+  CP do_stand
+  JP Z, .do_stand; персонаж перемещается туда
+
+  ; CP do_get
+  ; JP Z, char_do_get; подбираем/бросаем
+
+  ; CP do_drop
+  ; JP Z, char_do_drop; подбираем/бросаем
+
+  RET
 
 .do_stand
   LD D, (IX+Hero.pos.x)
