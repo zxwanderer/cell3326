@@ -7,3 +7,11 @@ script_ptr dw 00; указатель на скрипт обработки дей
 ;prot db 00; проницаемость для предметов, 00 - полностью проницаем
 ;force_destr db 00; сила для уничтожения
   ENDS
+
+; actions-reactions table:
+; action: db #00
+; reaction_table: dw #0000
+
+; reaction-on-item table:
+; item_in_hand: dw #0000    - 0000 - это значит для всех предметов в руке
+; reaction_script: dw #0000
