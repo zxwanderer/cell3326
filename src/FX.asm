@@ -6,18 +6,36 @@ look_at_hero_cell:
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
   LD A, (IX+Hero.dir)
-  CALL EventsMap.cell_by_dir
+  CALL EventsMap.cell_by_dir_ptr
   RET NC;  возвратили false - неправильное направление
+  LD A, (HL)
 
-	LD DE, #0016
+; Показываем информацию о ячейке
+; На входе:
+;   A - тип ячейки
+show_cell_info:
+  CALL Cells.cell_by_type_ptr
+; так как описание ячейки начинается с указателя на текстовое сообщение,
+; нам не нужно загружать индексный регистр и вычислять сдвиг, мы сразу
+; готовы выводить текст
+
+; Показываем текст в двух нижних строчках экрана
+; На входе
+;   HL - указатель на сообщение
+show_info_message:
+  PUSH HL
+
+  LD DE, #0016
   CALL SCREEN_POS_TO_SCR
   PUSH DE
   LD B, 2
   CALL clean_rows
   POP DE
-	LD HL, Empty_cell_name
+  
+  POP HL
+	; LD HL, Empty_cell_name
+  LD HL, CELL_TYPES
 	CALL Text68.print_at
-
   RET
 
 ; Очистить N строчек экрана
