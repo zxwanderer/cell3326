@@ -28,10 +28,10 @@ LOGIC_CellInfo_ptr:
 call_cell_script:
   INC HL
   INC HL ; получили указатель на таблицу action-reaction 
-  
-  XOR A
-  INC A
-  LD (Scripts.var_ret), A
+  CALL Scripts.scan_table_by_index
+  JP NC, Scripts.set_zero_ret ; не нашли действия, выставляем zero чтобы обработка события дальше не пошла в Hero.do
+
+  JP Scripts.set_one_ret
   RET
 
   ENDMODULE

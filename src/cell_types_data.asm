@@ -1,7 +1,7 @@
 CELL_TYPES:
   DUP 256
-    CellType Empty_cell_name, no_way_script
+    CellType Empty_cell_name, action_reaction_empty
   EDUP
 
-no_way_script:
-  RET
+action_reaction_empty:
+  defb 00
