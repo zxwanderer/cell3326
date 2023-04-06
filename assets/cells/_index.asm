@@ -4,3 +4,4 @@
   include "chairs.asm"
   include "tables.asm"
   include "walls.asm"
+  include "computers.asm"

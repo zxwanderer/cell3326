@@ -33,5 +33,7 @@ Floor_cell_name: db "Плитка",0
 Door_cell_name: db "Дверь",0
 Bed_cell_name: db "Кровать",0
 Table_cell_name: db "Стол", 0
+Computer_cell_name: db "Терминал",0
+Computer_break_cell_name: db "Разбитый терминал",0
 
 Chair_item_name: db "Стул",0
