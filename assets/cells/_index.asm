@@ -1,3 +1,5 @@
   include "floors.asm"
   include "doors.asm"
   include "beds.asm"
+  include "chairs.asm"
+  include "tables.asm"
