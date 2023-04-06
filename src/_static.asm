@@ -35,6 +35,8 @@
   
   include "cell_types_data.asm"
 
+  include "cells/_index.asm"
+
   MODULE music_startgame
 data:  
     include "music/AER/foryou.asm"
