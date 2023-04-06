@@ -7,3 +7,5 @@ Door_open_2.spr equ 110
 Door_actions:
   SET_ACTION_REACTON do_stand, reaction_stand
   defb 0
+
+
