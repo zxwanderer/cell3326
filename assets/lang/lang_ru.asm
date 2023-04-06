@@ -29,3 +29,4 @@ HELLO_TXT:
   db _endByte
 
 Empty_cell_name: db "ПУСТО",0
+Floor_cell_name: db "Плитка",0

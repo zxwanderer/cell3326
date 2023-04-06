@@ -1,6 +1,6 @@
-  MACRO SETUP_CELL_TYPE_N _name, _script
+  MACRO SETUP_CELL_TYPE_N _spr, _name, _action_reaction_table
 ._temp equ $; запоминаем адрес
-    ORG CELL_TYPES + spr*CellType
-    CellType _name, _script
+    ORG CELL_TYPES + _spr*CellType
+    CellType _name, _action_reaction_table
     ORG ._temp
   ENDM
