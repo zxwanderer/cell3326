@@ -92,7 +92,8 @@ do:
   CALL CELLS_CALC_POS
   LD (LOGIC_MapCell_ptr), HL
 
-  CALL Cells.call_cell_script
+  LD A, (HL)
+  CALL Cells.call_cell_script_by_num
   LD A, (Scripts.var_ret)
   OR A
   RET Z; после скрипта переменная установлена в 0 - значит все обработано, по дефолту обрабатывать не нужно

@@ -11,7 +11,24 @@ cell_by_type_ptr:
   ADD HL, DE
   RET
 
+; Вызов скрипта ячейки, учитываются активные переменные
+; На входе
+;   A - номер ячейки
+; На выходе:
+;   Сохраняем найденный указатель в LOGIC_CellInfo_ptr
+call_cell_script_by_num:
+  CALL cell_by_type_ptr ; в HL указатель на описание ячейки
+  LD (LOGIC_CellInfo_ptr+1), HL
+LOGIC_CellInfo_ptr:
+  LD HL, (#0000)
+
+; Обработка скрипта активной ячейки
+; На входе:
+;   HL - указатель на описание ячейки
 call_cell_script:
+  INC HL
+  INC HL ; получили указатель на таблицу action-reaction 
+  
   XOR A
   INC A
   LD (Scripts.var_ret), A
