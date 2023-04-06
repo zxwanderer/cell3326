@@ -12,9 +12,8 @@ Floor_23.spr equ 23
   SETUP_CELL_TYPE_N Floor_23.spr, Floor_cell_name, Floor_actions
 
 Floor_actions:
-  db do_stand
-  dw Floor_reaction_move
+  SET_ACTION_REACTON do_get, reaction_stand
   defb 0
 
-Floor_reaction_move:
-  defb 0
+reaction_stand:
+  JP check_act_yes

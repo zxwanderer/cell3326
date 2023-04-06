@@ -24,8 +24,8 @@ start:
 	LD HL, HELLO_TXT
 	CALL Text68.print_at
 
-  LD HL, music_startgame.data
-  CALL Tritone.play
+  ; LD HL, music_startgame.data
+  ; CALL Tritone.play
 
   CALL Hero.initHeroes
   CALL Hero.lookAround
@@ -92,6 +92,7 @@ PRESS_BUTTON_RIGHT:
   JP no_press_keys
 
 PRESS_BUTTON_FIRE:
+  LD A, do_get
   CALL Hero.do
   JP no_press_keys
   

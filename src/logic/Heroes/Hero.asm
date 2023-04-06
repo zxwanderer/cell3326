@@ -94,9 +94,7 @@ do:
 
   LD A, (HL)
   CALL Cells.call_cell_script_by_num
-  LD A, (Scripts.var_ret)
-  OR A
-  RET Z; после скрипта переменная установлена в 0 - значит все обработано, по дефолту обрабатывать не нужно
+  RET NC
 
 LOGIC_LAST_ACTION equ $+1
   LD A, #00

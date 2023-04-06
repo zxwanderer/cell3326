@@ -8,32 +8,26 @@
 ;   A - индекс
 ;   HL - указатель на таблицу
 ; На выходе:
-;   HL - найденные значения
+;   HL - найденное значения
 ;   retFalse - если не нашли Carry = 0
 scan_table_by_index:
+  LD (.index_set+1), A
+
+.loop
   LD A, (HL)
   AND A  ;проверяем на 0
-	JP NZ, .scan
-  retFalse
-.scan
-  RET
+	JP Z, check_act_no
 
-; script_default_no:
-  ; RET
+.index_set:
+  CP #00
+  JR Z, .found
+  INC HL
+  INC HL
+  INC HL
+  JR .loop
 
-set_zero_ret:
-  XOR A
-  LD (Scripts.var_ret), A
-  RET
-
-set_one_ret:
-  LD A, 1
-  LD (Scripts.var_ret), A
-  RET
-
-var_ret:
-  defb 00
+.found:
+  INC HL ; передвигаем с действия на указатель
+  JP check_act_yes
 
   ENDMODULE
-
-

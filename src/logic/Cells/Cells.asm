@@ -25,13 +25,19 @@ LOGIC_CellInfo_ptr:
 ; Обработка скрипта активной ячейки
 ; На входе:
 ;   HL - указатель на описание ячейки
+; На выходе:
+; retFalse - ничего не нужно делать дальше
 call_cell_script:
   INC HL
   INC HL ; получили указатель на таблицу action-reaction 
+  LD A, (Hero.LOGIC_LAST_ACTION)
   CALL Scripts.scan_table_by_index
-  JP NC, Scripts.set_zero_ret ; не нашли действия, выставляем zero чтобы обработка события дальше не пошла в Hero.do
-
-  JP Scripts.set_one_ret
-  RET
+  JP NC, check_act_no
+; в HL у нас теперь указатель на указатель на обработку action'a
+.next
+  ; LD (.jp_ptr+1), HL
+; .jp_ptr:
+  ; LD HL, (#0000)
+  JP (HL)
 
   ENDMODULE

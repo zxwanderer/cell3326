@@ -4,3 +4,8 @@
     CellType _name, _action_reaction_table
     ORG ._temp
   ENDM
+
+  MACRO SET_ACTION_REACTON _act, _react
+    defb _act
+    defw _react
+  ENDM
