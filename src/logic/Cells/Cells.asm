@@ -18,9 +18,7 @@ cell_by_type_ptr:
 ;   Сохраняем найденный указатель в LOGIC_CellInfo_ptr
 call_cell_script_by_num:
   CALL cell_by_type_ptr ; в HL указатель на описание ячейки
-  LD (LOGIC_CellInfo_ptr+1), HL
-LOGIC_CellInfo_ptr:
-  LD HL, (#0000)
+  LD (LOGIC_CellInfo_ptr), HL
 
 ; Обработка скрипта активной ячейки
 ; На входе:
@@ -29,15 +27,14 @@ LOGIC_CellInfo_ptr:
 ; retFalse - ничего не нужно делать дальше
 call_cell_script:
   INC HL
-  INC HL ; получили указатель на таблицу action-reaction 
+  INC HL ; получили указатель на указатель таблицы action-reaction 
+  HL_PTR_TO_HL
   LD A, (Hero.LOGIC_LAST_ACTION)
   CALL Scripts.scan_table_by_index
   JP NC, check_act_no
 ; в HL у нас теперь указатель на указатель на обработку action'a
 .next
-  ; LD (.jp_ptr+1), HL
-; .jp_ptr:
-  ; LD HL, (#0000)
+  HL_PTR_TO_HL
   JP (HL)
 
   ENDMODULE

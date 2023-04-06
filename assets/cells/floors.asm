@@ -12,7 +12,7 @@ Floor_23.spr equ 23
   SETUP_CELL_TYPE_N Floor_23.spr, Floor_cell_name, Floor_actions
 
 Floor_actions:
-  SET_ACTION_REACTON do_get, reaction_stand
+  SET_ACTION_REACTON do_stand, reaction_stand
   defb 0
 
 reaction_stand:

@@ -46,7 +46,8 @@ display 'INT_VECTOR:', INT_VECTOR, "-", INT_VECTOR
 display '[Free]     ', _all_end, '-', #FFFF, ', size: ', /D, 0x10000 - _all_end
 
 
-display Cells.call_cell_script
+display 'Cells.call_cell_script', Cells.call_cell_script
+display 'Floor_actions', Floor_actions
 
 	savesna SNA_FILENAME, PROGRAM_ORG
   LABELSLIST labels.txt
