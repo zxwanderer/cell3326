@@ -47,12 +47,16 @@ BodyInScaf_cell_name:
   db "Тело человека в скафандре, скафандр пробит"
   db "энергетическим оружием и непригоден." , 0
 
+Body_cell_name:
+  db "Труп человека, убит из энергетического",13
+  db "оружия", 0
+
 Soft_wall_name: db "Мягкая декоративная стена",0
 Cavity_cell_name: db "Пустой короб для электроники", 0
 Electronic_cell_name: db "Электронный блок управления",0
 Electronic_break_name: db "Сломанная электроника", 0
 Mentoscanner_cell_name: db "Ментосканнер", 0
-ElectonicDestroy_cell_name: db "Обломки оборудования..", 0
+ElectonicDestroy_cell_name: db "Обломки оборудования", 0
 PlantPot_cell_name: db "Растение в горшке", 0
 Wall_cell_name: db "Тяжелая бронеплита",0
 WallHole_name: db "Большая дыра в стене",0
