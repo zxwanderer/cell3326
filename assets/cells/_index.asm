@@ -9,3 +9,4 @@
   include "trash.asm"
   include "pda.asm"
   include "body.asm"
+  include "electronic.asm"
