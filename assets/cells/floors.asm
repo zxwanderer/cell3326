@@ -8,6 +8,8 @@ Floor_23.spr equ 23
 Floor_41.spr equ 41
 Floor_53.spr equ 53
 Floor_54.spr equ 54
+Floor_58.spr equ 58
+Floor_74.spr equ 74
 
   SETUP_CELL_TYPE_N Floor_3.spr, Floor_cell_name, Floor_actions
   SETUP_CELL_TYPE_N Floor_4.spr, Floor_cell_name, Floor_actions
@@ -18,6 +20,8 @@ Floor_54.spr equ 54
   SETUP_CELL_TYPE_N Floor_41.spr, Floor_cell_name, Floor_actions
   SETUP_CELL_TYPE_N Floor_53.spr, Floor_cell_name, Floor_actions
   SETUP_CELL_TYPE_N Floor_54.spr, Floor_cell_name, Floor_actions
+  SETUP_CELL_TYPE_N Floor_58.spr, Floor_cell_name, Floor_actions
+  SETUP_CELL_TYPE_N Floor_74.spr, Floor_cell_name, Floor_actions
 
 Floor_actions:
   SET_ACTION_REACTON do_stand, reaction_stand
