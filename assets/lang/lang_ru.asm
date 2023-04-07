@@ -35,6 +35,7 @@ Bed_cell_name: db "Кровать",0
 Table_cell_name: db "Стол", 0
 Computer_cell_name: db "Терминал",0
 Computer_break_cell_name: db "Разбитый терминал",0
+Trash_cell_name: db "Мелкие обломки и мусор",0
 
 Chair_item_name: db "Стул",0
 Shard_item_name: db "Острый пластиковый обломок",0

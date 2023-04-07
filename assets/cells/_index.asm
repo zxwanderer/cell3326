@@ -6,3 +6,4 @@
   include "walls.asm"
   include "computers.asm"
   include "shards.asm"
+  include "trash.asm"
