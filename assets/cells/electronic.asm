@@ -13,4 +13,4 @@ Electronic_break_actions:
   db 00
 
 Cavity_cell_actions:
-  db 00  
+  db 00
