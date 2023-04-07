@@ -7,3 +7,5 @@
   include "computers.asm"
   include "shards.asm"
   include "trash.asm"
+  include "pda.asm"
+  include "body.asm"

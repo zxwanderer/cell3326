@@ -36,6 +36,10 @@ Table_cell_name: db "Стол", 0
 Computer_cell_name: db "Терминал",0
 Computer_break_cell_name: db "Разбитый терминал",0
 Trash_cell_name: db "Мелкие обломки и мусор",0
+PDA_cell_name: db "Электронный планшет", 0
+BodyTech_cell_name:
+  db "Тело человека в куртке техника, видимых",13
+  db "повреждений нет", 0
 
 Chair_item_name: db "Стул",0
 Shard_item_name: db "Острый пластиковый обломок",0
