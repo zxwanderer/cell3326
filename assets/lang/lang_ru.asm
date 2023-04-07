@@ -37,3 +37,4 @@ Computer_cell_name: db "Терминал",0
 Computer_break_cell_name: db "Разбитый терминал",0
 
 Chair_item_name: db "Стул",0
+Shard_item_name: db "Острый пластиковый обломок",0
