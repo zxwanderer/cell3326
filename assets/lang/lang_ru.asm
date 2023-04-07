@@ -44,6 +44,8 @@ Soft_wall_name: db "Мягкая декоративная стена",0
 Cavity_cell_name: db "Пустой короб для электроники", 0
 Electronic_cell_name: db "Электронный блок управления",0
 Electronic_break_name: db "Сломанная электроника", 0
+Mentoscanner_cell_name: db "Ментосканнер", 0
+ElectonicDestroy_cell_name: db "Обломки оборудования..", 0
 
 Chair_item_name: db "Стул",0
 Shard_item_name: db "Острый пластиковый обломок",0
