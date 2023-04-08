@@ -14,3 +14,5 @@
   include "plants.asm"
   include "keramit.asm"
   include "grass.asm"
+  include "airland.asm"
+  

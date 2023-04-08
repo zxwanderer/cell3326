@@ -41,6 +41,8 @@ PDA_cell_name: db "Электронный планшет", 0
 Keramit_cell_name: db "Керамит", 0
 Grass_cell_name: db "Трава", 0
 Gravel_cell_name: db "Гравий", 0
+AirLand_cell_name: db "Посадочная площадка", 0
+NavLight_cell_name: db "Навигационные огни", 0
 
 BodyTech_cell_name:
   db "Тело человека в куртке техника, видимых",13
