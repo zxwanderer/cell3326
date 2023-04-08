@@ -50,6 +50,9 @@ CanisterPowered_cell_name: db "Активный биоконтейнер", 0
 Generator_cell_name: db "Биотопливный реактор", 0
 Nipple_cell_name: db "Патрубок для биоконтейнера", 0
 
+Nippers_item_name: db "Кислотостойкий гидравлический резак", 0
+Wrench_cell_name: db "Гаечный ключ-ломик", 0
+
 Analyzer_cell_name: db "Анализатор", 0
 Anabiose_cell_name: db "Анабиозная камера", 0
 AnabioseOpen_cell_name: db "Открытая анабиозная камера", 0
