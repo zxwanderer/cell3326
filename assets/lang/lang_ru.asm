@@ -44,6 +44,10 @@ Gravel_cell_name: db "Гравий", 0
 AirLand_cell_name: db "Посадочная площадка", 0
 NavLight_cell_name: db "Навигационные огни", 0
 
+ScafPlace_cell_name: db "Стойка для скафандра", 0
+Scaf_cell_name: db "Легкий скафандр", 0
+HardScaf_cell_name: db "Тяжелый боевой скафандр", 0
+
 BodyTech_cell_name:
   db "Тело человека в куртке техника, видимых",13
   db "повреждений нет", 0

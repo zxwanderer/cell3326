@@ -15,4 +15,6 @@
   include "keramit.asm"
   include "grass.asm"
   include "airland.asm"
+  include "scafs.asm"
+  
   
