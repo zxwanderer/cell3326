@@ -44,6 +44,11 @@ Gravel_cell_name: db "Гравий", 0
 AirLand_cell_name: db "Посадочная площадка", 0
 NavLight_cell_name: db "Навигационные огни", 0
 
+Canister_cell_name: db "Полный биоконтейнер", 0
+CanisterEmpty_cell_name: db "Пустой биоконтейнер", 0
+CanisterPowered_cell_name: db "Активный биоконтейнер", 0
+Generator_cell_name: db "Биотопливный реактор", 0
+
 Analyzer_cell_name: db "Анализатор", 0
 Anabiose_cell_name: db "Анабиозная камера", 0
 AnabioseOpen_cell_name: db "Открытая анабиозная камера", 0
