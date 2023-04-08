@@ -1,4 +1,5 @@
 
+  include "fx/demoFX.asm"
   include "beeper/tritone/play.asm"
 
 	include "screen/addr_to_attr.asm"
