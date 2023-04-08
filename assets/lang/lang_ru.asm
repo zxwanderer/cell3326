@@ -44,6 +44,10 @@ Gravel_cell_name: db "Гравий", 0
 AirLand_cell_name: db "Посадочная площадка", 0
 NavLight_cell_name: db "Навигационные огни", 0
 
+Analyzer_cell_name: db "Анализатор", 0
+Anabiose_cell_name: db "Анабиозная камера", 0
+AnabioseOpen_cell_name: db "Открытая анабиозная камера", 0
+
 ScafPlace_cell_name: db "Стойка для скафандра", 0
 Scaf_cell_name: db "Легкий скафандр", 0
 HardScaf_cell_name: db "Тяжелый боевой скафандр", 0
