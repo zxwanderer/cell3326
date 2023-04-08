@@ -36,6 +36,8 @@ Soft_wall_break_77.spr equ 77
   SETUP_CELL_TYPE_N Soft_wall_L2_120.spr, Soft_wall_name, Soft_wall_L2_actions
   SETUP_CELL_TYPE_N Soft_wall_L3_136.spr, Soft_wall_name, Soft_wall_L3_actions
 
+  SETUP_CELL_TYPE_N Soft_wall_break_77.spr, Soft_wall_name, Soft_wall_break_actions
+
 Soft_wall_actions:
   defb 0
 
