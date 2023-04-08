@@ -1,4 +1,4 @@
-  MODULE FX
+  MODULE ScreenFX
 
 ; Вывести описание ячейки на которую смотрят
 look_at_hero_cell:

@@ -35,7 +35,7 @@ FX_SET_END
   include "logic/Scripts/Scripts.asm"
   
   include "math/mul_ADE.asm"
-  include "FX.asm"
+  include "ScreenFX.asm"
   
   include "cell_types_data.asm"
 

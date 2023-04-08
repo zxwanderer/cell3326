@@ -25,8 +25,8 @@ start:
 	LD HL, HELLO_TXT
 	CALL Text68.print_at
 
-  ; LD A, FX_Computer
-  ; CALL FX_SET
+  LD A, FX_Computer
+  CALL FX_SET
 
   ; LD HL, music_startgame.data
   ; CALL Tritone.play
@@ -57,7 +57,7 @@ no_press_keys:
   CALL COPY_TO_BUFFER
 	CALL TILE16_SHOW_SCREEN
 
-  CALL FX.look_at_hero_cell
+  CALL ScreenFX.look_at_hero_cell
   JP loop
 
 keyMappingTable:
