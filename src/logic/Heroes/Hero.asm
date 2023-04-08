@@ -92,9 +92,9 @@ do:
   CALL CELLS_CALC_POS
   LD (LOGIC_MapCell_ptr), HL
 
-  ; LD A, (HL)
-  ; CALL Cells.call_cell_script_by_num
-  ; RET NC
+  LD A, (HL)
+  CALL Cells.call_cell_script_by_num
+  RET NC
 
 LOGIC_LAST_ACTION equ $+1
   LD A, #00
