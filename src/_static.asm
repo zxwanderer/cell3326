@@ -1,5 +1,8 @@
 
+FX_SET:
   include "fx/demoFX.asm"
+FX_SET_END
+
   include "beeper/tritone/play.asm"
 
 	include "screen/addr_to_attr.asm"

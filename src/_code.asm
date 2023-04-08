@@ -8,6 +8,7 @@
   include "cells/defines_h.asm"
   include "logic/Cells/CellType_h.asm"
   include "logic/Cells/CellType_macro_h.asm"
+  include "fx/demoFX_h.asm"
 
 start:
   DI
@@ -23,6 +24,9 @@ start:
 	LD DE, #4000
 	LD HL, HELLO_TXT
 	CALL Text68.print_at
+
+  ; LD A, FX_Computer
+  ; CALL FX_SET
 
   ; LD HL, music_startgame.data
   ; CALL Tritone.play
