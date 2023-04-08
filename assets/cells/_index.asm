@@ -4,6 +4,7 @@
   include "chairs.asm"
   include "tables.asm"
   include "walls.asm"
+  include "soft_walls.asm"
   include "computers.asm"
   include "shards.asm"
   include "trash.asm"
