@@ -38,6 +38,7 @@ Computer_break_cell_name: db "Разбитый терминал",0
 Trash_cell_name: db "Мелкие обломки и мусор",0
 Trash_name: db "Мусор", 0
 PDA_cell_name: db "Электронный планшет", 0
+Keramit_cell_name: db "Керамит", 0
 
 BodyTech_cell_name:
   db "Тело человека в куртке техника, видимых",13
