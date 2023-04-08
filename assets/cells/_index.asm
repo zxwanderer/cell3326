@@ -13,3 +13,4 @@
   include "electronic.asm"
   include "plants.asm"
   include "keramit.asm"
+  include "grass.asm"
