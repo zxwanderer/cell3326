@@ -1,6 +1,5 @@
 
 Floor_3.spr equ 3
-Floor_4.spr equ 4
 Floor_5.spr equ 5
 Floor_8.spr equ 8
 Floor_22.spr equ 22
@@ -12,7 +11,6 @@ Floor_58.spr equ 58
 Floor_74.spr equ 74
 
   SETUP_CELL_TYPE_N Floor_3.spr, Floor_cell_name, Floor_actions
-  SETUP_CELL_TYPE_N Floor_4.spr, Floor_cell_name, Floor_actions
   SETUP_CELL_TYPE_N Floor_5.spr, Floor_cell_name, Floor_actions
   SETUP_CELL_TYPE_N Floor_8.spr, Floor_cell_name, Floor_actions
   SETUP_CELL_TYPE_N Floor_22.spr, Floor_cell_name, Floor_actions
