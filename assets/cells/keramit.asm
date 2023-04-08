@@ -3,6 +3,8 @@ Keramit_138.spr equ 138
 Keramit_142.spr equ 142
 Keramit_154.spr equ 154
 Keramit_155.spr equ 155
+Keramit_168.spr equ 168
+Keramit_169.spr equ 169
 Keramit_170.spr equ 170
 Keramit_171.spr equ 171
 Keramit_172.spr equ 172
@@ -23,6 +25,8 @@ Keramit_189.spr equ 189
   SETUP_CELL_TYPE_N Keramit_155.spr, Keramit_cell_name, Keramit_actions
   SETUP_CELL_TYPE_N Keramit_170.spr, Keramit_cell_name, Keramit_actions
   SETUP_CELL_TYPE_N Keramit_171.spr, Keramit_cell_name, Keramit_actions
+  SETUP_CELL_TYPE_N Keramit_168.spr, Keramit_cell_name, Keramit_actions
+  SETUP_CELL_TYPE_N Keramit_169.spr, Keramit_cell_name, Keramit_actions
   SETUP_CELL_TYPE_N Keramit_172.spr, Keramit_cell_name, Keramit_actions
   SETUP_CELL_TYPE_N Keramit_173.spr, Keramit_cell_name, Keramit_actions
   SETUP_CELL_TYPE_N Keramit_175.spr, Keramit_cell_name, Keramit_actions
