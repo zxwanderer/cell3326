@@ -92,23 +92,32 @@ do:
   CALL CELLS_CALC_POS
   LD (LOGIC_MapCell_ptr), HL
 
-  LD A, (HL)
-  CALL Cells.call_cell_script_by_num
-  RET NC
+  ; CALL get_hero_hand_item
 
 LOGIC_LAST_ACTION equ $+1
   LD A, #00
 
-  CP do_stand
-  JP Z, .do_stand; персонаж перемещается туда
+  ; CP do_stand
+  ; JP Z, .phase2; персонаж перемещается туда
 
-  ; CP do_get
-  ; JP Z, char_do_get; подбираем/бросаем
+; определяем дальше что делаем
+; если нет предмета в руках то действие - do_use
+  ; LD A, (LOGIC_item_id)
+  ; AND A
+  ; JR NZ, .item_in_hand
+  
+  ; LD A, do_use
+  ; LD (LOGIC_LAST_ACTION), A
 
-  ; CP do_drop
-  ; JP Z, char_do_drop; подбираем/бросаем
+; .item_in_hand
+  ; LD A, do_drop
+  ; RET
 
-  RET
+.phase2:
+
+  LD A, (HL)
+  CALL Cells.call_cell_script_by_num
+  RET NC
 
 .do_stand
   LD D, (IX+Hero.pos.x)
@@ -189,5 +198,19 @@ LOGIC_activeHero_ptr equ $+1
 ;   LD A, (IX+Hero.sprite)
 ;   CALL Cells.set
 ;   RET
+
+; На входе
+; IX - указатель на героя
+
+; get_hero_hand_item:
+;   LD A, (IX+Hero.hand_right_p_1)
+;   AND A
+;   JR NZ, get_hero_hand_item_yes
+;   XOR A
+;   LD (LOGIC_item_id), A
+;   JP check_act_no
+; get_hero_hand_item_yes:
+; ; сделать подсчет что в руках и сохранить id в LOGIC_item_id
+;   JP check_act_yes
 
   ENDMODULE

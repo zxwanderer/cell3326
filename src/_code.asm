@@ -96,7 +96,7 @@ PRESS_BUTTON_RIGHT:
   JP no_press_keys
 
 PRESS_BUTTON_FIRE:
-  LD A, do_get
+  LD A, do_use
   CALL Hero.do
   JP no_press_keys
   
