@@ -118,7 +118,7 @@ LOGIC_LAST_ACTION equ $+1
 
   LD A, (HL)
   CALL Cells.call_cell_script_by_num
-  RET NC
+  JR NC, lookAround
 
 .do_stand
   LD D, (IX+Hero.pos.x)

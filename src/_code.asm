@@ -39,7 +39,7 @@ loop:
 
   LD HL, keyMappingTable
   CALL KEYBOARD_SCAN_KEYS
-  JP Z, no_press_keys
+  JP Z, loop
   PUSH DE
   POP HL
 GOTO_HL:
@@ -91,7 +91,7 @@ PRESS_BUTTON_RIGHT:
 PRESS_BUTTON_FIRE:
   LD A, do_use
   CALL Hero.do
-  JP no_press_keys
+  JP loop
   
 PRESS_RESTART:
   LD A, 6
