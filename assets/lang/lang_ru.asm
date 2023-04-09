@@ -87,3 +87,10 @@ WallHole_name: db "Большая дыра в стене",0
 
 Chair_item_name: db "Стул",0
 Shard_item_name: db "Острый пластиковый обломок",0
+
+Computer_off_mess:
+  db "Терминал был запаролен.Я понажимал клавиши"
+  db "наугад и он отключился..", 0
+
+Computer_off_hit_mess:
+  db "Выключено..", 0

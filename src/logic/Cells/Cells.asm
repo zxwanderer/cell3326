@@ -14,6 +14,7 @@ cell_by_type_ptr:
 ; Вызов скрипта ячейки, учитываются активные переменные
 ; На входе
 ;   A - номер ячейки
+;   Hero.LOGIC_LAST_ACTION - действие
 ; На выходе:
 ;   Сохраняем найденный указатель в LOGIC_CellInfo_ptr
 call_cell_script_by_num:

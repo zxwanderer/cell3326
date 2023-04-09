@@ -25,9 +25,6 @@ start:
 	LD HL, HELLO_TXT
 	CALL Text68.print_at
 
-  LD A, FX_Computer
-  CALL FX_SET
-
   ; LD HL, music_startgame.data
   ; CALL Tritone.play
 
