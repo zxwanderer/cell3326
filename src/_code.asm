@@ -21,9 +21,9 @@ start:
   SetIM2 INT_TABLE, INT_VECTOR
   LD SP, STACK_TOP
 
-	LD DE, #4000
-	LD HL, HELLO_TXT
-	CALL Text68.print_at
+	; LD DE, #4000
+	; LD HL, HELLO_TXT
+	; CALL Text68.print_at
 
   ; LD HL, music_startgame.data
   ; CALL Tritone.play
@@ -32,6 +32,14 @@ start:
   CALL Hero.lookAround
 
   EI
+
+update:
+  CALL Hero.firstChar
+  CALL Hero.lookAtChar
+  CALL CELLS_CALC_POS
+  CALL COPY_TO_BUFFER
+	CALL TILE16_SHOW_SCREEN
+  CALL ScreenFX.look_at_hero_cell
 
 loop:
   XOR A
@@ -44,18 +52,6 @@ loop:
   POP HL
 GOTO_HL:
   JP (HL)
-
-no_press_keys:
-  CALL Hero.firstChar
-  CALL Hero.lookAtChar
-
-  CALL CELLS_CALC_POS
-
-  CALL COPY_TO_BUFFER
-	CALL TILE16_SHOW_SCREEN
-
-  CALL ScreenFX.look_at_hero_cell
-  JP loop
 
 keyMappingTable:
   DefineKey KEY_G,     PRESS_RESTART
@@ -71,29 +67,29 @@ keyMappingTable:
 PRESS_BUTTON_UP:
   LD B, dir_up
   CALL Hero.move
-  JP no_press_keys
+  JP update
 
 PRESS_BUTTON_DOWN:
   LD B, dir_down
   CALL Hero.move
-  JP no_press_keys
+  JP update
 
 PRESS_BUTTON_LEFT:
   LD B, dir_left
   CALL Hero.move
-  JP no_press_keys
+  JP update
 
 PRESS_BUTTON_RIGHT:
   LD B, dir_right
   CALL Hero.move
-  JP no_press_keys
+  JP update
 
 PRESS_BUTTON_FIRE:
   LD A, do_use
   CALL Hero.do
-  JP loop
+  JP update
   
 PRESS_RESTART:
   LD A, 6
   OUT (#FE),A
-  JP no_press_keys
+  JP update

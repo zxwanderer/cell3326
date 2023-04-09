@@ -115,10 +115,9 @@ LOGIC_LAST_ACTION equ $+1
   ; RET
 
 .phase2:
-
   LD A, (HL)
   CALL Cells.call_cell_script_by_num
-  JR NC, lookAround
+  RET NC
 
 .do_stand
   LD D, (IX+Hero.pos.x)
@@ -176,7 +175,7 @@ lookAtChar:
 ;   OR 2
 ;   RET
 
-lookAround: 
+lookAround:
 LOGIC_activeHero_ptr equ $+1
   LD IX, #0000
   LD D, (IX+Hero.pos.x)
