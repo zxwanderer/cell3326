@@ -9,7 +9,6 @@ Computer_actions_use:
   LD HL, computer_off_set
   CALL ScreenFX.show_info_sound_and_set_cell
   JP check_act_no
-
 computer_off_set:
   dw Computer_off_mess
   db FX_Computer
@@ -27,7 +26,6 @@ Computer_offline_actions_use:
   LD HL, computer_offline_use_set
   CALL ScreenFX.show_info_and_sound
   JP check_act_no
-
 computer_offline_use_set:
   dw Computer_off_hit_mess
   db FX_Poweroff
