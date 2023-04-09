@@ -5,6 +5,8 @@ FX_SET_END
 
   include "beeper/tritone/play.asm"
 
+  include "framework/Cell/calc_ptr_by_index.asm"
+
 	include "screen/addr_to_attr.asm"
 	include "screen/clear.asm"
 	include "screen/calc_down_pos.asm"

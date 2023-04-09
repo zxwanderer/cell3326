@@ -1,16 +1,5 @@
   MODULE Cells
 
-; На входе
-;   A - номер ячейки (от 0 до #FF)
-; На выходе
-;   HL - указатель на описание ячейки
-cell_by_type_ptr:
-  LD DE, CellType
-  CALL mul_ADE
-  LD DE, CELL_TYPES
-  ADD HL, DE
-  RET
-
 ; Вызов скрипта ячейки, учитываются активные переменные
 ; На входе
 ;   A - номер ячейки
@@ -18,7 +7,7 @@ cell_by_type_ptr:
 ; На выходе:
 ;   Сохраняем найденный указатель в LOGIC_CellInfo_ptr
 call_cell_script_by_num:
-  CALL cell_by_type_ptr ; в HL указатель на описание ячейки
+  CALL CELL_CALC_PTR_BY_INDEX ; в HL указатель на описание ячейки
   LD (LOGIC_CellInfo_ptr), HL
 
 ; Обработка скрипта активной ячейки
