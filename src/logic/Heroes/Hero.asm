@@ -84,7 +84,7 @@ do:
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
   LD A, (IX+Hero.dir)
-  CALL MOVE_CALC_XY ; в DE позиция действия
+  CALL MOVE_CALC_POS_BY_DIR ; в DE позиция действия
   RET NC
 
   LD (LOGIC_MapCell_xy), DE

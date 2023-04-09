@@ -42,7 +42,7 @@ look_dir:
 ; На выходе:
 ; в HL - указатель на ячейку карты, 
 cell_by_dir_ptr:
-  CALL MOVE_CALC_XY
+  CALL MOVE_CALC_POS_BY_DIR
   RET NC;  возвратили false - неправильное направление
   CALL CELLS_CALC_POS
   retTrue
