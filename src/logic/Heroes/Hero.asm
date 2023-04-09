@@ -69,7 +69,7 @@ update_sprite_by_direction:
   LD (IX+Hero.sprite), A
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
-  JP MAP_SET
+  JP MAP_SET_BY_POS
 
 stand:
   LD A, do_stand
@@ -86,8 +86,9 @@ do:
   LD A, (IX+Hero.dir)
   CALL MAP_CALC_POS_BY_DIR ; в DE позиция действия
   RET NC
-
   LD (LOGIC_MapCell_xy), DE
+  RET
+
   CALL MAP_CALC_PTR_BY_POS
   LD (LOGIC_MapCell_ptr), HL
 
@@ -95,12 +96,13 @@ LOGIC_LAST_ACTION equ $+1
   LD A, #00
 
 ; cheat move:
-  CP do_stand
-  JP Z, .do_stand; персонаж перемещается туда
-
   ; CP do_stand
-  ; JP Z, .phase2; персонаж перемещается туда
+  ; JP Z, .do_stand; персонаж перемещается туда
 
+  CP do_stand
+  JP Z, .phase2; персонаж перемещается туда
+
+  RET
 ; определяем дальше что делаем
 ; если нет предмета в руках то действие - do_use
   ; LD A, (LOGIC_item_id)
@@ -122,12 +124,12 @@ LOGIC_LAST_ACTION equ $+1
   JP C, hero_screen_update
   CALL hero_screen_update
   JP ScreenFX.hero_look_at_cell
-  
+
 .do_stand
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
   LD A, (IX+Hero.ground)
-  CALL MAP_SET ; вернули на место землю
+  CALL MAP_SET_BY_POS ; вернули на место землю
 
 LOGIC_MapCell_xy equ $+1
   LD DE, #0000
