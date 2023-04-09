@@ -31,6 +31,7 @@ start:
 
   CALL Hero.initHeroes
   CALL Hero.show_hero_at_screen
+  CALL Hero.hero_look_at_cell
 
   EI
 
@@ -85,4 +86,5 @@ PRESS_RESTART:
 hero_move_processing:
   CALL Hero.move
   CALL Hero.show_hero_at_screen
+  CALL Hero.hero_look_at_cell
   JP loop

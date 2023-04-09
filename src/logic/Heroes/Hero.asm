@@ -80,10 +80,7 @@ update_sprite_by_direction:
   JP MAP_SET_BY_POS
 
 stand:
-  RET
-
-; stand:
-;   LD A, do_stand
+  LD A, do_stand
 
 ; --------------------------------------------------------------------------------------
 ; Действие персонажа по направлению взгляда
@@ -132,9 +129,7 @@ LOGIC_LAST_ACTION equ $+1
   CALL CELL_CALC_PTR_BY_INDEX ; в HL указатель на описание ячейки
   LD (LOGIC_CellInfo_ptr), HL
   CALL Cells.call_cell_script
-  JP C, hero_screen_update
-  CALL hero_screen_update
-  JP ScreenFX.hero_look_at_cell
+  RET NC
 
 .do_stand
   LD D, (IX+Hero.pos.x)
@@ -154,7 +149,7 @@ LOGIC_MapCell_ptr equ $+1
   CALL update_sprite_by_direction
   ; CALL lookAround
   CALL hero_screen_update
-  JP ScreenFX.hero_look_at_cell
+  JP hero_look_at_cell
 
 ; ; --------------------------------------------------------------------------------------
 ; ; Циклический переход на следующего персонажа,
@@ -256,5 +251,17 @@ show_hero_at_screen:
   CALL COPY_TO_BUFFER
 	CALL TILE16_SHOW_SCREEN
   RET
+
+; Вывести описание ячейки на которую смотрит герой
+hero_look_at_cell:
+  LD IX, (LOGIC_ACTIVE_HERO_PTR)
+
+  LD D, (IX+Hero.pos.x)
+  LD E, (IX+Hero.pos.y)
+  LD A, (IX+Hero.dir)
+  CALL EventsMap.cell_by_dir_ptr
+  RET NC;  возвратили false - неправильное направление
+  LD A, (HL)
+  JP ScreenFX.show_cell_info
 
   ENDMODULE
