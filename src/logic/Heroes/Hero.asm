@@ -91,10 +91,12 @@ do:
   CALL CELLS_CALC_POS
   LD (LOGIC_MapCell_ptr), HL
 
-  ; CALL get_hero_hand_item
-
 LOGIC_LAST_ACTION equ $+1
   LD A, #00
+
+; cheat move:
+  CP do_stand
+  JP Z, .do_stand; персонаж перемещается туда
 
   ; CP do_stand
   ; JP Z, .phase2; персонаж перемещается туда
