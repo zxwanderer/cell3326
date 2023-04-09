@@ -251,9 +251,8 @@ show_hero_at_screen:
   CALL EventsMap.lookAround ; герой осматривается на новой позиции
   POP DE
 
-  CALL VIEW_CALC_LOOK_AT_CENTER ; 
-
-  CALL MAP_CALC_PTR_BY_POS
+  CALL VIEW_CALC_LOOK_AT_CENTER ; в DE позиция окна view на карте 
+  CALL MAP_CALC_PTR_BY_POS ; в HL указатель на ячейку карты
   CALL COPY_TO_BUFFER
 	CALL TILE16_SHOW_SCREEN
   RET
