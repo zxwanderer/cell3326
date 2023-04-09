@@ -95,7 +95,7 @@ show_info_and_sound:
 fx_action_cell:
     LD (.active_spr_num+1), A
     LD A, ( Hero.LOGIC_MapCell_xy+Point.y )
-    LD HL, (LOGIC_mapPos)
+    LD HL, LOGIC_mapPos
     SUB (HL)
     ADD A,A ; так как у нас тайлы в 2 ячейки то умножаем результат на два
     LD E,A
