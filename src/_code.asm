@@ -33,14 +33,6 @@ start:
 
   EI
 
-update:
-  CALL Hero.firstChar
-  CALL Hero.lookAtChar
-  CALL CELLS_CALC_POS
-  CALL COPY_TO_BUFFER
-	CALL TILE16_SHOW_SCREEN
-  CALL ScreenFX.look_at_hero_cell
-
 loop:
   XOR A
   OUT (#FE),A
@@ -52,6 +44,11 @@ loop:
   POP HL
 GOTO_HL:
   JP (HL)
+
+; update:
+;   CALL Hero.screen_update
+;   CALL ScreenFX.look_at_hero_cell
+;   JP loop
 
 keyMappingTable:
   DefineKey KEY_G,     PRESS_RESTART
@@ -67,29 +64,29 @@ keyMappingTable:
 PRESS_BUTTON_UP:
   LD B, dir_up
   CALL Hero.move
-  JP update
+  JP loop
 
 PRESS_BUTTON_DOWN:
   LD B, dir_down
   CALL Hero.move
-  JP update
+  JP loop
 
 PRESS_BUTTON_LEFT:
   LD B, dir_left
   CALL Hero.move
-  JP update
+  JP loop
 
 PRESS_BUTTON_RIGHT:
   LD B, dir_right
   CALL Hero.move
-  JP update
+  JP loop
 
 PRESS_BUTTON_FIRE:
   LD A, do_use
   CALL Hero.do
-  JP update
+  JP loop
   
 PRESS_RESTART:
   LD A, 6
   OUT (#FE),A
-  JP update
+  JP loop

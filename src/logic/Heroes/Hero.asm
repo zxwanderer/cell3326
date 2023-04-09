@@ -117,8 +117,10 @@ LOGIC_LAST_ACTION equ $+1
 .phase2:
   LD A, (HL)
   CALL Cells.call_cell_script_by_num
-  RET NC
-
+  JP C, hero_screen_update
+  CALL hero_screen_update
+  JP ScreenFX.look_at_hero_cell
+  
 .do_stand
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
@@ -135,7 +137,9 @@ LOGIC_MapCell_ptr equ $+1
   LD A, (HL)
   LD (IX+Hero.ground), A ; сохранили землю
   CALL update_sprite_by_direction
-  JP lookAround
+  CALL lookAround
+  CALL hero_screen_update
+  JP ScreenFX.look_at_hero_cell
 
 ; ; --------------------------------------------------------------------------------------
 ; ; Циклический переход на следующего персонажа,
@@ -181,6 +185,13 @@ LOGIC_activeHero_ptr equ $+1
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
   CALL EventsMap.lookAround
+  RET
+
+hero_screen_update:
+  CALL Hero.lookAtChar
+  CALL CELLS_CALC_POS
+  CALL COPY_TO_BUFFER
+	CALL TILE16_SHOW_SCREEN
   RET
 
 ; ; --------------------------------------------------------------------------------------
