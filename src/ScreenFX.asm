@@ -89,8 +89,32 @@ show_info_and_sound:
   CALL FX_SET
   RET
 
+; ----- показать спрайт на месте действия ( например удар об стенку)
+; На входе:
+;   A - номер спрайта
 fx_action_cell:
-  RET
+    LD (.active_spr_num+1), A
+    LD A, ( Hero.LOGIC_MapCell_xy+Point.y )
+    LD HL, (LOGIC_mapPos)
+    SUB (HL)
+    ADD A,A ; так как у нас тайлы в 2 ячейки то умножаем результат на два
+    LD E,A
+    INC HL
+    LD A, ( Hero.LOGIC_MapCell_xy+Point.x )
+    SUB (HL)
+    ADD A,A ; так как у нас тайлы в 2 ячейки то умножаем результат на два
+    LD D,A ; в DE - экранная позиция
+.active_spr_num:
+    LD A, #00
+
+; ----- показать один спрайт на экране ( для эффектов )
+; в DE - экранная позиция
+; в A - номер спрайта
+show_sprite:
+    CALL TILE16_INDEX_TO_PTR ; в HL у нас указатель на спрайт
+    CALL SCREEN_POS_TO_SCR ; в DE у нас указатель на экран
+    CALL TILE16_SHOW
+    RET
 
 ; На входе 
 ;   HL - указатель на последовательность info: dw #0000, sound: db #00, set: db #00

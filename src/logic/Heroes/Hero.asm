@@ -154,6 +154,7 @@ lookAtChar:
   LD D,  (IX+Hero.pos.x)
   LD E,  (IX+Hero.pos.y)
   CALL VIEW_CENTER
+  LD (LOGIC_mapPos), DE
   RET
 
 ; ; --------------------------------------------------------------------------------------

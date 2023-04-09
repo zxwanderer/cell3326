@@ -8,6 +8,7 @@ Computer_online_actions:
 Computer_actions_use:
   LD HL, computer_off_set
   CALL ScreenFX.show_info_sound_and_set_cell
+  CALL ScreenFX.action_ring_explode
   JP check_act_no
 computer_off_set:
   dw Computer_off_mess
