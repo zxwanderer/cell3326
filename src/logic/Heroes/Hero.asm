@@ -157,7 +157,7 @@ lookAtChar:
   LD IX, (LOGIC_activeHero_ptr)
   LD D,  (IX+Hero.pos.x)
   LD E,  (IX+Hero.pos.y)
-  CALL VIEW_CENTER
+  CALL VIEW_CALC_LOOK_AT_CENTER
   LD (LOGIC_mapPos), DE
   RET
 
