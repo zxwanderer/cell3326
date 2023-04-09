@@ -1,7 +1,7 @@
   MODULE ScreenFX
 
-; Вывести описание ячейки на которую смотрят
-look_at_hero_cell:
+; Вывести описание ячейки на которую смотрит герой
+hero_look_at_cell:
   LD IX, (Hero.LOGIC_activeHero_ptr)
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)

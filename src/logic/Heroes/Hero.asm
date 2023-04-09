@@ -119,7 +119,7 @@ LOGIC_LAST_ACTION equ $+1
   CALL Cells.call_cell_script_by_num
   JP C, hero_screen_update
   CALL hero_screen_update
-  JP ScreenFX.look_at_hero_cell
+  JP ScreenFX.hero_look_at_cell
   
 .do_stand
   LD D, (IX+Hero.pos.x)
@@ -139,7 +139,7 @@ LOGIC_MapCell_ptr equ $+1
   CALL update_sprite_by_direction
   CALL lookAround
   CALL hero_screen_update
-  JP ScreenFX.look_at_hero_cell
+  JP ScreenFX.hero_look_at_cell
 
 ; ; --------------------------------------------------------------------------------------
 ; ; Циклический переход на следующего персонажа,
