@@ -31,11 +31,9 @@ call_cell_script:
   INC HL ; получили указатель на указатель таблицы action-reaction 
   HL_PTR_TO_HL
   LD A, (Hero.LOGIC_LAST_ACTION)
-  CALL Scripts.scan_table_by_index
+  CALL TABLE_SCAN_BY_INDEX_PTR
   JP NC, check_act_no
-; в HL у нас теперь указатель на указатель на обработку action'a
-.next
-  HL_PTR_TO_HL
+; в HL у нас теперь указатель на обработку action'a
   JP (HL)
 
   ENDMODULE

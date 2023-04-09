@@ -1,4 +1,5 @@
   include "im2/im2_h.asm"
+  include "macros/macros_h.asm"
   include "stack/push_pop_h.asm"
   include "logic/Directions_h.asm"
   include "logic/Actions_h.asm"

@@ -12,7 +12,9 @@ FX_SET_END
   include "screen/pos_to_scr.asm"
   include "screen/clear_rows.asm"
 
-	include "tiles16/show.asm"
+	include "tables/scan_by_index.asm"
+
+  include "tiles16/show.asm"
 	include "tiles16/index_to_ptr.asm"
 	include "tiles16/show_screen.asm"
   include "tiles16/copy_to_buffer.asm"
@@ -33,7 +35,6 @@ FX_SET_END
   include "logic/Events/EventsMap.asm"
   include "logic/Heroes/Hero.asm"
   include "logic/Cells/Cells.asm"
-  include "logic/Scripts/Scripts.asm"
   
   include "math/mul_ADE.asm"
   include "ScreenFX.asm"
