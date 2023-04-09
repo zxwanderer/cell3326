@@ -93,7 +93,8 @@ do:
   LD E, (IX+Hero.pos.y)
   LD A, (IX+Hero.dir)
   CALL MAP_CALC_POS_BY_DIR ; в DE позиция действия
-  RET NC
+  JP NC, check_act_no
+
   LD (LOGIC_MapCell_xy), DE
   RET
 
@@ -110,7 +111,6 @@ LOGIC_LAST_ACTION equ $+1
   CP do_stand
   JP Z, .phase2; персонаж перемещается туда
 
-  RET
 ; определяем дальше что делаем
 ; если нет предмета в руках то действие - do_use
   ; LD A, (LOGIC_item_id)
