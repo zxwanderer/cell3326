@@ -135,7 +135,8 @@ LOGIC_MapCell_ptr equ $+1
   LD HL, #0000
   LD A, (HL)
   LD (IX+Hero.ground), A ; сохранили землю
-  JP update_sprite_by_direction
+  CALL update_sprite_by_direction
+  JP lookAround
 
 ; ; --------------------------------------------------------------------------------------
 ; ; Циклический переход на следующего персонажа,

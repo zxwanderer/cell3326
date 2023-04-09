@@ -117,16 +117,16 @@ show_sprite:
     RET
 
 ; На входе 
-;   HL - указатель на последовательность info: dw #0000, sound: db #00, set: db #00
-show_info_sound_and_set_cell:
+;   HL - указатель на последовательность sound: db #00, info: dw #0000, set: db #00
+sound_show_info_and_set_cell:
+  LD A, (HL)
+  LD (.fx+1), A
+  INC HL
   PUSH HL
   HL_PTR_TO_HL
   LD (.message+1), HL
   POP HL
   INC HL
-  INC HL
-  LD A, (HL)
-  LD (.fx+1), A
   INC HL
   LD A, (HL)
   LD (.cell_set+1), A
@@ -142,7 +142,6 @@ cell_set_proc:
   LD HL, (Hero.LOGIC_MapCell_ptr)
   LD (HL), A
   RET
-
 
 ; Отрицательно все
 nope_script:
