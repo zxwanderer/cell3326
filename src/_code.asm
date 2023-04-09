@@ -22,16 +22,15 @@ start:
   SetIM2 INT_TABLE, INT_VECTOR
   LD SP, STACK_TOP
 
-	; LD DE, #4000
-	; LD HL, HELLO_TXT
-	; CALL Text68.print_at
+	LD DE, #4000
+	LD HL, HELLO_TXT
+	CALL Text68.print_at
 
-  ; LD HL, music_startgame.data
-  ; CALL Tritone.play
+  LD HL, music_startgame.data
+  CALL Tritone.play
 
   CALL Hero.initHeroes
-  CALL Hero.lookAround
-
+  JP hero_move_processing
   EI
 
 loop:
@@ -46,11 +45,6 @@ loop:
 GOTO_HL:
   JP (HL)
 
-; update:
-;   CALL Hero.screen_update
-;   CALL ScreenFX.look_at_hero_cell
-;   JP loop
-
 keyMappingTable:
   DefineKey KEY_G,     PRESS_RESTART
   DefineKey KEY_Q,     PRESS_BUTTON_UP
@@ -64,30 +58,35 @@ keyMappingTable:
 
 PRESS_BUTTON_UP:
   LD B, dir_up
-  CALL Hero.move
-  JP loop
+  JP hero_move_processing
 
 PRESS_BUTTON_DOWN:
   LD B, dir_down
-  CALL Hero.move
-  JP loop
+  JP hero_move_processing
 
 PRESS_BUTTON_LEFT:
   LD B, dir_left
-  CALL Hero.move
-  JP loop
+  JP hero_move_processing
 
 PRESS_BUTTON_RIGHT:
   LD B, dir_right
-  CALL Hero.move
-  JP loop
+  JP hero_move_processing
 
 PRESS_BUTTON_FIRE:
-  LD A, do_use
-  CALL Hero.do
-  JP loop
+  LD B, dir_right
+  JP hero_move_processing
   
 PRESS_RESTART:
   LD A, 6
   OUT (#FE),A
+  JP loop
+
+hero_move_processing:
+  CALL Hero.move
+hero_move_post_processing: ; обновляем экран вокруг героя
+  LD IX, (Hero.LOGIC_ACTIVE_HERO_PTR)
+  CALL Hero.calc_window_pos
+  CALL MAP_CALC_PTR_BY_POS
+  CALL COPY_TO_BUFFER
+	CALL TILE16_SHOW_SCREEN
   JP loop

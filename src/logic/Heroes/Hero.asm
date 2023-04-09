@@ -1,8 +1,9 @@
   MODULE Hero
 
 ; LOGIC_LAST_ACTION - последнее действие героя
-; LOGIC_activeHero_ptr - указатель на описание героя
-; LOGIC_curHeroNum - текущий номер героя
+; LOGIC_ACTIVE_HERO_PTR - указатель на описание героя
+; LOGIC_ACTIVE_HERO_NUM - текущий номер героя
+
 ; LOGIC_MapCell_xy - текущие координаты события
 ; LOGIC_MapCell_ptr - указатель на ячейку события
 
@@ -36,31 +37,38 @@ initHeroes:
 
 ; --------------------------------------------------------------------------------------
 ; Переход на первого персонажа
+;   На выходе:
+;     LOGIC_ACTIVE_HERO_PTR - установлен на первого героя
+;     LOGIC_ACTIVE_HERO_NUM - установлен в 0
 ; --------------------------------------------------------------------------------------
 firstChar:
   LD HL, HEROES_SET
-  ld (LOGIC_activeHero_ptr), HL
+  ld (LOGIC_ACTIVE_HERO_PTR), HL
   XOR A
-  LD (LOGIC_curHeroNum), A
+  LD (LOGIC_ACTIVE_HERO_NUM), A
   RET
+
+LOGIC_ACTIVE_HERO_NUM defb 00
+LOGIC_ACTIVE_HERO_PTR defw 00
 
 ; --------------------------------------------------------------------------------------
 ; Движение или поворот текущего персонажа
 ; Вход:
 ;   B - направление
+;   LOGIC_ACTIVE_HERO_PTR - указатель на героя
 ; --------------------------------------------------------------------------------------
 move:
-  LD IX, (LOGIC_activeHero_ptr)
+  LD IX, (LOGIC_ACTIVE_HERO_PTR)
   LD A, (IX+Hero.dir)
   CP B
   JR Z, stand
-
-.char_rot
   LD (IX+Hero.dir), B
+
 ; --------------------------------------------------------------------------------------
-; меняем спрайт героя в зависимости от направления персонажа
+; Изменение спрайта в описании героя и на карте в зависимости от направления персонажа в его описании
 ; Вход:
 ;  IX - указатель на героя
+;  IX.dir - направление
 ; --------------------------------------------------------------------------------------
 update_sprite_by_direction:
   LD B,(IX+Hero.base_spr)
@@ -72,12 +80,15 @@ update_sprite_by_direction:
   JP MAP_SET_BY_POS
 
 stand:
-  LD A, do_stand
+  RET
+
+; stand:
+;   LD A, do_stand
+
 ; --------------------------------------------------------------------------------------
 ; Действие персонажа по направлению взгляда
 ; Вход:
 ;   IX - указатель на героя
-;   A - действие
 ; --------------------------------------------------------------------------------------
 do:
   LD (LOGIC_LAST_ACTION), A
@@ -155,10 +166,12 @@ LOGIC_MapCell_ptr equ $+1
 ;   ; JP firstChar
 
 ; --------------------------------------------------------------------------------------
-; Выход: DE - координаты левого верхнего угла обзорного окна в центре которого находится герой,  D - x, E - y 
+; Вход:
+;   IX - указатель на описание героя
+; Выход: 
+;   DE - координаты левого верхнего угла обзорного окна в центре которого находится герой,  D - x, E - y 
 ; --------------------------------------------------------------------------------------
-lookAtChar:
-  LD IX, (LOGIC_activeHero_ptr)
+calc_window_pos:
   LD D,  (IX+Hero.pos.x)
   LD E,  (IX+Hero.pos.y)
   CALL VIEW_CALC_LOOK_AT_CENTER
@@ -176,15 +189,14 @@ lookAtChar:
 ;   CP HeroesNum
 ;   RET Z; если у нас обнулился счетчик - возвращаемся
 ;   LD (LOGIC_curHeroNum), A
-;   LD DE, (LOGIC_activeHero_ptr)
+;   LD DE, (LOGIC_ACTIVE_HERO_PTR)
 ;   LD HL, Hero
 ;   ADD HL, DE
-;   LD (LOGIC_activeHero_ptr), HL
+;   LD (LOGIC_ACTIVE_HERO_PTR), HL
 ;   OR 2
 ;   RET
 
 lookAround:
-LOGIC_activeHero_ptr equ $+1
   LD IX, #0000
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
@@ -192,7 +204,8 @@ LOGIC_activeHero_ptr equ $+1
   RET
 
 hero_screen_update:
-  CALL Hero.lookAtChar
+  LD IX, (LOGIC_ACTIVE_HERO_PTR)
+  CALL Hero.calc_window_pos
   CALL MAP_CALC_PTR_BY_POS
   CALL COPY_TO_BUFFER
 	CALL TILE16_SHOW_SCREEN

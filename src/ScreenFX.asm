@@ -2,7 +2,7 @@
 
 ; Вывести описание ячейки на которую смотрит герой
 hero_look_at_cell:
-  LD IX, (Hero.LOGIC_activeHero_ptr)
+  LD IX, (Hero.LOGIC_ACTIVE_HERO_PTR)
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
   LD (Hero.LOGIC_MapCell_xy),DE
