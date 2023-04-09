@@ -23,7 +23,7 @@ initHeroes:
 
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
-  CALL CELLS_CALC_POS
+  CALL CELLS_CALC_PTR_BY_POS
   LD A,(HL)
   LD (IX+Hero.ground),A; ячейку карты ставим на пол персонажа
   CALL update_sprite_by_direction
@@ -88,7 +88,7 @@ do:
   RET NC
 
   LD (LOGIC_MapCell_xy), DE
-  CALL CELLS_CALC_POS
+  CALL CELLS_CALC_PTR_BY_POS
   LD (LOGIC_MapCell_ptr), HL
 
 LOGIC_LAST_ACTION equ $+1
@@ -189,7 +189,7 @@ LOGIC_activeHero_ptr equ $+1
 
 hero_screen_update:
   CALL Hero.lookAtChar
-  CALL CELLS_CALC_POS
+  CALL CELLS_CALC_PTR_BY_POS
   CALL COPY_TO_BUFFER
 	CALL TILE16_SHOW_SCREEN
   RET

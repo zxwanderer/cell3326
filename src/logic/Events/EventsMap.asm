@@ -44,7 +44,7 @@ look_dir:
 cell_by_dir_ptr:
   CALL MOVE_CALC_POS_BY_DIR
   RET NC;  возвратили false - неправильное направление
-  CALL CELLS_CALC_POS
+  CALL CELLS_CALC_PTR_BY_POS
   retTrue
 
   ENDMODULE
