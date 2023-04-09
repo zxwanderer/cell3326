@@ -94,3 +94,58 @@ Computer_off_mess:
 
 Computer_off_hit_mess:
   db "Выключено..", 0
+
+WallGrid_false_mess:
+  db "Толстые прутья решетки не поддавались..",0
+
+Soft_wall_show_electronic:
+  db "Под декоративной стенкой обнаружилась     "
+  db "панель управления..",0
+
+Not_away_from_base: 
+  db "Я не рискнул уходить в кислотные джунгли  "
+  db "всего лишь в легком скафандре..",0
+
+Electronic_kick_mess:
+  db "Хрупкие микросхемы сломались!!",0
+
+Electronic_kick_open_mess:
+  db "Готово! Питание с двери снято.",0
+
+Kick_fault_mess:
+  db "Безрезультатно. Ничего не произошло..",0
+
+Kick_shard_mess:
+  db "Даже царапины не осталось..",0
+
+Door_not_open_mess:
+  db "Дверь не открывалась..",0
+
+Take_bed_mess:
+  db "Кровать была прикреплена к полу и не      "
+  db "поднималась.. ",0
+
+Take_trash_mess:
+  db "Я подобрал из кучи обломков острый кусок  "
+  db "пластика..",0
+
+Shard_to_soft_wall_mess
+  db "Я прорезал дырку в мягкой декоративной    "
+  db "стенке..",0
+
+Soft_wall_clean
+  db "Я содрал остатки декоративной стенки.",0
+
+Computer_break_chair_mess:
+  db "Стул в руках развалился, но зкран треснул.",0
+
+Computer_break_mess:
+  db "Экран компьютера треснул..",0
+
+Computer_add_shard_mess 
+  db "Еще один хороший удар и терминал был      "
+  db "полностью разбит..",0
+
+Soft_wall_hit_mess:
+  db "Удар поглощен мягкой стенкой.",0
+

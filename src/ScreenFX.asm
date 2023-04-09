@@ -89,6 +89,8 @@ show_info_and_sound:
   CALL FX_SET
   RET
 
+fx_action_cell:
+  RET
 
 ; На входе 
 ;   HL - указатель на последовательность info: dw #0000, sound: db #00, set: db #00
@@ -112,8 +114,77 @@ show_info_sound_and_set_cell:
   CALL FX_SET
 .cell_set
   LD A, #00
+cell_set_proc:
   LD HL, (Hero.LOGIC_MapCell_ptr)
   LD (HL), A
+  RET
+
+
+; Отрицательно все
+nope_script:
+  LD A, FX_Nope
+  CALL FX_SET
+  JP check_act_no
+
+kick_fault: ; неуспех удара предметом
+  LD A, FX_Wall
+  CALL FX_SET
+  CALL action_ring_explode
+  JP check_act_no
+
+kick_cut_fault: ; неуспех резания острым
+  LD A, 39
+  CALL FX_SET
+  CALL action_ring_explode
+  LD HL, Kick_shard_mess
+  CALL ScreenFX.show_info_message
+  JP check_act_no
+
+wait_halt_loop:
+  HALT
+  DJNZ wait_halt_loop
+  RET
+
+Ring_expl_1 equ #b0
+Ring_expl_2 equ #b1
+Ring_expl_3 equ #b2
+Ring_expl_4 equ #b3
+
+action_ring_explode:
+  LD A, Ring_expl_1
+  CALL fx_action_cell
+  LD B, 3
+  CALL wait_halt_loop
+
+  LD A, Ring_expl_2
+  CALL fx_action_cell
+  LD B, 3
+  CALL wait_halt_loop
+
+  LD A, Ring_expl_3
+  CALL fx_action_cell
+  LD B, 3
+  CALL wait_halt_loop
+
+  LD A, Ring_expl_4
+  CALL fx_action_cell
+  LD B, 3
+  CALL wait_halt_loop
+
+  LD A, Ring_expl_3
+  CALL fx_action_cell
+  LD B, 1
+  CALL wait_halt_loop
+
+  LD A, Ring_expl_2
+  CALL fx_action_cell
+  LD B, 1
+  CALL wait_halt_loop
+
+  LD A, Ring_expl_1
+  CALL fx_action_cell
+  LD B, 1
+  CALL wait_halt_loop
   RET
 
   ENDMODULE
