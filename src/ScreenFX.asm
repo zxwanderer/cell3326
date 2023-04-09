@@ -95,4 +95,5 @@ show_info_sound_and_set_cell:
   LD HL, (Hero.LOGIC_MapCell_ptr)
   LD (HL), A
   RET
+
   ENDMODULE
