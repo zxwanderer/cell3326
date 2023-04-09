@@ -10,6 +10,7 @@ FX_SET_END
 	include "screen/calc_down_pos.asm"
 	include "screen/set_colors.asm"
   include "screen/pos_to_scr.asm"
+  include "screen/clear_rows.asm"
 
 	include "tiles16/show.asm"
 	include "tiles16/index_to_ptr.asm"
