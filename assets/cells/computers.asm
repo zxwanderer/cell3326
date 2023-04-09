@@ -17,11 +17,19 @@ Computer_online_actions:
   defb 0
 
 Computer_actions_use:
-  LD HL, Computer_off_mess
-  CALL ScreenFX.show_info_message
-  LD A, FX_Computer
-  CALL FX_SET
-  LD A, ComputerOffline_20.spr
-  LD HL, (Hero.LOGIC_MapCell_ptr)
-  LD (HL), A
+  LD HL, computer_off_set
+  CALL ScreenFX.show_info_sound_and_set_cell
   JP check_act_no
+
+computer_off_set:
+  dw Computer_off_mess
+  db FX_Computer
+  db ComputerOffline_20.spr
+
+  ; LD HL, Computer_off_mess
+  ; CALL ScreenFX.show_info_message
+  ; LD A, FX_Computer
+  ; CALL FX_SET
+  ; LD A, ComputerOffline_20.spr
+  ; LD HL, (Hero.LOGIC_MapCell_ptr)
+  ; LD (HL), A

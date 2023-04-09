@@ -67,6 +67,32 @@ clean_rows:
   CALL SCREEN_CALC_DOWN_POS
   POP BC
   DJNZ .loop0
+  RET
 
+
+; На входе 
+;   HL - указатель на последовательность info: dw #0000, sound: db #00, set: db #00
+show_info_sound_and_set_cell:
+  PUSH HL
+  HL_PTR_TO_HL
+  LD (.message+1), HL
+  POP HL
+  INC HL
+  INC HL
+  LD A, (HL)
+  LD (.fx+1), A
+  INC HL
+  LD A, (HL)
+  LD (.cell_set+1), A
+.message
+  LD HL, #0000
+  CALL ScreenFX.show_info_message
+.fx
+  LD A, #00
+  CALL FX_SET
+.cell_set
+  LD A, #00
+  LD HL, (Hero.LOGIC_MapCell_ptr)
+  LD (HL), A
   RET
   ENDMODULE
