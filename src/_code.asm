@@ -6,7 +6,7 @@
   include "logic/point_h.asm"
 	include "keyboard/define_key_h.asm"
   include "keyboard/scancode_h.asm"
-  include "cells/defines_h.asm"
+  include "map/defines_h.asm"
   include "logic/Cells/CellType_h.asm"
   include "logic/Cells/CellType_macro_h.asm"
   include "fx/demoFX_h.asm"

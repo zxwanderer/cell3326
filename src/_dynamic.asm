@@ -1,4 +1,4 @@
-MAP_SET:
+MAP_DATA:
   incbin "map.bin"
 
   include "logic/Heroes/Hero_h.asm"
@@ -14,4 +14,4 @@ VIEW_BUFFER:
   include "logic_vars_data.asm"
   
 display 'VIEW_BUFFER: ', VIEW_BUFFER
-display 'MAP_SET: ', MAP_SET
+display 'MAP_DATA: ', MAP_DATA

@@ -24,9 +24,9 @@ FX_SET_END
   include "view/view_h.asm"
   include "view/center.asm"
   
-  include "cells/move_calc_xy.asm"
-  include "cells/calc_pos.asm"
-  include "cells/set.asm"
+  include "map/move_calc_xy.asm"
+  include "map/calc_pos.asm"
+  include "map/set.asm"
 
 	include "text/text68.asm"
 

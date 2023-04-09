@@ -27,7 +27,7 @@ lookAround:
 look_dir:
   CALL cell_by_dir_ptr
   RET NC;  возвратили false - неправильное направление
-  LD DE, MAP_MASK-MAP_SET
+  LD DE, MAP_MASK-MAP_DATA
   ADD HL, DE
 .update_mask_hl:
   LD A, (HL)
@@ -42,9 +42,9 @@ look_dir:
 ; На выходе:
 ; в HL - указатель на ячейку карты, 
 cell_by_dir_ptr:
-  CALL MOVE_CALC_POS_BY_DIR
+  CALL MAP_CALC_POS_BY_DIR
   RET NC;  возвратили false - неправильное направление
-  CALL CELLS_CALC_PTR_BY_POS
+  CALL MAP_CALC_PTR_BY_POS
   retTrue
 
   ENDMODULE

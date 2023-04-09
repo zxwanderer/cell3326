@@ -23,7 +23,7 @@ initHeroes:
 
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
-  CALL CELLS_CALC_PTR_BY_POS
+  CALL MAP_CALC_PTR_BY_POS
   LD A,(HL)
   LD (IX+Hero.ground),A; ячейку карты ставим на пол персонажа
   CALL update_sprite_by_direction
@@ -69,7 +69,7 @@ update_sprite_by_direction:
   LD (IX+Hero.sprite), A
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
-  JP CELLS_SET
+  JP MAP_SET
 
 stand:
   LD A, do_stand
@@ -84,11 +84,11 @@ do:
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
   LD A, (IX+Hero.dir)
-  CALL MOVE_CALC_POS_BY_DIR ; в DE позиция действия
+  CALL MAP_CALC_POS_BY_DIR ; в DE позиция действия
   RET NC
 
   LD (LOGIC_MapCell_xy), DE
-  CALL CELLS_CALC_PTR_BY_POS
+  CALL MAP_CALC_PTR_BY_POS
   LD (LOGIC_MapCell_ptr), HL
 
 LOGIC_LAST_ACTION equ $+1
@@ -116,7 +116,9 @@ LOGIC_LAST_ACTION equ $+1
 
 .phase2:
   LD A, (HL)
-  CALL Cells.call_cell_script_by_num
+  CALL CELL_CALC_PTR_BY_INDEX ; в HL указатель на описание ячейки
+  LD (LOGIC_CellInfo_ptr), HL
+  CALL Cells.call_cell_script
   JP C, hero_screen_update
   CALL hero_screen_update
   JP ScreenFX.hero_look_at_cell
@@ -125,7 +127,7 @@ LOGIC_LAST_ACTION equ $+1
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
   LD A, (IX+Hero.ground)
-  CALL CELLS_SET ; вернули на место землю
+  CALL MAP_SET ; вернули на место землю
 
 LOGIC_MapCell_xy equ $+1
   LD DE, #0000
@@ -189,7 +191,7 @@ LOGIC_activeHero_ptr equ $+1
 
 hero_screen_update:
   CALL Hero.lookAtChar
-  CALL CELLS_CALC_PTR_BY_POS
+  CALL MAP_CALC_PTR_BY_POS
   CALL COPY_TO_BUFFER
 	CALL TILE16_SHOW_SCREEN
   RET

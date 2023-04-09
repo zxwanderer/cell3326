@@ -1,15 +1,5 @@
   MODULE Cells
 
-; Вызов скрипта ячейки, учитываются активные переменные
-; На входе
-;   A - номер ячейки
-;   Hero.LOGIC_LAST_ACTION - действие
-; На выходе:
-;   Сохраняем найденный указатель в LOGIC_CellInfo_ptr
-call_cell_script_by_num:
-  CALL CELL_CALC_PTR_BY_INDEX ; в HL указатель на описание ячейки
-  LD (LOGIC_CellInfo_ptr), HL
-
 ; Обработка скрипта активной ячейки
 ; На входе:
 ;   HL - указатель на описание ячейки
