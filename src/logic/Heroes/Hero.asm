@@ -10,10 +10,10 @@
 ; Инициализация персонажей на карте, переход на первого персонажа
 ; --------------------------------------------------------------------------------------
 initHeroes:
-.init_loop:
   LD B, HeroesNum
   LD HL, HEROES_SET
   LD DE, Hero
+.init_loop:
   PUSH BC
   PUSH DE
   PUSH HL
