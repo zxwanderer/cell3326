@@ -152,7 +152,7 @@ LOGIC_MapCell_ptr equ $+1
   LD A, (HL)
   LD (IX+Hero.ground), A ; сохранили землю
   CALL update_sprite_by_direction
-  CALL lookAround
+  ; CALL lookAround
   CALL hero_screen_update
   JP ScreenFX.hero_look_at_cell
 
@@ -171,12 +171,11 @@ LOGIC_MapCell_ptr equ $+1
 ; Выход: 
 ;   DE - координаты левого верхнего угла обзорного окна в центре которого находится герой,  D - x, E - y 
 ; --------------------------------------------------------------------------------------
-calc_window_pos:
-  LD D,  (IX+Hero.pos.x)
-  LD E,  (IX+Hero.pos.y)
-  CALL VIEW_CALC_LOOK_AT_CENTER
-  LD (LOGIC_mapPos), DE
-  RET
+; calc_view_pos:
+  ; LD D, (IX+Hero.pos.x)
+  ; LD E, (IX+Hero.pos.y)
+  ; CALL VIEW_CALC_LOOK_AT_CENTER
+  ; RET
 
 ; ; --------------------------------------------------------------------------------------
 ; ; Переход на следующего персонажа
@@ -196,19 +195,19 @@ calc_window_pos:
 ;   OR 2
 ;   RET
 
-lookAround:
-  LD IX, #0000
-  LD D, (IX+Hero.pos.x)
-  LD E, (IX+Hero.pos.y)
-  CALL EventsMap.lookAround
-  RET
+; Осматриваемся вокру
+; lookAround:
+;   LD D, (IX+Hero.pos.x)
+;   LD E, (IX+Hero.pos.y)
+;   CALL EventsMap.lookAround
+; RET
 
 hero_screen_update:
-  LD IX, (LOGIC_ACTIVE_HERO_PTR)
-  CALL Hero.calc_window_pos
-  CALL MAP_CALC_PTR_BY_POS
-  CALL COPY_TO_BUFFER
-	CALL TILE16_SHOW_SCREEN
+  ; LD IX, (LOGIC_ACTIVE_HERO_PTR)
+  ; CALL Hero.calc_view_pos
+  ; CALL MAP_CALC_PTR_BY_POS
+  ; CALL COPY_TO_BUFFER
+	; CALL TILE16_SHOW_SCREEN
   RET
 
 ; ; --------------------------------------------------------------------------------------
@@ -242,5 +241,21 @@ hero_screen_update:
 ; get_hero_hand_item_yes:
 ; ; сделать подсчет что в руках и сохранить id в LOGIC_item_id
 ;   JP check_act_yes
+
+show_hero_at_screen:
+  LD IX, (LOGIC_ACTIVE_HERO_PTR) ; устанавливаем указатель на описание героя
+
+  LD D, (IX+Hero.pos.x)
+  LD E, (IX+Hero.pos.y)
+  PUSH DE
+  CALL EventsMap.lookAround ; герой осматривается на новой позиции
+  POP DE
+
+  CALL VIEW_CALC_LOOK_AT_CENTER ; 
+
+  CALL MAP_CALC_PTR_BY_POS
+  CALL COPY_TO_BUFFER
+	CALL TILE16_SHOW_SCREEN
+  RET
 
   ENDMODULE

@@ -64,9 +64,10 @@ show_info_and_sound:
 ; На входе:
 ;   A - номер спрайта
 fx_action_cell:
+    RET
     LD (.active_spr_num+1), A
     LD A, ( Hero.LOGIC_MapCell_xy+Point.y )
-    LD HL, LOGIC_mapPos
+    ; LD HL, LOGIC_ViewPos
     SUB (HL)
     ADD A,A ; так как у нас тайлы в 2 ячейки то умножаем результат на два
     LD E,A

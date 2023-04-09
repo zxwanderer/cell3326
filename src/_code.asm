@@ -26,11 +26,12 @@ start:
 	LD HL, HELLO_TXT
 	CALL Text68.print_at
 
-  LD HL, music_startgame.data
-  CALL Tritone.play
+  ; LD HL, music_startgame.data
+  ; CALL Tritone.play
 
   CALL Hero.initHeroes
-  JP hero_move_processing
+  CALL Hero.show_hero_at_screen
+
   EI
 
 loop:
@@ -83,10 +84,5 @@ PRESS_RESTART:
 
 hero_move_processing:
   CALL Hero.move
-hero_move_post_processing: ; обновляем экран вокруг героя
-  LD IX, (Hero.LOGIC_ACTIVE_HERO_PTR)
-  CALL Hero.calc_window_pos
-  CALL MAP_CALC_PTR_BY_POS
-  CALL COPY_TO_BUFFER
-	CALL TILE16_SHOW_SCREEN
+  CALL Hero.show_hero_at_screen
   JP loop
