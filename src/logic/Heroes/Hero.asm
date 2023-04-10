@@ -120,7 +120,7 @@ do:
   CALL CELL_CALC_PTR_BY_INDEX ; в HL указатель на описание ячейки
   LD A, (LOGIC_LAST_ACTION)
   CALL Cells.call_cell_script
-  RET NC
+  JP NC, check_act_no
 
 .do_stand
   LD D, (IX+Hero.pos.x)
@@ -138,26 +138,14 @@ do:
   CALL set_sprite_by_direction
   RET
 
-; ; --------------------------------------------------------------------------------------
-; ; Циклический переход на следующего персонажа,
-; ; если дошли до последнего то переходим на первого
-; ; --------------------------------------------------------------------------------------
-; ; loopNextChar:
-;   ; CALL nextChar
-;   ; RET NZ
-;   ; JP firstChar
-
 ; --------------------------------------------------------------------------------------
-; Вход:
-;   IX - указатель на описание героя
-; Выход: 
-;   DE - координаты левого верхнего угла обзорного окна в центре которого находится герой,  D - x, E - y 
+; Циклический переход на следующего персонажа,
+; если дошли до последнего то переходим на первого
 ; --------------------------------------------------------------------------------------
-; calc_view_pos:
-  ; LD D, (IX+Hero.pos.x)
-  ; LD E, (IX+Hero.pos.y)
-  ; CALL VIEW_CALC_LOOK_AT_CENTER
-  ; RET
+; loopNextChar:
+;   CALL nextChar
+;   RET NZ
+;   JP firstChar
 
 ; ; --------------------------------------------------------------------------------------
 ; ; Переход на следующего персонажа
@@ -177,44 +165,6 @@ do:
 ;   OR 2
 ;   RET
 
-; Осматриваемся вокру
-; lookAround:
-;   LD D, (IX+Hero.pos.x)
-;   LD E, (IX+Hero.pos.y)
-;   CALL EventsMap.lookAround
-; RET
-
-; ; меняем спрайт героя в зависимости от направления персонажа
-; ; Вход:
-; ;  IX - указатель на героя
-; ; --------------------------------------------------------------------------------------
-; update_sprite:
-;   LD B,(IX+Hero.base_spr)
-;   LD A,(IX+Hero.dir)
-;   ADD A, B
-;   DEC A; delta spr = dir - 1
-;   LD (IX+Hero.sprite), A
-; .set_ground:
-;   LD D, (IX+Hero.pos.x)
-;   LD E, (IX+Hero.pos.y)
-;   LD A, (IX+Hero.sprite)
-;   CALL Cells.set
-;   RET
-
-; На входе
-; IX - указатель на героя
-
-; get_hero_hand_item:
-;   LD A, (IX+Hero.hand_right_p_1)
-;   AND A
-;   JR NZ, get_hero_hand_item_yes
-;   XOR A
-;   LD (LOGIC_item_id), A
-;   JP check_act_no
-; get_hero_hand_item_yes:
-; ; сделать подсчет что в руках и сохранить id в LOGIC_item_id
-;   JP check_act_yes
-
 show_hero_at_screen:
   LD IX, (LOGIC_ACTIVE_HERO_PTR) ; устанавливаем указатель на описание героя
 
@@ -231,6 +181,8 @@ show_hero_at_screen:
   RET
 
 ; Вывести описание ячейки на которую смотрит герой
+; На входе:
+;   IX - указатель на описание героя
 hero_look_at_cell:
   LD IX, (LOGIC_ACTIVE_HERO_PTR)
 

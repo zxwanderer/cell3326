@@ -39,6 +39,8 @@ loop:
   XOR A
   OUT (#FE),A
 
+  halt 
+
   LD HL, keyMappingTable
   CALL KEYBOARD_SCAN_KEYS
   JP Z, loop
@@ -78,8 +80,10 @@ PRESS_BUTTON_FIRE:
   LD A, do_use
   CALL Hero.do
   CALL Hero.show_hero_at_screen
+  LD A, FX_No
+  CALL FX_SET
   JP loop
-  
+
 PRESS_RESTART:
   LD A, 6
   OUT (#FE),A
