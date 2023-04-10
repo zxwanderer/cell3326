@@ -117,8 +117,8 @@ do:
   ; AND A
   ; JR NZ, .item_in_hand
   
-  ; LD A, do_use
-  ; LD (LOGIC_LAST_ACTION), A
+  LD A, do_use
+  LD (LOGIC_LAST_ACTION), A
 
 ; .item_in_hand
   ; LD A, do_drop
@@ -129,6 +129,7 @@ do:
   LD A, (HL)
   CALL CELL_CALC_PTR_BY_INDEX ; в HL указатель на описание ячейки
   LD (LOGIC_ACTIVE_CELL_INFO_PTR), HL
+  LD A, (LOGIC_LAST_ACTION)
   CALL Cells.call_cell_script
   RET NC
 

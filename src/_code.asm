@@ -75,8 +75,10 @@ PRESS_BUTTON_RIGHT:
   JP hero_move_processing
 
 PRESS_BUTTON_FIRE:
-  LD B, dir_right
-  JP hero_move_processing
+  LD A, do_use
+  CALL Hero.do
+  CALL Hero.show_hero_at_screen
+  JP loop
   
 PRESS_RESTART:
   LD A, 6
