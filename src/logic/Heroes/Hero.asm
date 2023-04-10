@@ -51,7 +51,6 @@ LOGIC_ACTIVE_HERO_NUM db 00
 LOGIC_ACTIVE_HERO_PTR dw 0000
 LOGIC_ACTIVE_MAP_POS dw 0000
 LOGIC_ACTIVE_MAP_PTR dw 0000
-LOGIC_ACTIVE_CELL_INFO_PTR dw 0000
 
 ; --------------------------------------------------------------------------------------
 ; Движение или поворот текущего персонажа
@@ -104,6 +103,7 @@ do:
   LD (LOGIC_ACTIVE_MAP_PTR), HL
 
   LD A, (LOGIC_LAST_ACTION)
+
 ; cheat move:
   ; CP do_stand
   ; JP Z, .do_stand; персонаж перемещается туда
@@ -111,24 +111,13 @@ do:
   CP do_stand
   JP Z, .phase2; персонаж перемещается туда
 
-; определяем дальше что делаем
-; если нет предмета в руках то действие - do_use
-  ; LD A, (LOGIC_item_id)
-  ; AND A
-  ; JR NZ, .item_in_hand
-  
   LD A, do_use
   LD (LOGIC_LAST_ACTION), A
-
-; .item_in_hand
-  ; LD A, do_drop
-  ; RET
 
 .phase2:
   LD HL, (LOGIC_ACTIVE_MAP_PTR)
   LD A, (HL)
   CALL CELL_CALC_PTR_BY_INDEX ; в HL указатель на описание ячейки
-  LD (LOGIC_ACTIVE_CELL_INFO_PTR), HL
   LD A, (LOGIC_LAST_ACTION)
   CALL Cells.call_cell_script
   RET NC
