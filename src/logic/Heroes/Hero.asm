@@ -25,7 +25,7 @@ initHeroes:
   CALL MAP_CALC_PTR_BY_POS
   LD A,(HL)
   LD (IX+Hero.ground),A; ячейку карты ставим на пол персонажа
-  CALL update_sprite_by_direction
+  CALL set_sprite_by_direction
 
   POP HL
   POP DE
@@ -72,7 +72,7 @@ move:
 ;  IX - указатель на героя
 ;  IX.dir - направление
 ; --------------------------------------------------------------------------------------
-update_sprite_by_direction:
+set_sprite_by_direction:
   LD B,(IX+Hero.base_spr)
   LD A,(IX+Hero.dir)
   ADD A, B
@@ -138,17 +138,14 @@ do:
   LD A, (IX+Hero.ground)
   CALL MAP_SET_BY_POS ; вернули на место землю
 
-LOGIC_MapCell_xy equ $+1
-  LD DE, #0000
+  LD DE, (LOGIC_ACTIVE_MAP_POS)
   LD (IX+Hero.pos.x), D
   LD (IX+Hero.pos.y), E ; установили новые координаты 
 
-LOGIC_MapCell_ptr equ $+1
-  LD HL, #0000
+  LD HL, (LOGIC_ACTIVE_MAP_PTR)
   LD A, (HL)
   LD (IX+Hero.ground), A ; сохранили землю
-  CALL update_sprite_by_direction
-  CALL hero_screen_update
+  CALL set_sprite_by_direction
   JP hero_look_at_cell
 
 ; ; --------------------------------------------------------------------------------------
@@ -197,15 +194,6 @@ LOGIC_MapCell_ptr equ $+1
 ;   CALL EventsMap.lookAround
 ; RET
 
-hero_screen_update:
-  ; LD IX, (LOGIC_ACTIVE_HERO_PTR)
-  ; CALL Hero.calc_view_pos
-  ; CALL MAP_CALC_PTR_BY_POS
-  ; CALL COPY_TO_BUFFER
-	; CALL TILE16_SHOW_SCREEN
-  RET
-
-; ; --------------------------------------------------------------------------------------
 ; ; меняем спрайт героя в зависимости от направления персонажа
 ; ; Вход:
 ; ;  IX - указатель на героя

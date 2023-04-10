@@ -66,13 +66,13 @@ show_info_and_sound:
 fx_action_cell:
     RET
     LD (.active_spr_num+1), A
-    LD A, ( Hero.LOGIC_MapCell_xy+Point.y )
+    LD A, ( Hero.LOGIC_ACTIVE_MAP_POS+Point.y )
     ; LD HL, LOGIC_ViewPos
     SUB (HL)
     ADD A,A ; так как у нас тайлы в 2 ячейки то умножаем результат на два
     LD E,A
     INC HL
-    LD A, ( Hero.LOGIC_MapCell_xy+Point.x )
+    LD A, ( Hero.LOGIC_ACTIVE_MAP_POS+Point.x )
     SUB (HL)
     ADD A,A ; так как у нас тайлы в 2 ячейки то умножаем результат на два
     LD D,A ; в DE - экранная позиция
@@ -111,7 +111,7 @@ sound_show_info_and_set_cell:
 .cell_set
   LD A, #00
 cell_set_proc:
-  LD HL, (Hero.LOGIC_MapCell_ptr)
+  LD HL, (Hero.LOGIC_ACTIVE_MAP_PTR)
   LD (HL), A
   RET
 
