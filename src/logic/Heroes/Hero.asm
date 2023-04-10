@@ -3,9 +3,7 @@
 ; LOGIC_LAST_ACTION - последнее действие героя
 ; LOGIC_ACTIVE_HERO_PTR - указатель на описание героя
 ; LOGIC_ACTIVE_HERO_NUM - текущий номер героя
-
-; LOGIC_MapCell_xy - текущие координаты события
-; LOGIC_MapCell_ptr - указатель на ячейку события
+; LOGIC_ACTIVE_MAP_POS - координаты текущего события на карте
 
 ; --------------------------------------------------------------------------------------
 ; Инициализация персонажей на карте, переход на первого персонажа
@@ -48,8 +46,12 @@ firstChar:
   LD (LOGIC_ACTIVE_HERO_NUM), A
   RET
 
-LOGIC_ACTIVE_HERO_NUM defb 00
-LOGIC_ACTIVE_HERO_PTR defw 00
+LOGIC_LAST_ACTION db 00
+LOGIC_ACTIVE_HERO_NUM db 00
+LOGIC_ACTIVE_HERO_PTR dw 0000
+LOGIC_ACTIVE_MAP_POS dw 0000
+LOGIC_ACTIVE_MAP_PTR dw 0000
+LOGIC_ACTIVE_CELL_INFO_PTR dw 0000
 
 ; --------------------------------------------------------------------------------------
 ; Движение или поворот текущего персонажа
@@ -77,7 +79,8 @@ update_sprite_by_direction:
   LD (IX+Hero.sprite), A
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
-  JP MAP_SET_BY_POS
+  CALL MAP_SET_BY_POS
+  JP check_act_no
 
 stand:
   LD A, do_stand
@@ -85,6 +88,7 @@ stand:
 ; --------------------------------------------------------------------------------------
 ; Действие персонажа по направлению взгляда
 ; Вход:
+;   A - действие
 ;   IX - указатель на героя
 ; --------------------------------------------------------------------------------------
 do:
@@ -95,15 +99,11 @@ do:
   CALL MAP_CALC_POS_BY_DIR ; в DE позиция действия
   JP NC, check_act_no
 
-  LD (LOGIC_MapCell_xy), DE
-  RET
-
+  LD (LOGIC_ACTIVE_MAP_POS), DE
   CALL MAP_CALC_PTR_BY_POS
-  LD (LOGIC_MapCell_ptr), HL
+  LD (LOGIC_ACTIVE_MAP_PTR), HL
 
-LOGIC_LAST_ACTION equ $+1
-  LD A, #00
-
+  LD A, (LOGIC_LAST_ACTION)
 ; cheat move:
   ; CP do_stand
   ; JP Z, .do_stand; персонаж перемещается туда
@@ -125,9 +125,10 @@ LOGIC_LAST_ACTION equ $+1
   ; RET
 
 .phase2:
+  LD HL, (LOGIC_ACTIVE_MAP_PTR)
   LD A, (HL)
   CALL CELL_CALC_PTR_BY_INDEX ; в HL указатель на описание ячейки
-  LD (LOGIC_CellInfo_ptr), HL
+  LD (LOGIC_ACTIVE_CELL_INFO_PTR), HL
   CALL Cells.call_cell_script
   RET NC
 
@@ -147,7 +148,6 @@ LOGIC_MapCell_ptr equ $+1
   LD A, (HL)
   LD (IX+Hero.ground), A ; сохранили землю
   CALL update_sprite_by_direction
-  ; CALL lookAround
   CALL hero_screen_update
   JP hero_look_at_cell
 
