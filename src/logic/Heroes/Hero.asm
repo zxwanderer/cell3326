@@ -24,7 +24,7 @@ initHeroes:
   LD E, (IX+Hero.pos.y)
   CALL MAP_CALC_PTR_BY_POS
   LD A,(HL)
-  LD (IX+Hero.ground), A; ячейку карты ставим на пол персонажа
+  LD (IX+Hero.ground),A; ячейку карты ставим на пол персонажа
   CALL set_sprite_by_direction
 
   POP HL
@@ -64,6 +64,8 @@ move:
   CP B
   JR Z, stand
   LD (IX+Hero.dir), B
+  CALL set_sprite_by_direction
+  JP show_hero_at_screen
 
 ; --------------------------------------------------------------------------------------
 ; Изменение спрайта в описании героя и на карте в зависимости от направления персонажа в его описании
@@ -79,7 +81,7 @@ set_sprite_by_direction:
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
   CALL MAP_SET_BY_POS
-  JP show_hero_at_screen
+  RET
 
 stand:
   LD A, do_stand
