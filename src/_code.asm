@@ -77,11 +77,10 @@ PRESS_BUTTON_RIGHT:
   JP hero_move_processing
 
 PRESS_BUTTON_FIRE:
-  LD A, do_use
-  CALL Hero.do
-  CALL Hero.show_hero_at_screen
   LD A, FX_No
   CALL FX_SET
+  LD A, do_use
+  CALL Hero.do
   JP loop
 
 PRESS_RESTART:
@@ -91,6 +90,5 @@ PRESS_RESTART:
 
 hero_move_processing:
   CALL Hero.move
-  CALL Hero.show_hero_at_screen
   CALL Hero.hero_look_at_cell
   JP loop

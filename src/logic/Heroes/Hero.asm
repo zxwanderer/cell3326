@@ -24,7 +24,7 @@ initHeroes:
   LD E, (IX+Hero.pos.y)
   CALL MAP_CALC_PTR_BY_POS
   LD A,(HL)
-  LD (IX+Hero.ground),A; ячейку карты ставим на пол персонажа
+  LD (IX+Hero.ground), A; ячейку карты ставим на пол персонажа
   CALL set_sprite_by_direction
 
   POP HL
@@ -79,7 +79,7 @@ set_sprite_by_direction:
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
   CALL MAP_SET_BY_POS
-  JP check_act_no
+  JP show_hero_at_screen
 
 stand:
   LD A, do_stand
@@ -96,7 +96,7 @@ do:
   LD E, (IX+Hero.pos.y)
   LD A, (IX+Hero.dir)
   CALL MAP_CALC_POS_BY_DIR ; в DE позиция действия
-  JP NC, check_act_no
+  RET NC
 
   LD (LOGIC_ACTIVE_MAP_POS), DE
   CALL MAP_CALC_PTR_BY_POS
@@ -120,7 +120,11 @@ do:
   CALL CELL_CALC_PTR_BY_INDEX ; в HL указатель на описание ячейки
   LD A, (LOGIC_LAST_ACTION)
   CALL Cells.call_cell_script
-  JP NC, check_act_no
+  JP NC, show_hero_at_screen
+
+  LD A, (LOGIC_LAST_ACTION)
+  CP do_stand
+  JP NZ, show_hero_at_screen
 
 .do_stand
   LD D, (IX+Hero.pos.x)
@@ -136,7 +140,7 @@ do:
   LD A, (HL)
   LD (IX+Hero.ground), A ; сохранили землю
   CALL set_sprite_by_direction
-  RET
+  JP show_hero_at_screen
 
 ; --------------------------------------------------------------------------------------
 ; Циклический переход на следующего персонажа,

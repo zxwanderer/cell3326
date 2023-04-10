@@ -50,7 +50,6 @@ show_info_and_sound:
 ; На входе:
 ;   A - номер спрайта
 fx_action_cell:
-    RET
     LD (.active_spr_num+1), A
     LD A, ( Hero.LOGIC_ACTIVE_MAP_POS+Point.y )
     ; LD HL, LOGIC_ViewPos
