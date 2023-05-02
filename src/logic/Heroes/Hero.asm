@@ -110,12 +110,6 @@ do:
   ; CP do_stand
   ; JP Z, .do_stand; персонаж перемещается туда
 
-  CP do_stand
-  JP Z, .phase2; персонаж перемещается туда
-
-  LD A, do_use
-  LD (LOGIC_LAST_ACTION), A
-
 .phase2:
   LD HL, (LOGIC_ACTIVE_MAP_PTR)
   LD A, (HL)

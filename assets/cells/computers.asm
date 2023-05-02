@@ -9,6 +9,7 @@ Computer_actions_use:
   LD HL, computer_off_set
   CALL ScreenFX.sound_show_info_and_set_cell
   JP check_act_no
+
 computer_off_set:
   db FX_Computer
   dw Computer_off_mess

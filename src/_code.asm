@@ -36,7 +36,8 @@ start:
   EI
 
 loop:
-  XOR A
+CUR_BORDER equ $+1
+  LD A, #00
   OUT (#FE),A
 
   halt 
@@ -77,8 +78,6 @@ PRESS_BUTTON_RIGHT:
   JP hero_move_processing
 
 PRESS_BUTTON_FIRE:
-  LD A, FX_No
-  CALL FX_SET
   LD A, do_use
   CALL Hero.do
   JP loop
