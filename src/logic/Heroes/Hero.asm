@@ -90,9 +90,10 @@ stand:
 ; Действие персонажа по направлению взгляда
 ; Вход:
 ;   A - действие
-;   IX - указатель на героя
+;   LOGIC_ACTIVE_HERO_PTR - указатель на героя
 ; --------------------------------------------------------------------------------------
 do:
+  LD IX, (LOGIC_ACTIVE_HERO_PTR)
   LD (LOGIC_LAST_ACTION), A
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
@@ -116,11 +117,12 @@ do:
   CALL CELL_CALC_PTR_BY_INDEX ; в HL указатель на описание ячейки
   LD A, (LOGIC_LAST_ACTION)
   CALL Cells.call_cell_script
-  JP NC, show_hero_at_screen
+  JP NC, show_hero_at_screen ; дальше обрабатывать не надо
 
   LD A, (LOGIC_LAST_ACTION)
   CP do_stand
-  JP NZ, show_hero_at_screen
+  JP Z, .do_stand
+  JP hero_look_at_cell
 
 .do_stand
   LD D, (IX+Hero.pos.x)

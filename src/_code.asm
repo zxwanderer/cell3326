@@ -42,6 +42,9 @@ CUR_BORDER equ $+1
 
   halt 
 
+  XOR A
+  OUT (#FE),A
+
   LD HL, keyMappingTable
   CALL KEYBOARD_SCAN_KEYS
   JP Z, loop
