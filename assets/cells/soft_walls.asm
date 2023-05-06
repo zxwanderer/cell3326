@@ -43,9 +43,11 @@ Soft_wall_actions:
   defb 0
 
 Soft_wall_l_actions:
+  SET_ACTION_REACTON do_use, Soft_wall_actions_use
   defb 0
 
 Soft_wall_r_actions:
+  SET_ACTION_REACTON do_use, Soft_wall_actions_use
   defb 00
 
 Soft_wall_l_up_actions:

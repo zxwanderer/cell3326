@@ -33,7 +33,13 @@ Door_open_actions:
   defb 0
 
 Gold_door_actions:
+  SET_ACTION_REACTON do_use, Gold_door_actions_use
   defb 0
+
+Gold_door_actions_use:
+  LD HL, Door_not_open_mess
+  CALL ScreenFX.show_info_message
+  JP ScreenFX.nope_script
 
 Green_door_actions:
   defb 0
