@@ -39,6 +39,7 @@ Soft_wall_break_77.spr equ 77
   SETUP_CELL_TYPE_N Soft_wall_break_77.spr, Soft_wall_name, Soft_wall_break_actions
 
 Soft_wall_actions:
+  SET_ACTION_REACTON do_use, Soft_wall_actions_use
   defb 0
 
 Soft_wall_l_actions:
@@ -71,3 +72,9 @@ Soft_wall_L2_actions:
 Soft_wall_L3_actions:
   defb 00
 
+Soft_wall_actions_use:
+  JP ScreenFX.kick_fault
+
+  ; shiruFX 2
+  ; CallScript action_ring_explode
+  ; ShowText Soft_wall_hit_mess
