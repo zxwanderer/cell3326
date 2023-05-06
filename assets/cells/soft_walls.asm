@@ -73,6 +73,8 @@ Soft_wall_L3_actions:
   defb 00
 
 Soft_wall_actions_use:
+  LD HL, Soft_wall_hit_mess
+  CALL ScreenFX.show_info_message
   JP ScreenFX.kick_fault
 
   ; shiruFX 2
