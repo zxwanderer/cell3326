@@ -4,4 +4,10 @@ Bed.spr equ 19
 
 Bed_actions:
   SET_ACTION_REACTON do_stand, reaction_stand
+  SET_ACTION_REACTON do_use, Bed_action_use
   defb 0
+
+Bed_action_use:
+  LD HL, Take_bed_mess
+  CALL ScreenFX.show_info_message
+  JP ScreenFX.nope_script
