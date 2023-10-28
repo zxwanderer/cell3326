@@ -44,10 +44,7 @@ make_map:
 make_tileset: make_scr
 	python3 $(SCRIPT_FOLDER)/scr2spr.py --width 2 --height 2 --color True --count 191 -i $(BUILD_FOLDER)/tiles.scr -o $(BUILD_FOLDER)/tiles.bin
 
-compile_parts: make_map
-	./engine/bin/osx/sjasmplus --dos866 --nofakes --dirbol --outprefix=./$(BUILD_FOLDER)/ \
-        --lst=./$(BUILD_FOLDER)/program.list \
-        --fullpath ./parts.asm
+compile_parts: build pack_sal
 
 pack_sal:
 	rm -f $(BUILD_FOLDER)/*.sal

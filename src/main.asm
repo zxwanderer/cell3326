@@ -45,5 +45,8 @@ display 'INT_TABLE: ', INT_TABLE, "-", INT_TABLE+256-1
 display 'INT_VECTOR:', INT_VECTOR, "-", INT_VECTOR
 display '[Free]     ', _all_end, '-', #FFFF, ', size: ', /D, 0x10000 - _all_end
 
+  savebin "static.bin", code, dynamic-code
+  savebin "dynamic.bin", dynamic, _all_end-dynamic
+
 	savesna SNA_FILENAME, PROGRAM_ORG
   LABELSLIST labels.txt
