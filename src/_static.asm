@@ -37,6 +37,7 @@ FX_SET_END
   include "logic/Events/EventsMap.asm"
   include "logic/Heroes/Hero.asm"
   include "logic/Cells/Cells.asm"
+  include "logic/Items/Items.asm"
   
   include "math/mul_ADE.asm"
   include "ScreenFX.asm"
