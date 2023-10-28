@@ -23,6 +23,7 @@ build: clean make_tileset make_map
     --lst=$(BUILD_FOLDER)/program.list \
     --fullpath $(SRC_FOLDER)/main.asm
 
+build_parts: build
 	$(BIN_FOLDER)/sjasmplus --dos866 --nofakes --dirbol --outprefix=$(BUILD_FOLDER)/ \
 		-i$(BUILD_FOLDER) \
 		-DSNA_FILENAME=\"$(PROJECT_NAME).sna\" \
@@ -51,7 +52,7 @@ make_map:
 make_tileset: make_scr
 	python3 $(SCRIPT_FOLDER)/scr2spr.py --width 2 --height 2 --color True --count 191 -i $(BUILD_FOLDER)/tiles.scr -o $(BUILD_FOLDER)/tiles.bin
 
-compile_parts: build pack_upkr
+compile_parts: build pack_upkr build_parts
 
 pack_sal:
 	rm -f $(BUILD_FOLDER)/*.sal
@@ -62,6 +63,9 @@ pack_upkr:
 	rm -f $(BUILD_FOLDER)/*.upkr
 	$(BIN_FOLDER)/upkr --z80 $(BUILD_FOLDER)/static.bin $(BUILD_FOLDER)/static.bin.upkr
 	$(BIN_FOLDER)/upkr --z80 $(BUILD_FOLDER)/dynamic.bin $(BUILD_FOLDER)/dynamic.bin.upkr
+
+pack_upkr_game:
+	$(BIN_FOLDER)/upkr --z80 $(BUILD_FOLDER)/game.bin $(BUILD_FOLDER)/game.bin.upkr
 
 make_sna: clean make_tileset compile_parts pack_sal
 	$(BIN_FOLDER)/sjasmplus --dos866 --nofakes --dirbol --outprefix=./$(BUILD_FOLDER)/ \
