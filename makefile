@@ -32,6 +32,9 @@ run: build
 run2: build
 	open -a 'UnrealSpeccyPortable' $(BUILD_FOLDER)/$(PROJECT_NAME).sna
 
+run3: build
+	open -a 'xpeccy' $(BUILD_FOLDER)/$(PROJECT_NAME).sna
+
 make_scr:
 	python3 $(SCRIPT_FOLDER)/png2scr.py -i $(ASSETS_FOLDER)/tiles/tiles.png -o $(BUILD_FOLDER)/tiles.scr
 
