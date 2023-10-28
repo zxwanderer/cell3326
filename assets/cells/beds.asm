@@ -8,6 +8,9 @@ Bed_actions:
   defb 0
 
 Bed_action_use:
+  CALL ScreenFX.nope_script
   LD HL, Take_bed_mess
   CALL ScreenFX.show_info_message
-  JP ScreenFX.nope_script
+  JP check_act_no
+
+  

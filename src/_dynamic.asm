@@ -4,8 +4,8 @@ MAP_DATA:
   include "logic/Heroes/Hero_h.asm"
   include "heroes_data.asm"
 
-  ; include "logic/Items/Item_h.asm"
-  ; include "logic/Items/ItemType_h.asm"
+  include "logic/Items/Item_h.asm"
+  include "logic/Items/ItemType_h.asm"
 
 MAP_MASK:
   DUP TILE_MAP_SIZE_WIDTH * TILE_MAP_SIZE_HEIGHT
