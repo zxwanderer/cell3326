@@ -23,6 +23,13 @@ build: clean make_tileset make_map
     --lst=$(BUILD_FOLDER)/program.list \
     --fullpath $(SRC_FOLDER)/main.asm
 
+	$(BIN_FOLDER)/sjasmplus --dos866 --nofakes --dirbol --outprefix=$(BUILD_FOLDER)/ \
+		-i$(BUILD_FOLDER) \
+		-DSNA_FILENAME=\"$(PROJECT_NAME).sna\" \
+		-DBIN_FILENAME=\"$(PROJECT_NAME).bin\" \
+    --lst=$(BUILD_FOLDER)/program.list \
+    --fullpath $(SRC_FOLDER)/parts.asm
+
 		# --debug 
 run: build
 	$(BIN_FOLDER)/xpeccy.app/Contents/MacOS/xpeccy \
