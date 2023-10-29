@@ -87,12 +87,12 @@ sound_show_info_and_set_cell:
   INC HL
   LD A, (HL)
   LD (.cell_set+1), A
-.message
-  LD HL, #0000
-  CALL ScreenFX.show_info_message
 .fx
   LD A, #00
   CALL FX_SET
+.message
+  LD HL, #0000
+  CALL ScreenFX.show_info_message
 .cell_set
   LD A, #00
 cell_set_proc:
