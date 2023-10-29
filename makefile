@@ -2,6 +2,8 @@ BIN_FOLDER := ./zx-core/bin/osx
 SCRIPT_FOLDER := ./zx-core/scripts
 LIBS_FOLDER := ./zx-core/libs
 
+EXTERNAL_SOURCES_FOLDER = ./zx-core/external_sources
+
 SRC_FOLDER := ./src
 BUILD_FOLDER := ./output
 
@@ -54,6 +56,14 @@ make_tileset: make_scr
 
 compile_parts: build pack_upkr build_parts
 
+compile_bootable: compile_parts pack_upkr_game
+	$(BIN_FOLDER)/sjasmplus --dos866 --nofakes --dirbol --outprefix=$(BUILD_FOLDER)/ \
+		-i$(LIBS_FOLDER) \
+		-i$(BUILD_FOLDER) \
+		-i$(EXTERNAL_SOURCES_FOLDER) \
+		-DBOOTSTRAP_ORG=#D000 \
+    --fullpath $(SRC_FOLDER)/parts2.asm
+
 pack_sal:
 	rm -f $(BUILD_FOLDER)/*.sal
 	$(BIN_FOLDER)/salvador -classic $(BUILD_FOLDER)/static.bin $(BUILD_FOLDER)/static.bin.sal
@@ -66,6 +76,9 @@ pack_upkr:
 
 pack_upkr_game:
 	$(BIN_FOLDER)/upkr --z80 $(BUILD_FOLDER)/game.bin $(BUILD_FOLDER)/game.bin.upkr
+
+make_tape: compile_bootable
+	$(BIN_FOLDER)/bin2tap -b -hp $(BUILD_FOLDER)/bootable.bin -c 24575 -a 53248 -r 53248 
 
 make_sna: clean make_tileset compile_parts pack_sal
 	$(BIN_FOLDER)/sjasmplus --dos866 --nofakes --dirbol --outprefix=./$(BUILD_FOLDER)/ \
