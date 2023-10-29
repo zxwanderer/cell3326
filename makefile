@@ -80,7 +80,7 @@ pack_upkr_game:
 make_tape: compile_bootable
 	$(BIN_FOLDER)/bin2tap -b -hp $(BUILD_FOLDER)/bootable.bin -c 24575 -a 53248 -r 53248 
 
-make_sna: clean make_tileset compile_parts pack_sal
+make_sna: build
 	$(BIN_FOLDER)/sjasmplus --dos866 --nofakes --dirbol --outprefix=./$(BUILD_FOLDER)/ \
         --lst=$(BUILD_FOLDER)/program.list \
         --fullpath make_sna.asm
