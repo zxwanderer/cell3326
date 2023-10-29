@@ -25,7 +25,7 @@ build: clean make_tileset make_map
     --lst=$(BUILD_FOLDER)/program.list \
     --fullpath $(SRC_FOLDER)/main.asm
 
-build_parts: build
+build_parts: build pack_upkr
 	$(BIN_FOLDER)/sjasmplus --dos866 --nofakes --dirbol --outprefix=$(BUILD_FOLDER)/ \
 		-i$(BUILD_FOLDER) \
 		-DSNA_FILENAME=\"$(PROJECT_NAME).sna\" \
