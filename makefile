@@ -2,7 +2,7 @@ BIN_FOLDER := ./zx-core/bin/osx
 SCRIPT_FOLDER := ./zx-core/scripts
 LIBS_FOLDER := ./zx-core/libs
 
-EXTERNAL_SOURCES_FOLDER = ./zx-core/external_sources
+EXT_LIBRARY_FOLDER = ./zx-core/
 
 SRC_FOLDER := ./src
 BUILD_FOLDER := ./output
@@ -60,7 +60,7 @@ compile_bootable: compile_parts pack_upkr_game
 	$(BIN_FOLDER)/sjasmplus --dos866 --nofakes --dirbol --outprefix=$(BUILD_FOLDER)/ \
 		-i$(LIBS_FOLDER) \
 		-i$(BUILD_FOLDER) \
-		-i$(EXTERNAL_SOURCES_FOLDER) \
+		-i$(EXT_LIBRARY_FOLDER) \
 		-DBOOTSTRAP_ORG=#D000 \
     --fullpath $(SRC_FOLDER)/parts2.asm
 
