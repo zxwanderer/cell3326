@@ -80,10 +80,6 @@ pack_upkr_game:
 make_tape: compile_bootable
 	$(BIN_FOLDER)/bin2tap -b -hp $(BUILD_FOLDER)/bootable.bin -c 24575 -a 53248 -r 53248 
 
-make_sna: build
-	$(BIN_FOLDER)/sjasmplus --dos866 --nofakes --dirbol --outprefix=./$(BUILD_FOLDER)/ \
-        --lst=$(BUILD_FOLDER)/program.list \
-        --fullpath make_sna.asm
 
 run_sna: make_sna
 	open -a 'UnrealSpeccyPortable' $(BUILD_FOLDER)/cell3326.sna
