@@ -36,6 +36,8 @@ display 'PROGRAM_ORG: ', PROGRAM_ORG
 display '-----------------------------------------'
 display 'Code:      ', code, '-', code_end, ', size: ', /D, code_end - code
 display 'Static:    ', static, '-', static_end,', size: ', /D, static_end - static
+display 'FX_SET:    ', FX_SET, '-', FX_SET_END-1,', size: ', /D, FX_SET_END-FX_SET
+display 'TRITONE:   ', TRITONE, '-', TRITONE_END-1,', size: ', /D, TRITONE_END-TRITONE
 display '[Free]     ', static_end, '-', p68_font, ', size: ', /D, p68_font - static_end
 display 'Font:      ', p68_font, '-', p68_font_end, ', size: ', /D, p68_font_end - p68_font
 display 'Dynamic:   ', dynamic, '-', dynamic_end, ', size: ', /D, dynamic_end - dynamic
