@@ -26,8 +26,8 @@ start:
 	LD HL, HELLO_TXT
 	CALL Text68.print_at
 
-  ; LD HL, music_startgame.data
-  ; CALL Tritone.play
+  LD HL, music_startgame.data
+  CALL Tritone.play
 
   CALL Hero.initHeroes
   CALL Hero.show_hero_at_screen

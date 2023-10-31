@@ -1,10 +1,4 @@
 
-FX_SET:
-  include "fx/demoFX.asm"
-FX_SET_END
-
-  include "beeper/tritone/play.asm"
-
   include "framework/Cell/calc_ptr_by_index.asm"
 
 	include "screen/addr_to_attr.asm"
@@ -46,6 +40,24 @@ FX_SET_END
 
   include "cells/_index.asm"
 
+TILE_SET:
+  incbin "tiles.bin"
+
+; (!) код плеера должен быть в быстрой памяти как Shiru сказал (!!!)
+; На 48K это просто любая память выше 32768, на оригинальных 128K 
+; есть сложности: на 128K и +2 медленные страницы 1,3,5,7; 
+; на +2A и +3 медленные страницы 4,5,6,7. Т.е. для корректной работы 
+; на всех оригинальных моделях плеер надо обязательно поместить в страницу 0 или 2.
+; На данный момент подключается аккурат во 2ю страницу ( FX_SET )
+
+FX_SET:
+  include "fx/demoFX.asm"
+FX_SET_END
+
+TRITONE:
+  include "beeper/tritone/play.asm"
+TRITONE_END
+
   MODULE music_startgame
 data:  
     include "music/AER/foryou.asm"
@@ -60,6 +72,3 @@ data:
 data:    
     include "music/AER/gameend.asm"
   ENDMODULE
-
-TILE_SET:
-  incbin "tiles.bin"
