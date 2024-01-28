@@ -81,14 +81,10 @@ PRESS_BUTTON_RIGHT:
   JP hero_move_processing
 
 PRESS_BUTTON_FIRE:
-  LD A, 6
-  OUT (#FE),A
-  CALL measure_pressed_key
+  CALL KEYBOARD_WAIT_UNPRESS_LONG
   LD A, D
   CP #50
   JP C, loop
-  LD A, 2
-  OUT (#FE),A
   LD A, do_use
   CALL Hero.do
   JP loop
@@ -102,23 +98,3 @@ hero_move_processing:
   CALL Hero.move
   CALL Hero.hero_look_at_cell
   JP loop
-
-measure_pressed_key:
-  LD A, 1
-  OUT (#FE),A
-  ld DE, #0000
-
-.wait_uppress:	
-  INC DE
-  LD A, D
-  CP #FF
-  RET Z
-
-  xor a
-	in a,(0xfe)
-	cpl
-
-	and 31
-
-	jr nz, .wait_uppress
-	ret

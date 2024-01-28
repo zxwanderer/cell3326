@@ -25,6 +25,7 @@
 	include "text/text68.asm"
 
   include "keyboard/scan_keys.asm"
+  include "keyboard/wait_unpress_long.asm"
 
   include "lang/lang_ru.asm"
 
