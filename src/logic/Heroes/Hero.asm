@@ -117,7 +117,7 @@ do:
   LD A, (HL)
   CALL CELL_CALC_PTR_BY_INDEX ; в HL указатель на описание ячейки
   LD A, (LOGIC_LAST_ACTION)
-  CALL Cells.call_cell_script
+  CALL Cells.call_script
   JP NC, show_hero_at_screen ; дальше обрабатывать не надо
 
   LD A, (LOGIC_LAST_ACTION)

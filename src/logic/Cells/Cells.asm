@@ -9,7 +9,7 @@
 ;   HL - указатель на описание ячейки
 ; На выходе:
 ; retFalse - ничего не нужно делать дальше
-call_cell_script:
+call_script:
   LD (.action+1), A
   INC HL
   INC HL ; получили указатель на указатель таблицы action-reaction 
