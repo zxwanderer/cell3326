@@ -11,6 +11,8 @@
   include "logic/Cells/CellType_macro_h.asm"
   include "fx/demoFX_h.asm"
 
+  ; DEFINE SHOW_START_MENU
+
 start:
   DI
 
@@ -22,12 +24,16 @@ start:
   SetIM2 INT_TABLE, INT_VECTOR
   LD SP, STACK_TOP
 
+  IFDEF SHOW_START_MENU
+
 	LD DE, #4000
 	LD HL, HELLO_TXT
 	CALL Text68.print_at
 
   LD HL, music_startgame.data
   CALL Tritone.play
+
+  ENDIF
 
   CALL Hero.initHeroes
   CALL Hero.show_hero_at_screen
@@ -36,18 +42,12 @@ start:
   EI
 
 loop:
-CUR_BORDER equ $+1
-  LD A, #00
-  OUT (#FE),A
-
-  halt 
-
-  XOR A
-  OUT (#FE),A
+  HALT
 
   LD HL, keyMappingTable
   CALL KEYBOARD_SCAN_KEYS
   JP Z, loop
+
   PUSH DE
   POP HL
 GOTO_HL:
@@ -81,16 +81,44 @@ PRESS_BUTTON_RIGHT:
   JP hero_move_processing
 
 PRESS_BUTTON_FIRE:
+  LD A, 6
+  OUT (#FE),A
+  CALL measure_pressed_key
+  LD A, D
+  CP #50
+  JP C, loop
+  LD A, 2
+  OUT (#FE),A
   LD A, do_use
   CALL Hero.do
   JP loop
 
 PRESS_RESTART:
-  LD A, 6
-  OUT (#FE),A
+  ; LD A, 6
+  ; OUT (#FE),A
   JP loop
 
 hero_move_processing:
   CALL Hero.move
   CALL Hero.hero_look_at_cell
   JP loop
+
+measure_pressed_key:
+  LD A, 1
+  OUT (#FE),A
+  ld DE, #0000
+
+.wait_uppress:	
+  INC DE
+  LD A, D
+  CP #FF
+  RET Z
+
+  xor a
+	in a,(0xfe)
+	cpl
+
+	and 31
+
+	jr nz, .wait_uppress
+	ret
