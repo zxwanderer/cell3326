@@ -81,10 +81,10 @@ PRESS_BUTTON_RIGHT:
   JP hero_move_processing
 
 PRESS_BUTTON_FIRE:
-  CALL KEYBOARD_WAIT_UNPRESS_LONG
-  LD A, D
-  CP #50
-  JP C, loop
+  ; CALL KEYBOARD_WAIT_UNPRESS_LONG
+  ; LD A, D
+  ; CP #50
+  ; JP C, loop
   LD A, do_use
   CALL Hero.do
   JP loop
