@@ -1,3 +1,7 @@
+Please, go to [https://zxwanderer.github.io/cell3326-game/](https://zxwanderer.github.io/cell3326-game/)
+
+
+
 # cell3326
 
 
