@@ -52,7 +52,7 @@ TILE_SET:
 ; На данный момент подключается аккурат во 2ю страницу ( FX_SET )
 
 FX_SET:
-  include "fx/demoFX.asm"
+  include "../assets/fx/demoFX.asm"
 FX_SET_END
 
 TRITONE:

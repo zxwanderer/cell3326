@@ -13,7 +13,7 @@ static_end equ $-1
 
   align 256
 p68_font:
-	incbin "fonts/Font57_revert.fnt"
+	incbin "../assets/fonts/Font57_revert.fnt"
 p68_font_end equ $-1
 
 dynamic:
