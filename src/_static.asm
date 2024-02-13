@@ -1,45 +1,45 @@
 
   include "framework/Cell/calc_ptr_by_index.asm"
 
-	include "screen/addr_to_attr.asm"
-	include "screen/clear.asm"
-	include "screen/calc_down_pos.asm"
-	include "screen/set_colors.asm"
-  include "screen/pos_to_scr.asm"
-  include "screen/clear_rows.asm"
+	include "../zx-core/libs/screen/addr_to_attr.asm"
+	include "../zx-core/libs/screen/clear.asm"
+	include "../zx-core/libs/screen/calc_down_pos.asm"
+	include "../zx-core/libs/screen/set_colors.asm"
+  include "../zx-core/libs/screen/pos_to_scr.asm"
+  include "../zx-core/libs/screen/clear_rows.asm"
 
-	include "tables/scan_by_index.asm"
+	include "../zx-core/libs/tables/scan_by_index.asm"
 
-  include "tiles16/show.asm"
-	include "tiles16/index_to_ptr.asm"
-	include "tiles16/show_screen.asm"
-  include "tiles16/copy_to_buffer.asm"
+  include "../zx-core/libs/tiles16/show.asm"
+	include "../zx-core/libs/tiles16/index_to_ptr.asm"
+	include "../zx-core/libs/tiles16/show_screen.asm"
+  include "../zx-core/libs/tiles16/copy_to_buffer.asm"
 
-  include "view/view_h.asm"
-  include "view/center.asm"
+  include "../zx-core/libs/view/view_h.asm"
+  include "../zx-core/libs/view/center.asm"
   
-  include "map/move_calc_xy.asm"
-  include "map/calc_pos.asm"
-  include "map/set.asm"
+  include "../zx-core/libs/map/move_calc_xy.asm"
+  include "../zx-core/libs/map/calc_pos.asm"
+  include "../zx-core/libs/map/set.asm"
 
-	include "text/text68.asm"
+	include "../zx-core/libs/text/text68.asm"
 
-  include "keyboard/scan_keys.asm"
-  include "keyboard/wait_unpress_long.asm"
+  include "../zx-core/libs/keyboard/scan_keys.asm"
+  include "../zx-core/libs/keyboard/wait_unpress_long.asm"
 
-  include "lang/lang_ru.asm"
+  include "../zx-core/libs/math/mul_ADE.asm"
+
+  include "../assets/lang/lang_ru.asm"
+  include "../assets/cells/_index.asm"
 
   include "logic/Events/EventsMap.asm"
   include "logic/Heroes/Hero.asm"
   include "logic/Cells/Cells.asm"
   include "logic/Items/Items.asm"
   
-  include "math/mul_ADE.asm"
   include "ScreenFX.asm"
   
   include "cell_types_data.asm"
-
-  include "cells/_index.asm"
 
 TILE_SET:
   incbin "tiles.bin"
@@ -56,20 +56,20 @@ FX_SET:
 FX_SET_END
 
 TRITONE:
-  include "beeper/tritone/play.asm"
+  include "../zx-core/libs/beeper/tritone/play.asm"
 TRITONE_END
 
   MODULE music_startgame
 data:  
-    include "music/AER/foryou.asm"
+    include "../assets/music/AER/foryou.asm"
   ENDMODULE
 
   MODULE music_gameover
 data:
-    include "music/AER/gameover.asm"
+    include "../assets/music/AER/gameover.asm"
   ENDMODULE
 
   MODULE music_gameend
 data:    
-    include "music/AER/gameend.asm"
+    include "../assets/music/AER/gameend.asm"
   ENDMODULE

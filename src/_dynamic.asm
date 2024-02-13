@@ -13,7 +13,7 @@ MAP_MASK:
   EDUP
 
 VIEW_BUFFER:
-	include "tiles16/view_buffer.asm"
+	include "../zx-core/libs/tiles16/view_buffer.asm"
   include "logic_vars_data.asm"
   
 display 'VIEW_BUFFER: ', VIEW_BUFFER

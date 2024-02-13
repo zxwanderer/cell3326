@@ -1,6 +1,5 @@
 BIN_FOLDER := ./zx-core/bin/osx
 SCRIPT_FOLDER := ./zx-core/scripts
-LIBS_FOLDER := ./zx-core/libs
 
 EXT_LIBRARY_FOLDER = ./zx-core/
 
@@ -17,7 +16,6 @@ clean:
 
 build: clean make_tileset make_map
 	$(BIN_FOLDER)/sjasmplus --dos866 --nofakes --dirbol --outprefix=$(BUILD_FOLDER)/ \
-		-i$(LIBS_FOLDER) \
 		-i$(ASSETS_FOLDER) \
 		-i$(BUILD_FOLDER) \
 		-DSNA_FILENAME=\"$(PROJECT_NAME).sna\" \
@@ -58,7 +56,6 @@ compile_parts: build pack_upkr build_parts
 
 compile_bootable: compile_parts pack_upkr_game
 	$(BIN_FOLDER)/sjasmplus --dos866 --nofakes --dirbol --outprefix=$(BUILD_FOLDER)/ \
-		-i$(LIBS_FOLDER) \
 		-i$(BUILD_FOLDER) \
 		-i$(EXT_LIBRARY_FOLDER) \
 		-DBOOTSTRAP_ORG=#D000 \

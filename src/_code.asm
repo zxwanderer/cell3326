@@ -1,13 +1,15 @@
-  include "im2/im2_h.asm"
-  include "stack/push_pop_h.asm"
+  include "../zx-core/libs/im2/im2_h.asm"
+  include "../zx-core/libs/stack/push_pop_h.asm"
+	include "../zx-core/libs/keyboard/define_key_h.asm"
+  include "../zx-core/libs/keyboard/scancode_h.asm"
+
+  include "../assets/fx/demoFX_h.asm"
+
   include "logic/Directions_h.asm"
   include "logic/Actions_h.asm"
   include "logic/point_h.asm"
-	include "keyboard/define_key_h.asm"
-  include "keyboard/scancode_h.asm"
   include "logic/Cells/CellType_h.asm"
   include "logic/Cells/CellType_macro_h.asm"
-  include "fx/demoFX_h.asm"
 
   ; DEFINE SHOW_START_MENU
 
