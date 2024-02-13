@@ -104,13 +104,13 @@ cell_set_proc:
 nope_script:
   LD A, FX_Nope
   CALL FX_SET
-  JP check_act_no
+  retFalse
 
 kick_fault: ; неуспех удара предметом
   LD A, FX_Wall
   CALL FX_SET
   CALL action_ring_explode
-  JP check_act_no
+  retFalse
 
 kick_cut_fault: ; неуспех резания острым
   LD A, 39
@@ -118,7 +118,7 @@ kick_cut_fault: ; неуспех резания острым
   CALL action_ring_explode
   LD HL, Kick_shard_mess
   CALL ScreenFX.show_info_message
-  JP check_act_no
+  retFalse
 
 wait_halt_loop:
   HALT

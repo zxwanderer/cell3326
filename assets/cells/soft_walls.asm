@@ -78,7 +78,7 @@ Soft_wall_actions_use:
   CALL ScreenFX.kick_fault
   LD HL, Soft_wall_hit_mess
   CALL ScreenFX.show_info_message
-  JP check_act_no
+  retFalse
 
   ; shiruFX 2
   ; CallScript action_ring_explode

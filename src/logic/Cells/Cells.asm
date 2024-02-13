@@ -15,7 +15,7 @@ call_script:
   INC HL ; получили указатель на указатель таблицы action-reaction 
   HL_PTR_TO_HL
   CALL TABLE_SCAN_BY_INDEX_PTR
-  JP NC, check_act_no
+  retFalse
 .action
   LD A, #00
 ; в HL у нас теперь указатель на обработку action'a

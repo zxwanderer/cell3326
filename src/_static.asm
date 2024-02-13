@@ -1,7 +1,8 @@
 
   include "framework/Cell/calc_ptr_by_index.asm"
 
-	include "../zx-core/libs/screen/addr_to_attr.asm"
+	include "../zx-core/libs/result/set_result.asm"
+  include "../zx-core/libs/screen/addr_to_attr.asm"
 	include "../zx-core/libs/screen/clear.asm"
 	include "../zx-core/libs/screen/calc_down_pos.asm"
 	include "../zx-core/libs/screen/set_colors.asm"
@@ -38,7 +39,6 @@
   include "logic/Items/Items.asm"
   
   include "ScreenFX.asm"
-  
   include "cell_types_data.asm"
 
 TILE_SET:

@@ -26,4 +26,5 @@ Floor_actions:
   defb 0
 
 reaction_stand:
-  JP check_act_yes
+  retTrue
+

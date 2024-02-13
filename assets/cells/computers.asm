@@ -8,7 +8,7 @@ Computer_online_actions:
 Computer_actions_use:
   LD HL, computer_off_set
   CALL ScreenFX.sound_show_info_and_set_cell
-  JP check_act_no
+  retFalse
 
 computer_off_set:
   db FX_Computer
@@ -25,7 +25,7 @@ Computer_actions:
 Computer_offline_actions_use:
   LD HL, computer_offline_use_set
   CALL ScreenFX.show_info_and_sound
-  JP check_act_no
+  retFalse
  
 computer_offline_use_set:
   dw Computer_off_hit_mess
