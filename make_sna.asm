@@ -1,4 +1,6 @@
 	device zxspectrum48
+  
+  include "./src/_defines_h.asm"
 
 ORG PROGRAM_ORG
   include "./src/main.asm"
