@@ -29,6 +29,7 @@ make_sna: clean make_tileset make_map
 		-DSNA_FILENAME=\"$(PROJECT_NAME).sna\" \
 		-DBIN_FILENAME=\"$(PROJECT_NAME).bin\" \
     --lst=$(BUILD_FOLDER)/program.list \
+		--sld=$(BUILD_FOLDER)/$(PROJECT_NAME).sld \
     --fullpath ./make_sna.asm
 
 build_parts: build pack_upkr
