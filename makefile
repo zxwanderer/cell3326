@@ -25,6 +25,7 @@ build: clean make_tileset make_map
 make_sna: clean make_tileset make_map
 	$(BIN_FOLDER)/sjasmplus --dos866 --nofakes --dirbol --outprefix=$(BUILD_FOLDER)/ \
 		-i$(BUILD_FOLDER) \
+		-i$(SRC_FOLDER) \
 		-DSNA_FILENAME=\"$(PROJECT_NAME).sna\" \
 		-DBIN_FILENAME=\"$(PROJECT_NAME).bin\" \
     --lst=$(BUILD_FOLDER)/program.list \
