@@ -12,6 +12,7 @@
   include "logic/Cells/CellType_macro_h.asm"
 
   ; DEFINE SHOW_START_MENU
+  DEFINE CHEAT_MOVE
 
 start:
   DI
@@ -42,7 +43,7 @@ start:
   EI
 
 loop:
-  HALT
+  ; HALT
 
   LD HL, keyMappingTable
   CALL KEYBOARD_SCAN_KEYS
@@ -98,3 +99,5 @@ hero_move_processing:
   CALL Hero.move
   CALL Hero.hero_look_at_cell
   JP loop
+
+  include "logic/Heroes/Hero.asm"

@@ -1,3 +1,6 @@
+  ifndef _HERO_ASM_
+  define _HERO_ASM_
+
   MODULE Hero
 
 ; LOGIC_LAST_ACTION - последнее действие героя
@@ -108,9 +111,11 @@ do:
 
   LD A, (LOGIC_LAST_ACTION)
 
+  ifdef CHEAT_MOVE
 ; cheat move:
-  ; CP do_stand
-  ; JP Z, .do_stand; персонаж перемещается туда
+  CP do_stand
+  JP Z, .do_stand; персонаж перемещается туда
+  endif
 
 .phase2:
   LD HL, (LOGIC_ACTIVE_MAP_PTR)
@@ -200,3 +205,8 @@ hero_look_at_cell:
   JP ScreenFX.show_cell_info
 
   ENDMODULE
+
+  include "../../ScreenFX.asm"
+
+  endif
+  
