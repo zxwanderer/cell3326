@@ -22,6 +22,14 @@ build: clean make_tileset make_map
     --lst=$(BUILD_FOLDER)/program.list \
     --fullpath $(SRC_FOLDER)/main.asm
 
+make_sna: clean make_tileset make_map
+	$(BIN_FOLDER)/sjasmplus --dos866 --nofakes --dirbol --outprefix=$(BUILD_FOLDER)/ \
+		-i$(BUILD_FOLDER) \
+		-DSNA_FILENAME=\"$(PROJECT_NAME).sna\" \
+		-DBIN_FILENAME=\"$(PROJECT_NAME).bin\" \
+    --lst=$(BUILD_FOLDER)/program.list \
+    --fullpath ./make_sna.asm
+
 build_parts: build pack_upkr
 	$(BIN_FOLDER)/sjasmplus --dos866 --nofakes --dirbol --outprefix=$(BUILD_FOLDER)/ \
 		-i$(BUILD_FOLDER) \
@@ -76,5 +84,5 @@ pack_upkr_game:
 make_tape: compile_bootable
 	$(BIN_FOLDER)/bin2tap -b -hp $(BUILD_FOLDER)/bootable.bin -c 24575 -a 53248 -r 53248 
 
-run_sna: build
+run_sna: make_sna
 	open -a 'UnrealSpeccyPortable' $(BUILD_FOLDER)/game.sna

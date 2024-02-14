@@ -13,5 +13,3 @@ INT_VECTOR equ #BEBE
 INT_TABLE equ $BD00
 
 STACK_TOP equ #FFFF
-
-_endByte equ 0
