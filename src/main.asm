@@ -22,9 +22,16 @@ ORG INT_VECTOR
   IM2_JP_ROUTINES Interrupts
 INT_VECTOR_END
 
+ORG STACK_TOP - STACK_SIZE
+stack_start:
+  defs STACK_SIZE
+ORG STACK_TOP
+stack_end:
+
 _all_end equ $
 
 display 'PROGRAM_ORG: ', PROGRAM_ORG
+display _all_end
 display '--------------------------------------------------'
 ; display 'Code:      ', code, '-', code_end, ', size: ', /D, code_end - code
 display 'Static:    ', static, '-', static_end,', size: ', /D, static_end - static
