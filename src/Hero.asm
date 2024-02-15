@@ -1,6 +1,11 @@
   ifndef _HERO_ASM_
   define _HERO_ASM_
 
+  include "./Hero_h.asm"
+  include "./ScreenFX.asm"
+  include "../zx-core/libs/map/calc_pos.asm"
+  include "../zx-core/libs/map/set.asm"
+
   MODULE Hero
 
 ; LOGIC_LAST_ACTION - последнее действие героя
@@ -12,7 +17,7 @@
 ; Инициализация персонажей на карте, переход на первого персонажа
 ; --------------------------------------------------------------------------------------
 initHeroes:
-  LD B, HeroesNum
+  LD B,  HeroesNum
   LD HL, HEROES_SET
   LD DE, Hero
 .init_loop:
@@ -205,8 +210,6 @@ hero_look_at_cell:
   JP ScreenFX.show_cell_info
 
   ENDMODULE
-
-  include "../../ScreenFX.asm"
 
   endif
   

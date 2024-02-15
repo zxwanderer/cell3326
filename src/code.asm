@@ -29,6 +29,8 @@ init:
 
   EI
 
+  CALL Hero.initHeroes
+
 .loop
   halt
   ld a, 1
@@ -43,3 +45,5 @@ init:
   include "../zx-core/libs/screen/set_colors.asm"
   include "../zx-core/libs/screen/calc_down_pos.asm"
   include "../zx-core/libs/text/text68.asm"
+  
+  include "./Hero.asm"

@@ -1,3 +1,12 @@
+CELL_TYPES:
+  DUP 256
+    CellType Empty_cell_name, action_reaction_empty
+  EDUP
+CELL_TYPES_END equ $-1
+
+action_reaction_empty:
+  defb 00
+
 TEXT_SET:
   include "../assets/lang/lang_ru.asm"
 TEXT_SET_END equ $-1

@@ -7,9 +7,9 @@ static:
   include "interrupts.asm"
 static_end equ $-1
 
-; dynamic:
-  ; include "dynamic.asm"
-; dynamic_end equ $-1
+dynamic:
+  include "dynamic.asm"
+dynamic_end equ $-1
 
 ORG INT_TABLE
   IM2_TABLE INT_VECTOR_HIGH
@@ -33,7 +33,7 @@ display 'TRITONE:   ', TRITONE, '-', TRITONE_END-1,', size: ', /D, TRITONE_END-T
 display 'MUSIC:     ', BEEPER_MUSIC, '-', BEEPER_MUSIC_END-1,', size: ', /D, BEEPER_MUSIC_END-BEEPER_MUSIC
 display '[Free]     ', p68_font_before, '-', p68_font, ', size: ', /D, p68_font - p68_font_before
 display 'Font:      ', p68_font, '-', p68_font_end, ', size: ', /D, p68_font_end - p68_font
-; display 'Dynamic:   ', dynamic, '-', dynamic_end, ', size: ', /D, dynamic_end - dynamic
+display 'Dynamic:   ', dynamic, '-', dynamic_end, ', size: ', /D, dynamic_end - dynamic
 ; display '[Free]     ', dynamic_end+1, '-', INT_TABLE-1, ', size: ', /D, INT_TABLE - dynamic_end
 
 display '---Interrupt---------------------------------------'

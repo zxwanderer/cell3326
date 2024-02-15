@@ -1,3 +1,6 @@
+  ifndef _DEMO_FX_H_
+  define _DEMO_FX_H_
+
 FX_Nope equ 53
 FX_Drop equ 5
 FX_Pickup equ 4
@@ -12,3 +15,5 @@ FX_Wall equ 51
 FX_Cutt equ 7
 FX_Cutt1 equ 8
 FX_GridCut equ 39
+
+  endif

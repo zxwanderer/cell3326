@@ -1,3 +1,8 @@
+  ifndef _HERO_H_
+  define _HERO_H_
+
+  include "Point_h.asm"
+
   STRUCT Hero
 pos: Point 0,0 ; позиция на карте
 dir db 00; направление
@@ -10,3 +15,5 @@ name_p dw #0000
 hand_right_p db 00
 hand_right_p_1 db 00
   ENDS
+
+  endif

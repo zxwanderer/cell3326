@@ -1,9 +1,12 @@
   ifndef __SCREEN_FX_ASM_
   define __SCREEN_FX_ASM_
 
+  include "../assets/fx/demoFX_h.asm"
   include "../zx-core/libs/registers/hl_ptr_to_hl_h.asm"
   include "../zx-core/libs/result/set_result_h.asm"
 
+  include "./Cell.asm"
+  
   MODULE ScreenFX
 
 ; Показываем информацию о ячейке
