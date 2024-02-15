@@ -15,13 +15,6 @@ interrupts_end:
 
 _all_end equ $
 
-INT_VECTOR_h equ high INT_VECTOR
-INT_VECTOR_h_1 equ INT_VECTOR_h + 1
-INT_VECTOR_END equ INT_VECTOR + 257
-
-INT_ROUTINE equ INT_VECTOR_h_1 * 256 + INT_VECTOR_h_1
-INT_ROUTINE_END equ INT_ROUTINE + 3
-
 display 'PROGRAM_ORG: ', PROGRAM_ORG
 display '--------------------------------------------------'
 ; display 'Code:      ', code, '-', code_end, ', size: ', /D, code_end - code
@@ -31,7 +24,7 @@ display 'Static:    ', static, '-', static_end,', size: ', /D, static_end - stat
 display '[Free]     ', p68_font_before, '-', p68_font, ', size: ', /D, p68_font - p68_font_before
 display 'Font:      ', p68_font, '-', p68_font_end, ', size: ', /D, p68_font_end - p68_font
 display 'Dynamic:   ', dynamic, '-', dynamic_end, ', size: ', /D, dynamic_end - dynamic
-display '[Free]     ', dynamic_end+1, '-', INT_TABLE-1, ', size: ', /D, INT_TABLE - dynamic_end
+; display '[Free]     ', dynamic_end+1, '-', INT_TABLE-1, ', size: ', /D, INT_TABLE - dynamic_end
 display '---Interrupt---------------------------------------'
 display 'VECTOR:              ', /H, INT_VECTOR_h
 display 'POINTER:             ', /H, INT_VECTOR_h_1

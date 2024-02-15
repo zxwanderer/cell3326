@@ -3,11 +3,9 @@
 
 start:
   DI
-  IM2_INIT INT_TABLE, INT_VECTOR
-  EI
-
   LD SP, STACK_TOP
-  HALT
+
+  IM2_INIT_JP INT_VECTOR, Interrupts
 
 .loop
   inc a
