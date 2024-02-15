@@ -44,6 +44,3 @@ display '---------------------------------------------------'
 
   ; savebin "static.bin", code, dynamic-code
   ; savebin "dynamic.bin", dynamic, _all_end-dynamic
-
-	; savesna SNA_FILENAME, PROGRAM_ORG
-  ; LABELSLIST labels.txt
