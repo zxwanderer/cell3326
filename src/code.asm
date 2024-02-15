@@ -3,6 +3,12 @@
 
 start:
   DI
+
+  XOR A
+  OUT (#FE),A
+  LD A, %00000100
+  CALL SCREEN_SET_COLORS
+
   IM2_INIT INT_TABLE_HIGH
   EI
 
@@ -17,3 +23,6 @@ start:
   out (#fe), a
 
   jp .loop
+
+  include "../zx-core/libs/screen/set_colors.asm"
+  
