@@ -1,20 +1,14 @@
   include "_defines_h.asm"
   include "../zx-core/libs/stack/push_pop_h.asm"
 
-code:
-  include "code.asm"
-interrupts:
-  include "interrupts.asm"
-code_end equ $-1
-
 static:
   include "static.asm"
+  include "interrupts.asm"
 static_end equ $-1
 
 ; dynamic:
   ; include "dynamic.asm"
 ; dynamic_end equ $-1
-
 
 ORG INT_TABLE
   IM2_TABLE INT_VECTOR_HIGH
@@ -28,17 +22,14 @@ ORG STACK_TOP - STACK_SIZE
 stack_start:
   defs STACK_SIZE
 ORG STACK_TOP
-stack_end:
-
-_all_end equ $
+stack_end: ; #FFFF
 
 display 'PROGRAM_ORG: ', PROGRAM_ORG
-display _all_end
 display '--------------------------------------------------'
-display 'Code:      ', code, '-', code_end, ', size: ', /D, code_end - code
 display 'Static:    ', static, '-', static_end,', size: ', /D, static_end - static
-; display 'FX_SET:    ', FX_SET, '-', FX_SET_END-1,', size: ', /D, FX_SET_END-FX_SET
-; display 'TRITONE:   ', TRITONE, '-', TRITONE_END-1,', size: ', /D, TRITONE_END-TRITONE
+display 'FX_SET:    ', FX_SET, '-', FX_SET_END-1,', size: ', /D, FX_SET_END-FX_SET
+display 'TRITONE:   ', TRITONE, '-', TRITONE_END-1,', size: ', /D, TRITONE_END-TRITONE
+display 'MUSIC:     ', BEEPER_MUSIC, '-', BEEPER_MUSIC_END-1,', size: ', /D, BEEPER_MUSIC_END-BEEPER_MUSIC
 display '[Free]     ', p68_font_before, '-', p68_font, ', size: ', /D, p68_font - p68_font_before
 display 'Font:      ', p68_font, '-', p68_font_end, ', size: ', /D, p68_font_end - p68_font
 ; display 'Dynamic:   ', dynamic, '-', dynamic_end, ', size: ', /D, dynamic_end - dynamic
