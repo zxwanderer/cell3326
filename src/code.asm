@@ -3,10 +3,9 @@
 
 start:
   DI
-  LD SP, STACK_TOP
+  ; IM2_INIT_JP INT_VECTOR, Interrupts
 
-  IM2_INIT_JP INT_VECTOR, Interrupts
-
+  ; LD SP, STACK_TOP
 .loop
   inc a
   out (#fe), a
