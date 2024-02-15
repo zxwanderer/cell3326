@@ -2,6 +2,7 @@
   include "../zx-core/libs/stack/push_pop_h.asm"
 
 static:
+  include "code.asm"
   include "static.asm"
   include "interrupts.asm"
 static_end equ $-1
