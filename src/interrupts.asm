@@ -1,5 +1,6 @@
   include "_defines_h.asm"
-  include "../zx-core/libs/im2/im2_h.asm"
+  include "../zx-core/libs/stack/push_pop_h.asm"
+; include "../zx-core/libs/im2/im2_h.asm"
 
 // ------------- interrupt tabs
   ; IM2_ORG_VECTOR_TABLE INT_TABLE
@@ -15,8 +16,8 @@ Interrupts:
 		LD (_im2_sp_addr), SP
 		DO_PUSH_ALL_REGISTRY
 
-  	ld a, r
-    out (#fe), a
+  	; xor a
+    ; out (#fe), a
 
     DO_POP_ALL_REGISTRY
 _im2_sp_addr: equ $+1

@@ -1,4 +1,5 @@
   include "_defines_h.asm"
+  include "../zx-core/libs/stack/push_pop_h.asm"
 
 static:
   include "code.asm"
@@ -13,6 +14,14 @@ interrupts:
   include "interrupts.asm"
 interrupts_end:
 
+ORG INT_TABLE
+  IM2_TABLE INT_VECTOR_HIGH
+INT_TABLE_END
+
+ORG INT_VECTOR
+  IM2_JP_ROUTINES Interrupts
+INT_VECTOR_END
+
 _all_end equ $
 
 display 'PROGRAM_ORG: ', PROGRAM_ORG
@@ -26,16 +35,12 @@ display 'Font:      ', p68_font, '-', p68_font_end, ', size: ', /D, p68_font_end
 ; display 'Dynamic:   ', dynamic, '-', dynamic_end, ', size: ', /D, dynamic_end - dynamic
 ; display '[Free]     ', dynamic_end+1, '-', INT_TABLE-1, ', size: ', /D, INT_TABLE - dynamic_end
 
-  ; ifdef INT_VECTOR
 display '---Interrupt---------------------------------------'
-display 'VECTOR:              ', /H, INT_VECTOR_h
-display 'POINTER:             ', /H, INT_VECTOR_h_1
-display 'TABLE:               ', INT_VECTOR, '-', INT_VECTOR_END-1,', size: ', /D, INT_VECTOR_END - INT_VECTOR
-display '[Free]               ', INT_VECTOR_END, '-', INT_ROUTINE-1,', size: ', /D, INT_ROUTINE - INT_VECTOR_END
-display 'ROUTINE:             ', INT_ROUTINE, '-', INT_ROUTINE_END-1, ', size: ', /D, INT_ROUTINE_END - INT_ROUTINE
-display '[Free]               ', INT_ROUTINE_END, '-', 0xFFFF,', size: ', /D, 0xFFFF - INT_ROUTINE_END
+display 'TABLE:               ', INT_TABLE, '-', INT_TABLE_END-1,', size: ', /D, INT_TABLE_END - INT_TABLE
+display '[Free]               ', INT_TABLE_END, '-', INT_VECTOR-1,', size: ', /D, INT_VECTOR - INT_TABLE_END
+display 'ROUTINE:             ', INT_VECTOR, '-', INT_VECTOR_END-1, ', size: ', /D, INT_VECTOR_END - INT_VECTOR
+display '[Free]               ', INT_VECTOR_END, '-', 0xFFFF,', size: ', /D, 0xFFFF - INT_VECTOR_END
 display '---------------------------------------------------'
-  ; endif
 
   ; savebin "static.bin", code, dynamic-code
   ; savebin "dynamic.bin", dynamic, _all_end-dynamic
