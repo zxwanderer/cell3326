@@ -2,7 +2,7 @@
   include "../zx-core/libs/defines_h.asm"
   include "../zx-core/libs/im2/im2_lite_h.asm"
 
-  define SHOW_START_MENU
+  ; define SHOW_START_MENU
 
 start:
   DI
@@ -13,9 +13,11 @@ start:
   CALL SCREEN_SET_COLORS
 
   IM2_INIT INT_TABLE_HIGH
-  
+
+init:  
   IFDEF SHOW_START_MENU
 
+  LD SP, STACK_TOP
 	LD DE, #4000
 	LD HL, HELLO_TXT
 	CALL Text68.print_at
@@ -25,7 +27,6 @@ start:
 
   ENDIF
 
-  LD SP, STACK_TOP
   EI
 
 .loop
