@@ -1,3 +1,6 @@
+  ifndef __DEFINES_H_ASM_
+  define __DEFINES_H_ASM_
+
 PROGRAM_ORG equ #6000
 
 SCREEN_ADDR equ #4000
@@ -13,3 +16,5 @@ INT_VECTOR equ #BEBE
 INT_TABLE equ $BD00
 
 STACK_TOP equ #FFFF
+
+  endif
