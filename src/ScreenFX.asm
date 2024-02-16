@@ -4,6 +4,11 @@
   include "../assets/fx/demoFX_h.asm"
   include "../zx-core/libs/registers/hl_ptr_to_hl_h.asm"
   include "../zx-core/libs/result/set_result_h.asm"
+  include "../zx-core/libs/screen/pos_to_scr.asm"
+  include "../zx-core/libs/screen/clear_rows.asm"
+  include "../zx-core/libs/tiles16/index_to_ptr.asm"
+  include "../zx-core/libs/tiles16/show.asm"
+  include "../zx-core/libs/tiles16/show_screen.asm"
 
   include "./Cell.asm"
   

@@ -1,6 +1,7 @@
   ifndef _HERO_ASM_
   define _HERO_ASM_
 
+  include "./Actions_h.asm"
   include "./Hero_h.asm"
   include "./ScreenFX.asm"
   include "../zx-core/libs/map/calc_pos.asm"
