@@ -4,8 +4,11 @@
   include "./Actions_h.asm"
   include "./Hero_h.asm"
   include "./ScreenFX.asm"
+  include "./EventsMap.asm"
+
   include "../zx-core/libs/map/calc_pos.asm"
   include "../zx-core/libs/map/set.asm"
+  include "../zx-core/libs/map/move_calc_xy.asm"
 
   MODULE Hero
 

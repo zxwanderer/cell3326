@@ -1,3 +1,6 @@
+  ifndef _EVENTS_MAP_ASM_
+  define _EVENTS_MAP_ASM_
+
   MODULE EventsMap
 
   MACRO m_look_dir _dir
@@ -48,3 +51,5 @@ cell_by_dir_ptr:
   retTrue
 
   ENDMODULE
+
+  endif
