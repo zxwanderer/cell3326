@@ -16,7 +16,7 @@ start:
 
   IM2_INIT INT_TABLE_HIGH
 
-init:  
+init:
   IFDEF SHOW_START_MENU
 
   LD SP, STACK_TOP
@@ -32,6 +32,8 @@ init:
   CALL Hero.initHeroes
   CALL Hero.show_hero_at_screen
   CALL Hero.hero_look_at_cell
+
+  EI
 
 loop:
   ; HALT
