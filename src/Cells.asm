@@ -1,3 +1,8 @@
+  ifndef _CELLS_ASM_
+  define _CELLS_ASM_
+
+  include "../zx-core/libs/tables/scan_by_index.asm"
+
   MODULE Cells
 
 ; Обработка скрипта активной ячейки
@@ -22,3 +27,5 @@ call_script:
   JP (HL)
 
   ENDMODULE
+
+  endif

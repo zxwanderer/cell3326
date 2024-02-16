@@ -5,10 +5,13 @@
   include "./Hero_h.asm"
   include "./ScreenFX.asm"
   include "./EventsMap.asm"
+  include "./Cells.asm"
 
   include "../zx-core/libs/map/calc_pos.asm"
   include "../zx-core/libs/map/set.asm"
   include "../zx-core/libs/map/move_calc_xy.asm"
+  include "../zx-core/libs/tiles16/copy_to_buffer.asm"
+  include "../zx-core/libs/view/center.asm"
 
   MODULE Hero
 
