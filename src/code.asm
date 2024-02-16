@@ -1,7 +1,6 @@
   include "_defines_h.asm"
   include "../zx-core/libs/defines_h.asm"
   include "../zx-core/libs/keyboard/define_key_h.asm"
-  include "../zx-core/libs/keyboard/scan_keys.asm"
   include "../zx-core/libs/im2/im2_lite_h.asm"
 
   ; define SHOW_START_MENU
@@ -93,6 +92,7 @@ hero_move_processing:
   CALL Hero.hero_look_at_cell
   JP loop
 
+  include "../zx-core/libs/keyboard/scan_keys.asm"
   include "../zx-core/libs/screen/set_colors.asm"
   include "../zx-core/libs/screen/calc_down_pos.asm"
   include "../zx-core/libs/text/text68.asm"
