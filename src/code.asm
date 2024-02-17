@@ -4,7 +4,7 @@
   include "../zx-core/libs/im2/im2_lite_h.asm"
 
   ; define SHOW_START_MENU
-  DEFINE CHEAT_MOVE
+  ; DEFINE CHEAT_MOVE
 
 start:
   DI
