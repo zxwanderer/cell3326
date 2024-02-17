@@ -11,6 +11,10 @@ TEXT_SET:
   include "../assets/lang/lang_ru.asm"
 TEXT_SET_END equ $-1
 
+ASSETS_SET:
+  include "../assets/cells/_index.asm"
+ASSETS_SET_END equ $-1
+
 TILE_SET:
   incbin "tiles.bin"
 TILE_SET_END equ $-1
