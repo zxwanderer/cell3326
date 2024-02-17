@@ -1,4 +1,6 @@
 
+  include "../../src/CellType_h.asm"
+
 Floor_3.spr equ 3
 Floor_5.spr equ 5
 Floor_8.spr equ 8
