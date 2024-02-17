@@ -88,3 +88,6 @@ make_tape: compile_bootable
 
 run_sna: make_sna
 	open -a 'UnrealSpeccyPortable' $(BUILD_FOLDER)/game.sna
+
+debug: make_sna
+	open -a 'xpeccy' $(BUILD_FOLDER)/game.sna --args --labels ./$(BUILD_FOLDER)/cell3326.list

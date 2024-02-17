@@ -1,3 +1,5 @@
+  include "Hero_h.asm"
+
 HeroesNum equ 1
 
 Hero09.spr: equ 160
