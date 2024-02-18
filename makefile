@@ -40,12 +40,6 @@ build_parts: build pack_upkr
     --lst=$(BUILD_FOLDER)/program.list \
     --fullpath $(SRC_FOLDER)/parts.asm
 
-		# --debug 
-run: build
-	$(BIN_FOLDER)/xpeccy.app/Contents/MacOS/xpeccy \
-		$(BUILD_FOLDER)/$(PROJECT_NAME).sna \
-		--labels $(BUILD_FOLDER)/labels.txt
-
 run2: build
 	open -a 'UnrealSpeccyPortable' $(BUILD_FOLDER)/$(PROJECT_NAME).sna
 
