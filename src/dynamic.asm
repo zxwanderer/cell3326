@@ -1,3 +1,5 @@
+  include "../zx-core/libs/memory/display_size_h.asm"
+
 MAP_DATA:
   incbin "map.bin"
 MAP_DATA_END:
@@ -13,10 +15,6 @@ VIEW_BUFFER:
 VIEW_BUFFER_END:
 
   include "heroes_data.asm"
-
-  MACRO DISPLAY_SIZE name, item
-  display name, ' ', item,      '-', item_END    -1, ', size: ' , /D, item_END - item
-  ENDM
 
   display '--- Dynamic --------------------------------------'
   DISPLAY_SIZE 'MAP_DATA:    ', MAP_DATA
