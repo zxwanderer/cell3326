@@ -46,4 +46,7 @@ UT_Hero_struct:
   nop ; ASSERTION  A == dir_up
   TC_END
 
+UT_InitHeroes:
+  CALL Hero.initHeroes
+  TC_END
  ENDMODULE
