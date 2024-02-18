@@ -17,4 +17,6 @@ main:
   include "../zx-core/libs/unit-tests/stack.asm"
   include "unit-tests.asm"
 
+  include "UT_Cells.asm"
+
   SAVESNA "z80-sample-program.sna", main
