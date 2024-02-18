@@ -31,7 +31,7 @@ init:
 
   CALL Hero.initHeroes
   CALL Hero.show_hero_at_screen
-  ; CALL Hero.hero_look_at_cell
+  CALL Hero.hero_look_at_cell
 
   EI
 
