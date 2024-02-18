@@ -19,6 +19,7 @@ get_by_index:
   LD (.index_ptc_cell+1), A
 .index_ptc_cell
   LD HL, #0000
+  AND A ; обнуляем флаг переноса
   RL L
   RL H
   ; LD DE, CellType
