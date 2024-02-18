@@ -10,7 +10,7 @@
   include "../zx-core/libs/tiles16/show.asm"
   include "../zx-core/libs/tiles16/show_screen.asm"
 
-  include "./Cell.asm"
+  include "./Cells.asm"
   
   MODULE ScreenFX
 
@@ -18,7 +18,7 @@
 ; На входе:
 ;   A - тип ячейки
 show_cell_info:
-  CALL CELL_CALC_PTR_BY_INDEX
+  CALL Cells.get_by_index
 ; так как описание ячейки начинается с указателя на текстовое сообщение,
 ; нам не нужно загружать индексный регистр и вычислять сдвиг, мы сразу получили
 ; указатель на указатель на текст сообщения

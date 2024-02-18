@@ -14,6 +14,8 @@
   ; DEFINE SHOW_START_MENU
   DEFINE CHEAT_MOVE
 
+80 x 50
+
 start:
   DI
 

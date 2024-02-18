@@ -132,7 +132,7 @@ do:
 .phase2:
   LD HL, (LOGIC_ACTIVE_MAP_PTR)
   LD A, (HL)
-  CALL CELL_CALC_PTR_BY_INDEX ; в HL указатель на описание ячейки
+  CALL Cells.get_by_index ; в HL указатель на описание ячейки
   LD A, (LOGIC_LAST_ACTION)
   CALL Cells.call_script
   JP NC, show_hero_at_screen ; дальше обрабатывать не надо
