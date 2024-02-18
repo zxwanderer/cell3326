@@ -9,15 +9,15 @@
 ; Получить указатель на описание ячейки по ее номеру
 ; Константы:
 ;   CellType - размер структуры описания ячейки
-;   CELL_TYPES - указатель на массив с описаниями ячеек
+;   OBJECT_DATA - указатель на массив с описаниями ячеек
 ; На входе
 ;   A - номер ячейки (от 0 до #FF)
 ; На выходе
 ;   HL - указатель на описание ячейки
 ; -------------------------------------------
 get_by_index:
-  LD (.index_ptc_cell), A
-.index_ptc_cell equ $+1
+  LD (.index_ptc_cell+1), A
+.index_ptc_cell
   LD HL, #0000
   RL L
   RL H
@@ -25,7 +25,7 @@ get_by_index:
   ; CALL mul_ADE
   LD DE, CELL_TYPES
   ADD HL, DE
-    HL_PTR_TO_HL
+  HL_PTR_TO_HL
   RET
 
 ; -------------------------------------------

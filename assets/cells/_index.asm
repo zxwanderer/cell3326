@@ -1,4 +1,4 @@
-  include "floors.asm"
+  ; include "floors.asm"
   ; include "doors.asm"
   ; include "beds.asm"
   ; include "chairs.asm"

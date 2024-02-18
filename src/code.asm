@@ -4,19 +4,19 @@
   include "../zx-core/libs/im2/im2_lite_h.asm"
 
   ; define SHOW_START_MENU
-  ; DEFINE CHEAT_MOVE
+  DEFINE CHEAT_MOVE
 
 start:
   DI
 
+  IM2_INIT INT_TABLE_HIGH
+
+init:
   XOR A
   OUT (#FE),A
   LD A, %00000100
   CALL SCREEN_SET_COLORS
 
-  IM2_INIT INT_TABLE_HIGH
-
-init:
   IFDEF SHOW_START_MENU
 
   LD SP, STACK_TOP
@@ -32,7 +32,6 @@ init:
   CALL Hero.initHeroes
   CALL Hero.show_hero_at_screen
   CALL Hero.hero_look_at_cell
-
   EI
 
 loop:
