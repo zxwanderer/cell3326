@@ -1,5 +1,8 @@
-  include "../src/Hero_h.asm"
+  include "../src/_defines_h.asm"
+
   include "../zx-core/libs/map/Directions_h.asm"
+  include "../src/Hero_h.asm"
+  include "../src/Hero.asm"
 
  MODULE TestSuite_Hero
 
