@@ -72,5 +72,14 @@
 /Users/random/cell3326/unit-tests/UT_Cells.asm|21|/Users/random/cell3326/unit-tests/../zx-core/libs/unit-tests/unit_tests.inc|45|1|25440|T|
 /Users/random/cell3326/unit-tests/UT_Cells.asm|23||0|1|25443|F|TestSuite_Cells.UT_CellData_defines
 /Users/random/cell3326/unit-tests/UT_Cells.asm|23||0|1|25443|L|TestSuite_Cells,UT_CellData_defines,
-/Users/random/cell3326/unit-tests/UT_Cells.asm|24|/Users/random/cell3326/unit-tests/../zx-core/libs/unit-tests/unit_tests.inc|45|1|25443|T|
-/Users/random/cell3326/unit-tests/UT_Cells.asm|27||0|-1|25446|L|TestSuite_Cells,,,+endmod
+/Users/random/cell3326/unit-tests/UT_Cells.asm|24||0|1|25443|T|
+/Users/random/cell3326/unit-tests/UT_Cells.asm|25||0|1|25446|K|; ASSERTION HL == Empty_cell
+/Users/random/cell3326/unit-tests/UT_Cells.asm|25||0|1|25446|T|
+/Users/random/cell3326/unit-tests/UT_Cells.asm|26||0|1|25447|T|
+/Users/random/cell3326/unit-tests/UT_Cells.asm|27||0|1|25450|K|; ASSERTION HL == Empty_cell_name
+/Users/random/cell3326/unit-tests/UT_Cells.asm|27||0|1|25450|T|
+/Users/random/cell3326/unit-tests/UT_Cells.asm|28||0|1|25451|T|
+/Users/random/cell3326/unit-tests/UT_Cells.asm|29||0|1|25454|K|; ASSERTION HL == No_action_reaction
+/Users/random/cell3326/unit-tests/UT_Cells.asm|29||0|1|25454|T|
+/Users/random/cell3326/unit-tests/UT_Cells.asm|30|/Users/random/cell3326/unit-tests/../zx-core/libs/unit-tests/unit_tests.inc|45|1|25455|T|
+/Users/random/cell3326/unit-tests/UT_Cells.asm|33||0|-1|25458|L|TestSuite_Cells,,,+endmod

@@ -13,7 +13,6 @@ my_cell_defines:
   CellType name_ptr, script_ptr
 
 UT_CellType_struct:
-
   LD HL, (my_cell_defines)
   nop; ASSERTION HL == name_ptr
   LD HL, (my_cell_defines + 2)  
@@ -21,6 +20,12 @@ UT_CellType_struct:
   TC_END
 
 UT_CellData_defines:
+  LD HL, (CELL_TYPES)
+  nop; ASSERTION HL == Empty_cell
+  LD HL, (Empty_cell)
+  nop; ASSERTION HL == Empty_cell_name
+  LD HL, (Empty_cell + 2)
+  nop; ASSERTION HL == No_action_reaction
   TC_END
 
 
