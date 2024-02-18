@@ -21,7 +21,7 @@ script_ptr dw 00; указатель на таблицу action-reaction
   MACRO DEFINE_SPR_CELL spr_num?, cell_type_ptr?
 .temp equ $; запоминаем адрес
     ORG CELL_TYPES + spr_num?*2
-    display 'curr add sprite ', spr_num? , ' -> ', $
+    display 'DEFINE_SPR_CELL ', spr_num? , ' -> ', $ , '(', CELL_TYPES, ')'
     dw cell_type_ptr?
     ORG .temp
   ENDM 
@@ -29,6 +29,7 @@ script_ptr dw 00; указатель на таблицу action-reaction
   MACRO SET_CELL_TYPE type?, name_ptr?, action_reaction_table_ptr?
 type?
       CellType name_ptr?, action_reaction_table_ptr?
+      display type?, ' name: ', name_ptr?, ' action table: ', action_reaction_table_ptr?
   ENDM
   
   ; MACRO SETUP_CELL_TYPE_N _spr, _name, _action_reaction_table

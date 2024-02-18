@@ -18,7 +18,7 @@
 ; -------------------------------------------
 get_by_index:
   LD (.index_ptc_cell), A
-.index_ptc_cell equ $+2
+.index_ptc_cell equ $+1
   LD HL, #0000
   RL L
   RL H

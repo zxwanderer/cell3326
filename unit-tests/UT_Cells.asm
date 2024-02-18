@@ -35,6 +35,9 @@ UT_Cells_module:
   LD A, #00
   CALL Cells.get_by_index
   nop; ASSERTION HL == Empty_cell
+  LD A, #01
+  CALL Cells.get_by_index
+  nop; ASSERTION HL == Empty_cell
   TC_END
 
  ENDMODULE
