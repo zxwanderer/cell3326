@@ -4,6 +4,16 @@ TILE_SET:
   incbin "../output/tiles.bin"
 TILE_SET_END equ $-1
 
+FX_SET:
+  include "../assets/fx/demoFX.asm"
+FX_SET_END
+
+p68_font_before:
+  align 256
+p68_font:
+	incbin "../assets/fonts/Font57_revert.fnt"
+p68_font_end equ $-1
+
 MAP_DATA:
   DUP TILE_MAP_SIZE_WIDTH * TILE_MAP_SIZE_HEIGHT
   defb #00
@@ -21,6 +31,8 @@ VIEW_BUFFER:
   include "../src/Hero_h.asm"
   include "../src/Hero.asm"
   include "../src/heroes_data.asm"
+
+Kick_shard_mess: db "Empty",0
 
  MODULE TestSuite_Hero
 
