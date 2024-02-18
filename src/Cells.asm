@@ -1,12 +1,13 @@
   ifndef _CELLS_ASM_
   define _CELLS_ASM_
 
-  include "./CellType_h.asm"
+  ; include "./CellType_h.asm"
 
   include "../zx-core/libs/math/mul_ADE.asm"
   include "../zx-core/libs/tables/scan_by_index.asm"
 
   MODULE Cells
+
 
 ; -------------------------------------------
 ; Получить указатель на описание ячейки по ее номеру
@@ -19,10 +20,16 @@
 ;   HL - указатель на описание ячейки
 ; -------------------------------------------
 get_by_index:
-  LD DE, CellType
-  CALL mul_ADE
+  LD (.index_ptc_cell), A
+.index_ptc_cell equ $+1
+  LD HL, #0000
+  RL L
+  RL H
+  ; LD DE, CellType
+  ; CALL mul_ADE
   LD DE, CELL_TYPES
   ADD HL, DE
+    HL_PTR_TO_HL
   RET
 
 ; -------------------------------------------

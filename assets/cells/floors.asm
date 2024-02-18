@@ -12,16 +12,18 @@ Floor_54.spr equ 54
 Floor_58.spr equ 58
 Floor_74.spr equ 74
 
-  SETUP_CELL_TYPE_N Floor_3.spr, Floor_cell_name, Floor_actions
-  SETUP_CELL_TYPE_N Floor_5.spr, Floor_cell_name, Floor_actions
-  SETUP_CELL_TYPE_N Floor_8.spr, Floor_cell_name, Floor_actions
-  SETUP_CELL_TYPE_N Floor_22.spr, Floor_cell_name, Floor_actions
-  SETUP_CELL_TYPE_N Floor_23.spr, Floor_cell_name, Floor_actions
-  SETUP_CELL_TYPE_N Floor_41.spr, Floor_cell_name, Floor_actions
-  SETUP_CELL_TYPE_N Floor_53.spr, Floor_cell_name, Floor_actions
-  SETUP_CELL_TYPE_N Floor_54.spr, Floor_cell_name, Floor_actions
-  SETUP_CELL_TYPE_N Floor_58.spr, Floor_cell_name, Floor_actions
-  SETUP_CELL_TYPE_N Floor_74.spr, Floor_cell_name, Floor_actions
+  ; SETUP_CELL_TYPE_N Floor_3.spr, Floor_cell_name, Floor_actions
+  ; SETUP_CELL_TYPE_N Floor_5.spr, Floor_cell_name, Floor_actions
+  ; SETUP_CELL_TYPE_N Floor_8.spr, Floor_cell_name, Floor_actions
+  ; SETUP_CELL_TYPE_N Floor_22.spr, Floor_cell_name, Floor_actions
+  ; SETUP_CELL_TYPE_N Floor_23.spr, Floor_cell_name, Floor_actions
+  ; SETUP_CELL_TYPE_N Floor_41.spr, Floor_cell_name, Floor_actions
+  ; SETUP_CELL_TYPE_N Floor_53.spr, Floor_cell_name, Floor_actions
+  ; SETUP_CELL_TYPE_N Floor_54.spr, Floor_cell_name, Floor_actions
+  ; SETUP_CELL_TYPE_N Floor_58.spr, Floor_cell_name, Floor_actions
+  ; SETUP_CELL_TYPE_N Floor_74.spr, Floor_cell_name, Floor_actions
+
+  SET_CELL_TYPE Floor, Floor_cell_name, Floor_actions
 
 Floor_actions:
   SET_ACTION_REACTON do_stand, reaction_stand
@@ -29,4 +31,3 @@ Floor_actions:
 
 reaction_stand:
   retTrue
-
