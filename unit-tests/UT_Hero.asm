@@ -1,5 +1,9 @@
   include "../src/_defines_h.asm"
 
+TILE_SET:
+  incbin "../output/tiles.bin"
+TILE_SET_END equ $-1
+
 MAP_DATA:
   DUP TILE_MAP_SIZE_WIDTH * TILE_MAP_SIZE_HEIGHT
   defb #00
