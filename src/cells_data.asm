@@ -11,8 +11,9 @@ CELL_TYPES:
 CELL_TYPES_END equ $-1
 
 Empty_0.spr equ 0
-
   DEFINE_SPR_CELL Empty_0.spr, Empty_cell
 
 No_action_reaction:
   defb 00
+
+  include "../assets/cells/_index.asm"
