@@ -1,4 +1,6 @@
   include "floors.asm"
+  include "grass.asm"
+ 
   ; include "doors.asm"
   ; include "beds.asm"
   ; include "chairs.asm"
@@ -13,7 +15,6 @@
   ; include "electronic.asm"
   ; include "plants.asm"
   ; include "keramit.asm"
-  ; include "grass.asm"
   ; include "airland.asm"
   ; include "scafs.asm"
   ; include "bioreactor.asm"
