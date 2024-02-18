@@ -18,5 +18,6 @@ main:
   include "unit-tests.asm"
 
   include "UT_Cells.asm"
+  include "UT_Hero.asm"
 
   SAVESNA "z80-sample-program.sna", main

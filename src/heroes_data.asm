@@ -1,4 +1,5 @@
   include "Hero_h.asm"
+  include "../zx-core/libs/map/Directions_h.asm"
 
 HeroesNum equ 1
 
