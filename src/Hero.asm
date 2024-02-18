@@ -12,6 +12,7 @@
   include "../zx-core/libs/map/move_calc_xy.asm"
   include "../zx-core/libs/tiles16/copy_to_buffer.asm"
   include "../zx-core/libs/view/center.asm"
+  include "../zx-core/libs/text/print_number.asm"
 
   MODULE Hero
 
@@ -214,7 +215,46 @@ hero_look_at_cell:
   CALL EventsMap.cell_by_dir_ptr
   RET NC;  возвратили false - неправильное направление
   LD A, (HL)
-  JP ScreenFX.show_cell_info
+  ld (last_cell_index), A
+
+  ; JP ScreenFX.show_cell_info
+  CALL Cells.get_by_index
+  HL_PTR_TO_HL
+
+  PUSH HL
+  LD DE, Empty_cell_name
+  LD A, H
+  CP D
+  JP NZ, .not_empty_cell
+  LD A, L
+  CP E
+  JP Z, .is_empty_cell
+.not_empty_cell
+  POP HL
+  JP ScreenFX.show_info_message
+
+.is_empty_cell
+  POP HL ; снимаем чтобы не болталось
+
+  LD DE, #0016
+  CALL SCREEN_POS_TO_SCR
+  PUSH DE
+
+  LD B, 2
+  CALL SCREEN_CLEAR_ROWS
+
+  LD DE, print_number
+  LD HL, (last_cell_index)
+  CALL PDEC_W
+  POP DE
+
+  LD HL, print_number
+  CALL Text68.print_at
+
+  RET
+
+last_cell_index: db 0, 0
+print_number: defb "00000",0
 
   ENDMODULE
 
