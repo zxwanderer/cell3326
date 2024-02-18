@@ -13,8 +13,15 @@ main:
   out (#fe), a
   jr .loop
   
+  ; Reserve stack space
+    defw 0  ; WPMEM, 2
+stack_bottom:
+    defs    STACK_SIZE*2, 0
+stack_top:
+    ;defw 0
+    defw 0  ; WPMEM, 2
+
   include "../zx-core/libs/unit-tests/unit_tests.inc"
-  include "../zx-core/libs/unit-tests/stack.asm"
   include "unit-tests.asm"
 
   include "UT_Cells.asm"

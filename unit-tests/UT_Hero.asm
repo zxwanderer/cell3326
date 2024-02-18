@@ -10,6 +10,9 @@ MAP_MASK:
   defb #00
   EDUP
 
+VIEW_BUFFER:
+	include "../zx-core/libs/tiles16/view_buffer.asm"
+
   include "../zx-core/libs/map/Directions_h.asm"
   include "../src/Hero_h.asm"
   include "../src/Hero.asm"
