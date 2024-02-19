@@ -12,7 +12,8 @@
   include "../zx-core/libs/map/move_calc_xy.asm"
   include "../zx-core/libs/tiles16/copy_to_buffer.asm"
   include "../zx-core/libs/view/center.asm"
-  include "../zx-core/libs/text/print_number.asm"
+  include "../zx-core/libs/text/print_number_hex.asm"
+  include "../zx-core/libs/text/print_number_dec.asm"
 
   MODULE Hero
 
@@ -243,9 +244,14 @@ hero_look_at_cell:
   LD B, 2
   CALL SCREEN_CLEAR_ROWS
 
-  LD DE, print_number
+  LD DE, print_number_hex
+  LD HL, (last_cell_index)
+  CALL PHEX_W
+  
+  LD DE, print_number_dec
   LD HL, (last_cell_index)
   CALL PDEC_W
+
   POP DE
 
   LD HL, print_number
@@ -254,7 +260,14 @@ hero_look_at_cell:
   RET
 
 last_cell_index: db 0, 0
-print_number: defb "00000",0
+
+print_number: 
+print_number_dec:
+    defb "00000"
+    defb "("
+print_number_hex:  
+    defb "0000"
+    defb ")", 0
 
   ENDMODULE
 
