@@ -1,5 +1,3 @@
-  ifndef _HERO_ASM_
-  define _HERO_ASM_
 
   include "./Actions_h.asm"
   include "./Hero_h.asm"
@@ -22,33 +20,6 @@
 ; LOGIC_ACTIVE_HERO_NUM - текущий номер героя
 ; LOGIC_ACTIVE_MAP_POS - координаты текущего события на карте
 
-; --------------------------------------------------------------------------------------
-; Инициализация персонажей на карте, переход на первого персонажа
-; --------------------------------------------------------------------------------------
-initHeroes:
-  LD B,  HeroesNum
-  LD HL, HEROES_SET
-  LD DE, Hero
-.init_loop:
-  PUSH BC
-  PUSH DE
-  PUSH HL
-
-  PUSH HL
-  POP IX
-
-  LD D, (IX+Hero.pos.x)
-  LD E, (IX+Hero.pos.y)
-  CALL MAP_CALC_PTR_BY_POS
-  LD A,(HL)
-  LD (IX+Hero.ground),A; ячейку карты ставим на пол персонажа
-  CALL set_sprite_by_direction
-
-  POP HL
-  POP DE
-  POP BC
-  ADD HL, DE
-  DJNZ .init_loop
 
 ; --------------------------------------------------------------------------------------
 ; Переход на первого персонажа
@@ -85,21 +56,6 @@ move:
   CALL set_sprite_by_direction
   JP show_hero_at_screen
 
-; --------------------------------------------------------------------------------------
-; Изменение спрайта в описании героя и на карте в зависимости от направления персонажа в его описании
-; Вход:
-;  IX - указатель на героя
-;  IX.dir - направление
-; --------------------------------------------------------------------------------------
-set_sprite_by_direction:
-  LD B,(IX+Hero.base_spr)
-  LD A,(IX+Hero.dir)
-  ADD A, B
-  LD (IX+Hero.sprite), A
-  LD D, (IX+Hero.pos.x)
-  LD E, (IX+Hero.pos.y)
-  CALL MAP_SET_BY_POS
-  RET
 
 stand:
   LD A, do_stand

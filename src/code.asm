@@ -1,4 +1,6 @@
   include "_defines_h.asm"
+  include "Actions_h.asm"
+  
   include "../zx-core/libs/defines_h.asm"
   include "../zx-core/libs/keyboard/define_key_h.asm"
   include "../zx-core/libs/im2/im2_lite_h.asm"
@@ -98,4 +100,4 @@ hero_move_processing:
   include "../zx-core/libs/screen/calc_down_pos.asm"
   include "../zx-core/libs/text/text68.asm"
   
-  include "./Hero.asm"
+  include "./framework/Hero.asm"
