@@ -31,7 +31,7 @@ init:
 
   ENDIF
 
-  CALL Hero.initHeroes
+  CALL Hero.init_heroes
   CALL Hero.show_hero_at_screen
   CALL Hero.hero_look_at_cell
   EI

@@ -4,8 +4,7 @@
   include "./Hero/Hero_h.asm"
 
   MODULE Hero
-; initHeroes
-    include "./Hero/initHeroes.asm"  ; initHeroes
+    include "./Hero/init_heroes.asm"  ; init_heroes
 ; --------------------------------------------------------------------------------------
 ; Переход на первого персонажа
 ;   На выходе:

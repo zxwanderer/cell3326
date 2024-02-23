@@ -1,8 +1,6 @@
   ifndef _MAP_ASM_
   define _MAP_ASM_
 
-  
-
   MODULE Maps
 
 calc_ptr:
