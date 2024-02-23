@@ -1,5 +1,7 @@
-  include "../../../zx-core/libs/map/calc_pos.asm"
-  include "../../../zx-core/libs/map/set.asm"
+  ; include "../../../zx-core/libs/map/calc_pos.asm"
+  ; include "../../../zx-core/libs/map/set.asm"
+
+  include "../Maps.asm"
 
   ifndef _SET_SPRITE_BY_DIRECTION_
   define _SET_SPRITE_BY_DIRECTION_
@@ -17,7 +19,8 @@ set_sprite_by_direction:
   LD (IX+Hero.sprite), A
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
-  CALL MAP_SET_BY_POS
+  CALL Maps.set
+  ; CALL MAP_SET_BY_POS
   RET
 
   endif
