@@ -3,6 +3,7 @@
 
   include "./Hero/Hero_h.asm"
   include "./EventsMap.asm"
+  include "./View.asm"
 
   MODULE Hero
     include "./Hero/init_heroes.asm"  ; init_heroes
@@ -39,12 +40,15 @@ show_hero_at_screen:
   CALL EventsMap.lookAround ; герой осматривается на новой позиции
   POP DE
 
-  CALL VIEW_CALC_LOOK_AT_CENTER ; в DE позиция окна view на карте
+  CALL View.calc_look_at_center
+
+  ; CALL VIEW_CALC_LOOK_AT_CENTER ; в DE позиция окна view на карте
   LD (LOGIC_VIEW_POS), DE
 
   CALL Maps.calc_ptr_by_pos
   ; CALL MAP_CALC_PTR_BY_POS ; в HL указатель на ячейку карты
-  CALL COPY_TO_BUFFER
+  ; CALL COPY_TO_BUFFER
+  CALL View.copy_from_map
 	CALL TILE16_SHOW_SCREEN
   RET
 

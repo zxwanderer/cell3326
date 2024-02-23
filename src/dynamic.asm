@@ -11,7 +11,7 @@ MAP_MASK:
 MAP_MASK_END:
 
 VIEW_BUFFER:
-	include "../zx-core/libs/tiles16/view_buffer.asm"
+	include "../zx-core/libs/view/view_buffer.asm"
 VIEW_BUFFER_END:
 
 HEROES_DATA:
