@@ -1,12 +1,13 @@
-  ifndef _HERO_ASM_
-  define _HERO_ASM_
+  ifndef _HEROES_ASM_
+  define _HEROES_ASM_
 
   include "./Hero/Hero_h.asm"
   include "./EventsMap.asm"
   include "./View.asm"
   include "./Tiles.asm"
+  include "./Maps.asm"
 
-  MODULE Hero
+  MODULE Heroes
 
 init:
     include "./Hero/init_heroes.asm"  ; init_heroes

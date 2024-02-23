@@ -33,9 +33,9 @@ init:
 
   ENDIF
 
-  CALL Hero.init_heroes
-  CALL Hero.show_hero_at_screen
-  CALL Hero.hero_look_at_cell
+  CALL Heroes.init
+  CALL Heroes.show_hero_at_screen
+  CALL Heroes.hero_look_at_cell
   EI
 
 loop:
@@ -84,7 +84,7 @@ PRESS_BUTTON_FIRE:
   ; CP #50
   ; JP C, loop
   LD A, do_use
-  CALL Hero.do
+  CALL Heroes.do
   JP loop
 
 PRESS_RESTART:
@@ -93,8 +93,8 @@ PRESS_RESTART:
   JP loop
 
 hero_move_processing:
-  CALL Hero.move
-  CALL Hero.hero_look_at_cell
+  CALL Heroes.move
+  CALL Heroes.hero_look_at_cell
   JP loop
 
   include "../zx-core/libs/keyboard/scan_keys.asm"
@@ -102,4 +102,4 @@ hero_move_processing:
   include "../zx-core/libs/screen/calc_down_pos.asm"
   include "../zx-core/libs/text/text68.asm"
 
-  include "./framework/Hero.asm"
+  include "./framework/Heroes.asm"
