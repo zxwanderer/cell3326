@@ -7,6 +7,8 @@
   include "./Tiles.asm"
 
   MODULE Hero
+
+init:
     include "./Hero/init_heroes.asm"  ; init_heroes
     ; ^^^ в функции нет RET, сразу переходим на функцию first_char
 ; --------------------------------------------------------------------------------------

@@ -6,6 +6,7 @@
   include "../zx-core/libs/keyboard/define_key_h.asm"
   include "../zx-core/libs/im2/im2_lite_h.asm"
 
+  ; не включать сюда код, так как старт идет в начале блока а не на метку start
   ; define SHOW_START_MENU
   DEFINE CHEAT_MOVE
 
@@ -100,5 +101,5 @@ hero_move_processing:
   include "../zx-core/libs/screen/set_colors.asm"
   include "../zx-core/libs/screen/calc_down_pos.asm"
   include "../zx-core/libs/text/text68.asm"
-  
+
   include "./framework/Hero.asm"
