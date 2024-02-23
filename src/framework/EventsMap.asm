@@ -2,7 +2,8 @@
   define _EVENTS_MAP_ASM_
 
   include "../../zx-core/libs/result/set_result_h.asm"
-  
+  include "./Maps.asm"
+
   MODULE EventsMap
 
   MACRO m_look_dir _dir
@@ -47,9 +48,11 @@ look_dir:
 ; На выходе:
 ; в HL - указатель на ячейку карты, 
 cell_by_dir_ptr:
-  CALL MAP_CALC_POS_BY_DIR
+  CALL Maps.move_calc_xy
+  ; CALL MAP_CALC_POS_BY_DIR
   RET NC;  возвратили false - неправильное направление
-  CALL MAP_CALC_PTR_BY_POS
+  CALL Maps.calc_pos_ptr
+  ; CALL MAP_CALC_PTR_BY_POS
   retTrue
 
   ENDMODULE

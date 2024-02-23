@@ -3,13 +3,13 @@
 
   MODULE Maps
 
-calc_ptr:
+calc_pos_ptr:
   include "../../zx-core/libs/map/calc_pos.asm"
 
 set:
   include "../../zx-core/libs/map/set.asm"
 
-move_calc:
+move_calc_xy:
   include "../../zx-core/libs/map/move_calc_xy.asm"
 
   ENDMODULE
