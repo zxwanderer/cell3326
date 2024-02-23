@@ -4,6 +4,7 @@
   include "./Hero/Hero_h.asm"
   include "./EventsMap.asm"
   include "./View.asm"
+  include "./Tiles.asm"
 
   MODULE Hero
     include "./Hero/init_heroes.asm"  ; init_heroes
@@ -49,7 +50,9 @@ show_hero_at_screen:
   ; CALL MAP_CALC_PTR_BY_POS ; в HL указатель на ячейку карты
   ; CALL COPY_TO_BUFFER
   CALL View.copy_from_map
-	CALL TILE16_SHOW_SCREEN
+	CALL Tiles.show_screen
+
+  ; CALL TILE16_SHOW_SCREEN
   RET
 
 move:
