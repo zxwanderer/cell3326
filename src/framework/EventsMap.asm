@@ -1,6 +1,8 @@
   ifndef _EVENTS_MAP_ASM_
   define _EVENTS_MAP_ASM_
 
+  include "../../zx-core/libs/result/set_result_h.asm"
+  
   MODULE EventsMap
 
   MACRO m_look_dir _dir
@@ -9,7 +11,7 @@
     CALL look_dir
     POP DE
   ENDM
-
+ 
 ; Смотрим во все стороны на одну клетку
 lookAround:
   m_look_dir dir_down

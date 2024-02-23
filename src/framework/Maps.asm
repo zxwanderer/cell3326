@@ -5,8 +5,12 @@
 
 calc_ptr:
   include "../../zx-core/libs/map/calc_pos.asm"
+
 set:
   include "../../zx-core/libs/map/set.asm"
+
+move_calc:
+  include "../../zx-core/libs/map/move_calc_xy.asm"
 
   ENDMODULE
 

@@ -2,6 +2,7 @@
   include "Actions_h.asm"
   
   include "../zx-core/libs/defines_h.asm"
+  include "../zx-core/libs/map/Directions_h.asm"
   include "../zx-core/libs/keyboard/define_key_h.asm"
   include "../zx-core/libs/im2/im2_lite_h.asm"
 
