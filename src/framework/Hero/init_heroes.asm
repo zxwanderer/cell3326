@@ -24,7 +24,7 @@ init_heroes:
 
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
-  CALL Maps.calc_pos_ptr
+  CALL Maps.calc_ptr_by_pos
   ; CALL MAP_CALC_PTR_BY_POS
   LD A,(HL)
   LD (IX+Hero.ground),A; ячейку карты ставим на пол персонажа

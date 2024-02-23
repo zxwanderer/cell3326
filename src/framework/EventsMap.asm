@@ -51,7 +51,7 @@ cell_by_dir_ptr:
   CALL Maps.move_calc_xy
   ; CALL MAP_CALC_POS_BY_DIR
   RET NC;  возвратили false - неправильное направление
-  CALL Maps.calc_pos_ptr
+  CALL Maps.calc_ptr_by_pos
   ; CALL MAP_CALC_PTR_BY_POS
   retTrue
 

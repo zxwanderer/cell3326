@@ -3,7 +3,7 @@
 
   MODULE Maps
 
-calc_pos_ptr:
+calc_ptr_by_pos:
   include "../../zx-core/libs/map/calc_pos.asm"
 
 set:
