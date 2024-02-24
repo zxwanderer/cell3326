@@ -1,15 +1,15 @@
   ifndef __SCREEN_FX_ASM_
   define __SCREEN_FX_ASM_
 
-  include "../assets/fx/demoFX_h.asm"
-  include "../zx-core/libs/registers/hl_ptr_to_hl_h.asm"
-  include "../zx-core/libs/result/set_result_h.asm"
-  include "../zx-core/libs/screen/pos_to_scr.asm"
-  include "../zx-core/libs/screen/clear_rows.asm"
-  include "../zx-core/libs/tiles16/index_to_ptr.asm"
-  include "../zx-core/libs/tiles16/show.asm"
-  include "../zx-core/libs/tiles16/show_screen.asm"
-  include "../zx-core/libs/text/text68.asm"
+  include "../../assets/fx/demoFX_h.asm"
+  include "../../zx-core/libs/registers/hl_ptr_to_hl_h.asm"
+  include "../../zx-core/libs/result/set_result_h.asm"
+  include "../../zx-core/libs/screen/pos_to_scr.asm"
+  include "../../zx-core/libs/screen/clear_rows.asm"
+  include "../../zx-core/libs/tiles16/index_to_ptr.asm"
+  include "../../zx-core/libs/tiles16/show.asm"
+  include "../../zx-core/libs/tiles16/show_screen.asm"
+  include "../../zx-core/libs/text/text68.asm"
 
   include "./Cells.asm"
   
@@ -66,13 +66,13 @@ show_info_and_sound:
 ;   A - номер спрайта
 fx_action_cell:
     LD (.active_spr_num+1), A
-    LD A, ( Hero.LOGIC_ACTIVE_MAP_POS+Point.y )
-    LD HL, Hero.LOGIC_VIEW_POS
+    LD A, ( Heroes.LOGIC_ACTIVE_MAP_POS+Point.y )
+    LD HL, Heroes.LOGIC_VIEW_POS
     SUB (HL)
     ADD A,A ; так как у нас тайлы в 2 ячейки то умножаем результат на два
     LD E,A
     INC HL
-    LD A, ( Hero.LOGIC_ACTIVE_MAP_POS+Point.x )
+    LD A, ( Heroes.LOGIC_ACTIVE_MAP_POS+Point.x )
     SUB (HL)
     ADD A,A ; так как у нас тайлы в 2 ячейки то умножаем результат на два
     LD D,A ; в DE - экранная позиция
@@ -111,7 +111,7 @@ sound_show_info_and_set_cell:
 .cell_set
   LD A, #00
 cell_set_proc:
-  LD HL, (Hero.LOGIC_ACTIVE_MAP_PTR)
+  LD HL, (Heroes.LOGIC_ACTIVE_MAP_PTR)
   LD (HL), A
   RET
 

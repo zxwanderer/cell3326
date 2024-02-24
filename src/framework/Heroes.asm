@@ -6,6 +6,11 @@
   include "./View.asm"
   include "./Tiles.asm"
   include "./Maps.asm"
+  include "./Cells.asm"
+  include "./ScreenFX.asm"
+
+  include "../zx-core/libs/text/print_number_hex.asm"
+  include "../zx-core/libs/text/print_number_dec.asm"
 
   MODULE Heroes
 
@@ -54,15 +59,75 @@ show_hero_at_screen:
   ; CALL COPY_TO_BUFFER
   CALL View.copy_from_map
 	CALL Tiles.show_screen
-
   ; CALL TILE16_SHOW_SCREEN
   RET
 
 move:
   RET
 
+; Вывести описание ячейки на которую смотрит герой
+; На входе:
+;   IX - указатель на описание героя
 hero_look_at_cell:
+  LD IX, (LOGIC_ACTIVE_HERO_PTR)
+  LD D, (IX+Hero.pos.x)
+  LD E, (IX+Hero.pos.y)
+  LD A, (IX+Hero.dir)
+  CALL EventsMap.cell_by_dir_ptr
+  RET NC;  возвратили false - неправильное направление
+  LD A, (HL)
+  ld (last_cell_index), A
+
+  ; JP ScreenFX.show_cell_info
+  CALL Cells.get_by_index
+  HL_PTR_TO_HL
+
+  PUSH HL
+  LD DE, Empty_cell_name
+  LD A, H
+  CP D
+  JP NZ, .not_empty_cell
+  LD A, L
+  CP E
+  JP Z, .is_empty_cell
+.not_empty_cell
+  POP HL
+  JP ScreenFX.show_info_message
+
+.is_empty_cell
+  POP HL ; снимаем чтобы не болталось
+
+  LD DE, #0016
+  CALL SCREEN_POS_TO_SCR
+  PUSH DE
+
+  LD B, 2
+  CALL SCREEN_CLEAR_ROWS
+
+  LD DE, print_number_hex
+  LD HL, (last_cell_index)
+  CALL PHEX_W
+  
+  LD DE, print_number_dec
+  LD HL, (last_cell_index)
+  CALL PDEC_W
+
+  POP DE
+
+  LD HL, print_number
+  CALL Text68.print_at
+
   RET
+
+last_cell_index: db 0, 0
+
+print_number: 
+print_number_dec:
+    defb "00000"
+    defb "("
+print_number_hex:  
+    defb "0000"
+    defb ")", 0
 
   ENDMODULE
 

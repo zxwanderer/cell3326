@@ -1,7 +1,7 @@
   ifndef _CELLS_ASM_
   define _CELLS_ASM_
 
-  include "../zx-core/libs/tables/scan_by_index.asm"
+  include "../../zx-core/libs/tables/scan_by_index.asm"
 
   MODULE Cells
 
