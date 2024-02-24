@@ -19,8 +19,8 @@ set_sprite_by_direction:
   LD (IX+Hero.sprite), A
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
-  CALL Maps.set
+  JP Maps.set
   ; CALL MAP_SET_BY_POS
-  RET
+  ; RET
 
   endif
