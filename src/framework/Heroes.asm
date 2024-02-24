@@ -62,9 +62,6 @@ LOGIC_ACTIVE_MAP_POS  dw 0000
 LOGIC_ACTIVE_MAP_PTR  dw 0000
 LOGIC_VIEW_POS        dw 0000
 
-do:
-  RET
-
 show_hero_at_screen:
   LD IX, (LOGIC_ACTIVE_HERO_PTR) ; устанавливаем указатель на описание героя
 
@@ -103,7 +100,67 @@ move:
   JP show_hero_at_screen
 
 stand:
-  RET
+  LD A, do_stand
+
+; --------------------------------------------------------------------------------------
+; Действие персонажа по направлению взгляда
+; Вход:
+;   A - действие
+;   LOGIC_ACTIVE_HERO_PTR - указатель на героя
+; --------------------------------------------------------------------------------------
+do:
+  LD IX, (LOGIC_ACTIVE_HERO_PTR)
+  LD (LOGIC_LAST_ACTION), A
+  LD D, (IX+Hero.pos.x)
+  LD E, (IX+Hero.pos.y)
+  LD A, (IX+Hero.dir)
+  CALL Maps.calc_pos_by_dir
+  ; CALL MAP_CALC_POS_BY_DIR ; в DE позиция действия
+  RET NC
+
+  LD (LOGIC_ACTIVE_MAP_POS), DE
+  CALL Maps.calc_ptr_by_pos
+  ; CALL MAP_CALC_PTR_BY_POS
+  LD (LOGIC_ACTIVE_MAP_PTR), HL
+
+  LD A, (LOGIC_LAST_ACTION)
+
+  ifdef CHEAT_MOVE
+; cheat move:
+  CP do_stand
+  JP Z, .do_stand; персонаж перемещается туда
+  endif
+
+.phase2:
+  LD HL, (LOGIC_ACTIVE_MAP_PTR)
+  LD A, (HL)
+  CALL Cells.get_by_index ; в HL указатель на описание ячейки
+  LD A, (LOGIC_LAST_ACTION)
+  CALL Cells.call_script
+  JP NC, show_hero_at_screen ; дальше обрабатывать не надо
+
+  LD A, (LOGIC_LAST_ACTION)
+  CP do_stand
+  JP Z, .do_stand
+  JP hero_look_at_cell
+
+.do_stand
+  LD D, (IX+Hero.pos.x)
+  LD E, (IX+Hero.pos.y)
+  LD A, (IX+Hero.ground)
+  CALL Maps.set
+  ; CALL MAP_SET_BY_POS ; вернули на место землю
+
+  LD DE, (LOGIC_ACTIVE_MAP_POS)
+  LD (IX+Hero.pos.x), D
+  LD (IX+Hero.pos.y), E ; установили новые координаты 
+
+  LD HL, (LOGIC_ACTIVE_MAP_PTR)
+  LD A, (HL)
+  LD (IX+Hero.ground), A ; сохранили землю
+  CALL set_sprite_by_direction
+  JP show_hero_at_screen
+
 
 ; Вывести описание ячейки на которую смотрит герой
 ; На входе:

@@ -9,7 +9,7 @@ calc_ptr_by_pos:
 set:
   include "../../zx-core/libs/map/set.asm"
 
-move_calc_xy:
+calc_pos_by_dir:
   include "../../zx-core/libs/map/move_calc_xy.asm"
 
   ENDMODULE
