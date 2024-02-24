@@ -51,8 +51,8 @@ show_hero_at_screen:
   ; CALL VIEW_CALC_LOOK_AT_CENTER ; в DE позиция окна view на карте
   LD (LOGIC_VIEW_POS), DE
 
-  CALL Maps.calc_ptr_by_pos
-  ; CALL MAP_CALC_PTR_BY_POS ; в HL указатель на ячейку карты
+  CALL Maps.calc_ptr_by_pos ; в HL указатель на ячейку карты
+  ; CALL MAP_CALC_PTR_BY_POS 
   ; CALL COPY_TO_BUFFER
   CALL View.copy_from_map
 	CALL Tiles.show_screen
