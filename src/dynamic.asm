@@ -6,7 +6,15 @@ MAP_DATA_END:
 
 MAP_MASK:
   DUP TILE_MAP_SIZE_WIDTH * TILE_MAP_SIZE_HEIGHT
+
+  ifdef SHOW_ALL_MAP
   defb #ff
+  endif
+
+  ifndef SHOW_ALL_MAP
+  defb #00
+  endif
+
   EDUP
 MAP_MASK_END:
 
