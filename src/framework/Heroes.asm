@@ -12,10 +12,36 @@
   include "./Hero/set_sprite_by_direction.asm"
 
   MODULE Heroes
-
+; --------------------------------------------------------------------------------------
+; Инициализация персонажей на карте, переход на первого персонажа
+; --------------------------------------------------------------------------------------
 init:
-    include "./Hero/init_heroes.asm"  ; init_heroes
-    ; ^^^ в функции нет RET, сразу переходим на функцию first_char
+  LD B,  HeroesNum
+  LD HL, HEROES_SET
+  LD DE, Hero
+.init_loop:
+  PUSH BC
+  PUSH DE
+  PUSH HL
+
+  PUSH HL
+  POP IX
+
+  LD D, (IX+Hero.pos.x)
+  LD E, (IX+Hero.pos.y)
+  CALL Maps.calc_ptr_by_pos
+  ; CALL MAP_CALC_PTR_BY_POS
+  LD A,(HL)
+  LD (IX+Hero.ground),A; ячейку карты ставим на пол персонажа
+  CALL set_sprite_by_direction
+
+  POP HL
+  POP DE
+  POP BC
+  ADD HL, DE
+  DJNZ .init_loop
+
+; ^^^ в функции нет RET, сразу переходим на функцию first_char
 ; --------------------------------------------------------------------------------------
 ; Переход на первого персонажа
 ;   На выходе:
