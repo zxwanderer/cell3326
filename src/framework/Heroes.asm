@@ -87,7 +87,22 @@ show_hero_at_screen:
   ; CALL TILE16_SHOW_SCREEN
   RET
 
+; --------------------------------------------------------------------------------------
+; Движение или поворот текущего персонажа
+; Вход:
+;   B - направление
+;   LOGIC_ACTIVE_HERO_PTR - указатель на героя
+; --------------------------------------------------------------------------------------
 move:
+  LD IX, (LOGIC_ACTIVE_HERO_PTR)
+  LD A, (IX+Hero.dir)
+  CP B
+  JR Z, stand
+  LD (IX+Hero.dir), B
+  CALL set_sprite_by_direction
+  JP show_hero_at_screen
+
+stand:
   RET
 
 ; Вывести описание ячейки на которую смотрит герой

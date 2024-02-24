@@ -39,9 +39,6 @@ init:
   EI
 
 loop:
-  ; jp loop
-  ; HALT
-
   LD HL, keyMappingTable
   CALL KEYBOARD_SCAN_KEYS
   JP Z, loop
