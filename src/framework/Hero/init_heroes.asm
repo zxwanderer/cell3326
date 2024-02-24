@@ -5,7 +5,7 @@
   include "../Maps.asm"
 
   ; include "../../../zx-core/libs/map/calc_pos.asm"
-  ; include "./set_sprite_by_direction.asm"
+  include "./set_sprite_by_direction.asm"
 
 ; --------------------------------------------------------------------------------------
 ; Инициализация персонажей на карте, переход на первого персонажа
@@ -28,8 +28,7 @@ init_heroes:
   ; CALL MAP_CALC_PTR_BY_POS
   LD A,(HL)
   LD (IX+Hero.ground),A; ячейку карты ставим на пол персонажа
-  CALL Maps.set
-  ; CALL set_sprite_by_direction
+  CALL set_sprite_by_direction
 
   POP HL
   POP DE

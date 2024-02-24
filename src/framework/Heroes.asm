@@ -9,6 +9,8 @@
   include "./Cells.asm"
   include "./ScreenFX.asm"
 
+  include "./Hero/set_sprite_by_direction.asm"
+
   MODULE Heroes
 
 init:
