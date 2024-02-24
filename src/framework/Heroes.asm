@@ -9,9 +9,6 @@
   include "./Cells.asm"
   include "./ScreenFX.asm"
 
-  include "../zx-core/libs/text/print_number_hex.asm"
-  include "../zx-core/libs/text/print_number_dec.asm"
-
   MODULE Heroes
 
 init:

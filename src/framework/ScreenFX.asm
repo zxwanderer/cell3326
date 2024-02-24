@@ -9,7 +9,10 @@
   include "../../zx-core/libs/tiles16/index_to_ptr.asm"
   include "../../zx-core/libs/tiles16/show.asm"
   include "../../zx-core/libs/tiles16/show_screen.asm"
+
   include "../../zx-core/libs/text/text68.asm"
+  include "../../zx-core/libs/text/print_number_hex.asm"
+  include "../../zx-core/libs/text/print_number_dec.asm"
 
   include "./Cells.asm"
   
