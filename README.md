@@ -11,3 +11,8 @@ Please, go to [https://zxwanderer.github.io/cell3326/](https://zxwanderer.github
 git submodule update --init --recursive
 ```
 
+А так же установить этот гребаный Pillow
+
+```
+./pip3 install Pillow --break-system-packages
+```
