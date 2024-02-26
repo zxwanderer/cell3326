@@ -41,15 +41,14 @@ get_by_index:
 ; retFalse - ничего не нужно делать дальше
 ; -------------------------------------------
 call_script:
-  LD (.action+1), A
+  ; LD (.action+1), A
   INC HL
   INC HL ; получили указатель на указатель таблицы action-reaction 
   HL_PTR_TO_HL
   CALL TABLE_SCAN_BY_INDEX_PTR
-  RET NC
-  ; retFalse
-.action
-  LD A, #00
+  RET NC; если не нашли то возвращаем false
+; .action
+  ; LD A, #00
 ; в HL у нас теперь указатель на обработку action'a
   JP (HL)
 
