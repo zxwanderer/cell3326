@@ -21,8 +21,59 @@
 ; Показываем информацию о ячейке
 ; На входе:
 ;   A - тип ячейки
-; show_cell_info:
-  ; CALL Cells.get_by_index
+show_cell_info:
+  ld (.last_cell_index), A
+  CALL Cells.get_by_index
+  HL_PTR_TO_HL
+
+  PUSH HL
+  LD DE, Empty_cell_name
+  LD A, H
+  CP D
+  JP NZ, .not_empty_cell
+  LD A, L
+  CP E
+  JP Z, .is_empty_cell
+.not_empty_cell
+  POP HL
+  JP ScreenFX.show_info_message
+
+.is_empty_cell
+  POP HL ; снимаем чтобы не болталось
+
+  LD DE, #0016
+  CALL SCREEN_POS_TO_SCR
+  PUSH DE
+
+  LD B, 2
+  CALL SCREEN_CLEAR_ROWS
+
+  LD DE, print_number_hex
+  LD HL, (.last_cell_index)
+  CALL PHEX_W
+  
+  LD DE, print_number_dec
+  LD HL, (.last_cell_index)
+  CALL PDEC_W
+
+  POP DE
+
+  LD HL, print_number
+  CALL Text68.print_at
+
+  RET
+
+.last_cell_index: db 0, 0
+
+print_number: 
+print_number_dec:
+    defb "00000"
+    defb "("
+print_number_hex:  
+    defb "0000"
+    defb ")", 0
+
+; CALL Cells.get_by_index
 ; так как описание ячейки начинается с указателя на текстовое сообщение,
 ; нам не нужно загружать индексный регистр и вычислять сдвиг, мы сразу получили
 ; указатель на указатель на текст сообщения
