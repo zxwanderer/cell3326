@@ -31,7 +31,7 @@ lookAround:
 ;   DE - координаты X и Y
 ;   A - направление взгляда
 look_dir:
-  CALL cell_by_dir_ptr
+  CALL Maps.cell_by_dir_ptr
   RET NC;  возвратили false - неправильное направление
   LD DE, MAP_MASK-MAP_DATA
   ADD HL, DE
@@ -41,19 +41,19 @@ look_dir:
   LD (HL), A
   RET
 
-; Смотрим по направлению
-; На входе:
-;   DE - координаты X и Y
-;   A - направление взгляда
-; На выходе:
-; в HL - указатель на ячейку карты, 
-cell_by_dir_ptr:
-  CALL Maps.calc_pos_by_dir
-  ; CALL MAP_CALC_POS_BY_DIR
-  RET NC;  возвратили false - неправильное направление
-  CALL Maps.calc_ptr_by_pos
-  ; CALL MAP_CALC_PTR_BY_POS
-  retTrue
+; ; Смотрим по направлению
+; ; На входе:
+; ;   DE - координаты X и Y
+; ;   A - направление взгляда
+; ; На выходе:
+; ; в HL - указатель на ячейку карты, 
+; cell_by_dir_ptr:
+;   CALL Maps.calc_pos_by_dir
+;   ; CALL MAP_CALC_POS_BY_DIR
+;   RET NC;  возвратили false - неправильное направление
+;   CALL Maps.calc_ptr_by_pos
+;   ; CALL MAP_CALC_PTR_BY_POS
+;   retTrue
 
   ENDMODULE
 

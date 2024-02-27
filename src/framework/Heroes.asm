@@ -170,7 +170,7 @@ hero_look_at_cell:
   LD D, (IX+Hero.pos.x)
   LD E, (IX+Hero.pos.y)
   LD A, (IX+Hero.dir)
-  CALL EventsMap.cell_by_dir_ptr
+  CALL Maps.cell_by_dir_ptr
   RET NC;  возвратили false - неправильное направление
   LD A, (HL)
   JP ScreenFX.show_cell_info
