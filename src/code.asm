@@ -7,7 +7,7 @@
   include "../zx-core/libs/im2/im2_lite_h.asm"
 
   ; не включать сюда код, так как старт идет в начале блока а не на метку start
-  define SHOW_START_MENU
+  ; define SHOW_START_MENU
   ; DEFINE CHEAT_MOVE
   ; DEFINE SHOW_ALL_MAP ; сразу открыта вся карта
 
