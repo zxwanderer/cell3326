@@ -14,5 +14,7 @@ git submodule update --init --recursive
 А так же установить этот гребаный Pillow
 
 ```
-./pip3 install Pillow --break-system-packages
+python3 -m venv venv
+source ./venv/bin/activate
+pip3 install Pillow
 ```
