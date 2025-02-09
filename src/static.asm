@@ -1,14 +1,14 @@
 CELLS_SET:
   include "./cells_data.asm"
-CELLS_SET_END equ $-1
+CELLS_SET_END
 
 TEXT_SET:
   include "../assets/lang/lang_ru.asm"
-TEXT_SET_END equ $-1
+TEXT_SET_END
 
 TILE_SET:
   incbin "tiles.bin"
-TILE_SET_END equ $-1
+TILE_SET_END
 
 ; (!) код плеера должен быть в быстрой памяти как Shiru сказал (!!!)
 ; На 48K это просто любая память выше 0x8000 (0x8000 - 0xFFFF), на оригинальных 128K 
@@ -42,7 +42,7 @@ data:
     include "../assets/music/AER/gameend.asm"
   ENDMODULE
 
-BEEPER_MUSIC_END equ $-1
+BEEPER_MUSIC_END
 
 p68_font_before:
   align 256
