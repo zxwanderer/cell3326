@@ -10,6 +10,10 @@ PROJECT_NAME := game
 
 ASSETS_FOLDER := ./assets
  
+.PHONY: *
+.ONERROR: 
+	$(error Makefile error)
+	
 clean:
 	rm -rf $(BUILD_FOLDER)
 	mkdir -p $(BUILD_FOLDER)

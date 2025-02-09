@@ -12,8 +12,7 @@ ground db 00; на чем стоит
 flags db 00; признаки-флаги
 name_p dw #0000
 ; указатель на предмет в правой руке, hand_right_p_1 00 - в руке пусто
-hand_right_p db 00
-hand_right_p_1 db 00
+hand_right_w dw #0000
   ENDS
 
   endif
