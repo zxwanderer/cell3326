@@ -39,9 +39,10 @@ type?
     ; ORG .temp
   ; ENDM
 
-  MACRO SET_ACTION_REACTON _act, _react
-    defb _act
-    defw _react
+  MACRO SET_ACTION_REACTON _act?, _react?
+    defb _act?
+    defw _react?
+    display 'SET_ACTION_REACTON: ', _act?, ' react: ', _react?
   ENDM
 
   endif
