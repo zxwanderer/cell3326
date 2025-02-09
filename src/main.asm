@@ -40,7 +40,8 @@ display '---Interrupt---------------------------------------'
 display 'TABLE:               ', INT_TABLE, '-', INT_TABLE_END-1,', size: ', /D, INT_TABLE_END - INT_TABLE
 display '[Free]               ', INT_TABLE_END, '-', INT_VECTOR-1,', size: ', /D, INT_VECTOR - INT_TABLE_END
 display 'ROUTINE:             ', INT_VECTOR, '-', INT_VECTOR_END-1, ', size: ', /D, INT_VECTOR_END - INT_VECTOR
-display '[Free]               ', INT_VECTOR_END, '-', 0xFFFF,', size: ', /D, 0xFFFF - INT_VECTOR_END
+display '[Free]               ', INT_VECTOR_END, '-', STACK_TOP - STACK_SIZE -1 ,', size: ', /D, STACK_TOP - STACK_SIZE - INT_VECTOR_END
+display 'STACK                ', STACK_TOP - STACK_SIZE, '-', STACK_TOP,', size: ', /D,STACK_SIZE
 display '---------------------------------------------------'
 
   ; savebin "static.bin", code, dynamic-code
