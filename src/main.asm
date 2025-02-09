@@ -40,7 +40,7 @@ display 'TEXT_SET:     ', TEXT_SET, '-', TEXT_SET_END-1,', size: ', /D, TEXT_SET
 display 'TRITONE:      ', TRITONE, '-', TRITONE_END-1,', size: ', /D, TRITONE_END-TRITONE
 display 'MUSIC:        ', BEEPER_MUSIC, '-', BEEPER_MUSIC_END-1,', size: ', /D, BEEPER_MUSIC_END-BEEPER_MUSIC
 display '[Free]        ', p68_font_before, '-', p68_font, ', size: ', /D, p68_font - p68_font_before
-display 'Font:         ', p68_font, '-', p68_font_end, ', size: ', /D, p68_font_end - p68_font
+display 'FONT_SET:     ', p68_font, '-', p68_font_end, ', size: ', /D, p68_font_end - p68_font
 display 'Dynamic:      ', dynamic, '-', dynamic_end, ', size: ', /D, dynamic_end - dynamic
 ; display '[Free]     ', dynamic_end+1, '-', INT_TABLE-1, ', size: ', /D, INT_TABLE - dynamic_end
 
