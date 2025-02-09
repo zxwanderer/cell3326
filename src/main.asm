@@ -2,8 +2,12 @@
   include "../zx-core/libs/stack/push_pop_h.asm"
 
 static:
+code_start:
   include "code.asm"
+code_end:
+data_start:
   include "static.asm"
+data_end:
   include "interrupts.asm"
 static_end equ $-1
 
@@ -27,13 +31,17 @@ stack_end: ; #FFFF
 
 display 'PROGRAM_ORG: ', PROGRAM_ORG
 display '--------------------------------------------------'
-display 'Static:    ', static, '-', static_end,', size: ', /D, static_end - static
-display 'FX_SET:    ', FX_SET, '-', FX_SET_END-1,', size: ', /D, FX_SET_END-FX_SET
-display 'TRITONE:   ', TRITONE, '-', TRITONE_END-1,', size: ', /D, TRITONE_END-TRITONE
-display 'MUSIC:     ', BEEPER_MUSIC, '-', BEEPER_MUSIC_END-1,', size: ', /D, BEEPER_MUSIC_END-BEEPER_MUSIC
-display '[Free]     ', p68_font_before, '-', p68_font, ', size: ', /D, p68_font - p68_font_before
-display 'Font:      ', p68_font, '-', p68_font_end, ', size: ', /D, p68_font_end - p68_font
-display 'Dynamic:   ', dynamic, '-', dynamic_end, ', size: ', /D, dynamic_end - dynamic
+display 'Static:       ', static, '-', static_end,', size: ', /D, static_end - static
+display '--Code:       ', code_start, '-', code_end-1,', size: ', /D, code_end - code_start
+display '--Data:       ', data_start, '-', data_end-1,', size: ', /D, data_end - data_start
+display 'CELLS_SET:    ', CELLS_SET, '-', CELLS_SET_END-1,', size: ', /D, CELLS_SET_END-CELLS_SET
+display 'FX_SET:       ', FX_SET, '-', FX_SET_END-1,', size: ', /D, FX_SET_END-FX_SET
+display 'TEXT_SET:     ', TEXT_SET, '-', TEXT_SET_END-1,', size: ', /D, TEXT_SET_END-TEXT_SET
+display 'TRITONE:      ', TRITONE, '-', TRITONE_END-1,', size: ', /D, TRITONE_END-TRITONE
+display 'MUSIC:        ', BEEPER_MUSIC, '-', BEEPER_MUSIC_END-1,', size: ', /D, BEEPER_MUSIC_END-BEEPER_MUSIC
+display '[Free]        ', p68_font_before, '-', p68_font, ', size: ', /D, p68_font - p68_font_before
+display 'Font:         ', p68_font, '-', p68_font_end, ', size: ', /D, p68_font_end - p68_font
+display 'Dynamic:      ', dynamic, '-', dynamic_end, ', size: ', /D, dynamic_end - dynamic
 ; display '[Free]     ', dynamic_end+1, '-', INT_TABLE-1, ', size: ', /D, INT_TABLE - dynamic_end
 
 display '---Interrupt---------------------------------------'
