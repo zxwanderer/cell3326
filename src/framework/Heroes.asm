@@ -115,12 +115,10 @@ do:
   LD E, (IX+Hero.pos.y)
   LD A, (IX+Hero.dir)
   CALL Maps.calc_pos_by_dir
-  ; CALL MAP_CALC_POS_BY_DIR ; в DE позиция действия
   RET NC
 
   LD (LOGIC_ACTIVE_MAP_POS), DE
   CALL Maps.calc_ptr_by_pos
-  ; CALL MAP_CALC_PTR_BY_POS
   LD (LOGIC_ACTIVE_MAP_PTR), HL
 
   LD A, (LOGIC_LAST_ACTION)

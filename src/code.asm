@@ -23,15 +23,13 @@ init:
   CALL SCREEN_SET_COLORS
 
   IFDEF SHOW_START_MENU
+    LD SP, STACK_TOP
+	  LD DE, #4000
+	  LD HL, HELLO_TXT
+	  CALL Text68.print_at
 
-  LD SP, STACK_TOP
-	LD DE, #4000
-	LD HL, HELLO_TXT
-	CALL Text68.print_at
-
-  LD HL, music_startgame.data
-  CALL Tritone.play
-
+    LD HL, music_startgame.data
+    CALL Tritone.play
   ENDIF
 
   CALL Heroes.init
